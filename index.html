@@ -504,8 +504,8 @@ h2 .o{color:var(--orange)}
 .delivery-row.clevr .delivery-time{color:var(--orange)}
 .delivery-track{height:3px;background:#EEF0F5;border-radius:100px;overflow:hidden}
 .delivery-bar{height:100%;border-radius:100px;transition:width .4s cubic-bezier(.16,1,.3,1)}
-.delivery-row.clevr .delivery-bar{width:4.2%;background:var(--orange)}
-.delivery-row.traditional .delivery-bar{width:16.7%;background:#C7CEDA}
+.delivery-row.clevr .delivery-bar{width:3.1%;background:var(--orange)}
+.delivery-row.traditional .delivery-bar{width:12.5%;background:#C7CEDA}
 
 .delivery-timeline{position:relative;display:flex;justify-content:space-between;gap:20px;margin-top:52px}
 .delivery-timeline::before{
@@ -521,6 +521,7 @@ h2 .o{color:var(--orange)}
   .delivery-wrap{margin-top:40px}
   .delivery-card{padding:28px 20px;border-radius:18px}
   .delivery-slider-block{margin-bottom:36px}
+  .delivery-slider-ticks span{font-size:10px}
   .delivery-compare{gap:22px}
   .delivery-timeline{margin-top:36px;flex-direction:column;align-items:stretch;gap:22px}
   .delivery-timeline::before{display:none}
@@ -1058,9 +1059,9 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
     <div class="delivery-wrap r d1">
       <div class="delivery-card">
         <div class="delivery-slider-block">
-          <span class="delivery-slider-label">Ajusta el plazo de una empresa tradicional</span>
-          <input type="range" id="deliverySlider" class="delivery-slider" min="0" max="2" step="1" value="0" aria-label="Ajustar plazo de una empresa tradicional">
-          <div class="delivery-slider-ticks"><span>4 semanas</span><span>8 semanas</span><span>24 semanas</span></div>
+          <span class="delivery-slider-label">Ajusta el plazo de los proyectos</span>
+          <input type="range" id="deliverySlider" class="delivery-slider" min="0" max="3" step="1" value="0" aria-label="Ajustar plazo de los proyectos">
+          <div class="delivery-slider-ticks"><span>4 semanas</span><span>8 semanas</span><span>24 semanas</span><span>32 semanas</span></div>
         </div>
 
         <div class="delivery-compare">
@@ -1346,9 +1347,10 @@ setTimeout(runDemo, 1500);
   const scenarios = [
     {traditional:4, clevr:1},
     {traditional:8, clevr:3},
-    {traditional:24, clevr:8}
+    {traditional:24, clevr:8},
+    {traditional:32, clevr:12}
   ];
-  const MAX = 24;
+  const MAX = 32;
   const clevrTime = document.getElementById('deliveryClevrTime');
   const traditionalTime = document.getElementById('deliveryTraditionalTime');
   const clevrBar = document.getElementById('deliveryClevrBar');
