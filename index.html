@@ -453,9 +453,11 @@ h2 .o{color:var(--orange)}
   .prop-cloud::after{display:none}
   .prop-cloud h2{font-size:clamp(28px,5vw,34px)}
   .phone-wrap{perspective:none;margin-top:32px}
-  .phone-tilt{transform:none}
+  .phone-tilt{transform:none;zoom:.68}
   .phone-wrap:hover .phone-tilt{transform:none}
-  .phone-frame{width:230px}
+}
+@media(max-width:420px){
+  .phone-tilt{zoom:.58}
 }
 
 /* ── PROBLEMA ── */
