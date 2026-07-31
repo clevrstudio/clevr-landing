@@ -33,7 +33,7 @@
   --shadow-lg:0 16px 48px rgba(249,115,22,.14);
   --radius:16px;
 }
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:#F1F3FC}
@@ -699,8 +699,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 @media(max-width:768px){
   #neuralCanvas{display:none}
   nav{padding:12px 16px}
-  nav ul{display:flex;gap:14px}
-  nav ul a{font-size:12px}
+  nav ul{display:none}
   .nav-mobile-btn{display:none}
   #hero{padding:100px 20px 0;overflow:visible}
   .hero-inner{max-width:100%}
