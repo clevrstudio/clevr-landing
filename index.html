@@ -445,7 +445,6 @@ h2 .o{color:var(--orange)}
 
 @media(max-width:900px){
   .prop-layout{grid-template-columns:1fr}
-  .phone-wrap{display:none}
   .prop-visual{order:-1;margin-bottom:40px}
   .prop-cloud{
     background:none;border:none;box-shadow:none;border-radius:0;
@@ -453,6 +452,10 @@ h2 .o{color:var(--orange)}
   }
   .prop-cloud::after{display:none}
   .prop-cloud h2{font-size:clamp(28px,5vw,34px)}
+  .phone-wrap{perspective:none;margin-top:32px}
+  .phone-tilt{transform:none}
+  .phone-wrap:hover .phone-tilt{transform:none}
+  .phone-frame{width:230px}
 }
 
 /* ── PROBLEMA ── */
@@ -654,7 +657,6 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 @media(max-width:900px){
   .nichos-g,.team-g{grid-template-columns:1fr!important}
   .prop-layout{grid-template-columns:1fr;gap:40px}
-  .phone-wrap{display:none}
 }
 @media(max-width:768px){
   #neuralCanvas{display:none}
