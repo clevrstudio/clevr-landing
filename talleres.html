@@ -44,7 +44,7 @@ nav ul a:hover{color:var(--indigo)}
 nav ul a.nav-active{color:var(--indigo);font-weight:700}
 .nav-mobile-btn{display:none;background:var(--indigo);border:none;color:#fff;padding:9px 18px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;line-height:1}
 
-.container{max-width:1100px;margin:0 auto}
+.container{width:100%;max-width:1100px;min-width:0;margin:0 auto}
 .slabel{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--indigo);margin-bottom:14px}
 h2{font-size:clamp(34px,4.2vw,56px);font-weight:800;color:var(--ink);letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px}
 h3{font-size:20px;font-weight:700;color:var(--ink);margin-bottom:8px}
@@ -70,6 +70,32 @@ p{color:var(--muted);line-height:1.7}
   font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
   margin-bottom:24px
 }
+
+/* GALERÍA DE CAPACITACIONES */
+.gallery-section{padding:80px 48px;background:var(--bg1)}
+.gallery-head{max-width:640px;margin:0 auto 38px;text-align:center}
+.gallery-head .ssub{margin-top:12px}
+.gallery-section .container,.gallery-shell,.gallery-track{width:100%;min-width:0}
+.gallery-shell{position:relative;max-width:1180px;margin:0 auto}
+.gallery-track{
+  display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px)/3);
+  gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  scrollbar-width:none;padding:4px 2px 14px;-webkit-overflow-scrolling:touch;
+  overscroll-behavior-inline:contain
+}
+.gallery-track::-webkit-scrollbar{display:none}
+.gallery-slide{scroll-snap-align:start;scroll-snap-stop:always;min-width:0}
+.gallery-slide img{
+  display:block;width:100%;height:300px;object-fit:cover;border-radius:18px;
+  border:1px solid var(--border);box-shadow:0 4px 24px rgba(249,115,22,.08);transition:transform .3s,box-shadow .3s
+}
+.gallery-slide img:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(249,115,22,.14)}
+.gallery-controls{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.gallery-control{
+  width:42px;height:42px;border:1px solid var(--border);border-radius:50%;background:#fff;
+  color:var(--ink);font-size:24px;line-height:1;cursor:pointer;transition:all .2s
+}
+.gallery-control:hover{background:var(--indigo);border-color:var(--indigo);color:#fff}
 
 /* FEATURES */
 .features-section{padding:80px 48px;background:var(--bg)}
@@ -119,11 +145,22 @@ footer a:hover{color:#fff}
 
 @media(max-width:768px){
   nav{padding:12px 16px}
-  nav ul{display:flex;gap:14px}
-  nav ul a{font-size:12px}
+  nav ul{display:none}
   .nav-mobile-btn{display:none}
   .talleres-hero{padding:110px 20px 60px}
+  .talleres-hero .container,.gallery-section .container,.gallery-shell,.gallery-track{
+    width:100%;max-width:calc(100vw - 40px)
+  }
+  .talleres-hero h1{overflow-wrap:anywhere}
   .features-section{padding:56px 20px}
+  .gallery-section{padding:56px 20px}
+  .gallery-head{margin-bottom:28px}
+  .gallery-track{grid-auto-columns:92%;gap:14px;padding-right:8%}
+  .gallery-slide img{
+    height:clamp(280px,78vw,360px);object-fit:contain;background:#E9EDF5
+  }
+  .gallery-controls{margin-top:18px}
+  .gallery-control{width:46px;height:46px}
   .form-section{padding:56px 20px}
   .features-grid{grid-template-columns:1fr}
   .form-layout{grid-template-columns:1fr;gap:36px}
@@ -152,6 +189,33 @@ footer a:hover{color:#fff}
     <div class="hero-badge">Para tu equipo</div>
     <h1>Capacitaciones de IA<br><span class="i">para tu empresa</span></h1>
     <p>Entrenamos a las personas de tu empresa para que usen inteligencia artificial en su trabajo diario. Personalizado para tu rubro y tus procesos.</p>
+  </div>
+</section>
+
+<!-- GALERÍA DE CAPACITACIONES -->
+<section class="gallery-section">
+  <div class="container">
+    <div class="gallery-head">
+      <p class="slabel">Capacitaciones IA</p>
+      <h2>Ideas que se convierten<br><span class="i">en acción</span></h2>
+      <p class="ssub">Aprendizaje práctico, conversación y nuevas ideas aplicadas al trabajo real.</p>
+    </div>
+    <div class="gallery-shell">
+      <div class="gallery-track" id="trainingGallery" aria-label="Galería de capacitaciones">
+        <figure class="gallery-slide"><img src="imagenes/capacitaciones/capacitacion-01.jpg" alt="Participantes de una capacitación de IA" decoding="async"></figure>
+        <figure class="gallery-slide"><img src="imagenes/capacitaciones/capacitacion-02.jpg" alt="Actividad durante una capacitación de IA" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-slide"><img src="imagenes/capacitaciones/capacitacion-03.jpg" alt="Encuentro de capacitación de IA" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-slide"><img src="imagenes/capacitaciones/capacitacion-04.jpg" alt="Instante de una capacitación" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-slide"><img src="imagenes/capacitaciones/capacitacion-05.jpg" alt="Participantes en capacitación" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-slide"><img src="imagenes/capacitaciones/capacitacion-06.jpg" alt="Foto de capacitación de IA" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-slide"><img src="imagenes/capacitaciones/capacitacion-07.jpg" alt="Foto de capacitación de IA" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-slide"><img src="imagenes/capacitaciones/capacitacion-08.jpg" alt="Foto de capacitación de IA" loading="lazy" decoding="async"></figure>
+      </div>
+      <div class="gallery-controls">
+        <button class="gallery-control" type="button" data-gallery-direction="prev" aria-label="Fotos anteriores">←</button>
+        <button class="gallery-control" type="button" data-gallery-direction="next" aria-label="Fotos siguientes">→</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -249,6 +313,16 @@ footer a:hover{color:#fff}
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
   document.getElementById('topBtn').classList.toggle('visible',window.scrollY>300);
+});
+
+const trainingGallery = document.getElementById('trainingGallery');
+document.querySelectorAll('[data-gallery-direction]').forEach(button=>{
+  button.addEventListener('click',()=>{
+    const slide = trainingGallery.querySelector('.gallery-slide');
+    const gap = parseFloat(getComputedStyle(trainingGallery).columnGap) || 0;
+    const amount = slide.getBoundingClientRect().width + gap;
+    trainingGallery.scrollBy({left: button.dataset.galleryDirection === 'next' ? amount : -amount, behavior:'smooth'});
+  });
 });
 
 document.getElementById('cap-form').addEventListener('submit', async function(e) {
