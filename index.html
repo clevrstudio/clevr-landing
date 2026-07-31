@@ -351,9 +351,20 @@ h2 .o{color:var(--orange)}
 .clients-inner{display:flex;align-items:center;gap:14px;width:max-content;animation:marquee-logos 12s linear infinite}
 .clients-inner:hover{animation-play-state:paused}
 @keyframes marquee-logos{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.client-logo-wrap{background:#fff;border-radius:10px;padding:8px 18px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.client-logo-wrap img{height:36px;width:auto;display:block}
-@media(max-width:768px){.clients-bar{margin-top:24px}.clients-track-wrap{max-width:100%}.clients-inner{animation-duration:8s}}
+.client-logo-wrap{width:150px;height:58px;box-sizing:border-box;background:#fff;border-radius:10px;padding:10px 15px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.client-logo-wrap img{width:auto;height:auto;max-width:120px;max-height:34px;object-fit:contain;display:block}
+.client-logo-wrap.filteronline img{filter:brightness(0) saturate(100%) invert(25%) sepia(51%) saturate(3206%) hue-rotate(219deg) brightness(83%) contrast(94%)}
+.client-logo-wrap img[alt="CMLC"]{transform:scale(3.2)}
+.client-logo-wrap img[alt="CSLAB"]{transform:scale(1.6)}
+.client-logo-wrap img[alt="Inhouse Propiedades"]{transform:scale(1.1)}
+@media(max-width:768px){
+  .clients-bar{margin-top:24px}
+  .clients-track-wrap{max-width:100%}
+  .clients-track-wrap::before,.clients-track-wrap::after{width:24px}
+  .clients-inner{gap:10px;animation-duration:16s}
+  .client-logo-wrap{width:132px;height:54px;padding:9px 13px}
+  .client-logo-wrap img{max-width:104px;max-height:30px}
+}
 
 /* full-bleed logo carousel (desktop only) */
 .clients-track-wrap.full-bleed{display:none}
@@ -902,13 +913,13 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
         <span class="clients-lbl">Confían en nosotros</span>
         <div class="clients-track-wrap mobile-only">
           <div class="clients-inner">
-            <div class="client-logo-wrap" style="background:#29ABE2"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
+            <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
             <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
             <div class="client-logo-wrap global66"><img src="imagenes/global66-logo.svg" alt="Global66"></div>
             <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
             <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
             <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-            <div class="client-logo-wrap" style="background:#29ABE2"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
+            <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
             <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
             <div class="client-logo-wrap global66"><img src="imagenes/global66-logo.svg" alt="Global66"></div>
             <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
@@ -921,37 +932,37 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 
     <div class="clients-track-wrap full-bleed">
       <div class="clients-inner">
-        <div class="client-logo-wrap" style="background:#29ABE2"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
         <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
         <div class="client-logo-wrap global66"><img src="imagenes/global66-logo.svg" alt="Global66"></div>
         <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
         <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
         <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-        <div class="client-logo-wrap" style="background:#29ABE2"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
         <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
         <div class="client-logo-wrap global66"><img src="imagenes/global66-logo.svg" alt="Global66"></div>
         <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
         <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
         <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-        <div class="client-logo-wrap" style="background:#29ABE2"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
         <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
         <div class="client-logo-wrap global66"><img src="imagenes/global66-logo.svg" alt="Global66"></div>
         <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
         <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
         <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-        <div class="client-logo-wrap" style="background:#29ABE2"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
         <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
         <div class="client-logo-wrap global66"><img src="imagenes/global66-logo.svg" alt="Global66"></div>
         <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
         <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
         <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-        <div class="client-logo-wrap" style="background:#29ABE2"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
         <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
         <div class="client-logo-wrap global66"><img src="imagenes/global66-logo.svg" alt="Global66"></div>
         <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
         <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
         <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-        <div class="client-logo-wrap" style="background:#29ABE2"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
         <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
         <div class="client-logo-wrap global66"><img src="imagenes/global66-logo.svg" alt="Global66"></div>
         <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
