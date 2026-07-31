@@ -442,70 +442,48 @@ h2 .o{color:var(--orange)}
 /* ── PROBLEMA ── */
 #problema{background:var(--bg)}
 .delivery-intro{
-  display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);
-  column-gap:56px;row-gap:8px;align-items:end;max-width:none
+  text-align:center;max-width:700px;margin:0 auto
 }
-.delivery-intro .slabel{grid-column:1/-1;margin-bottom:4px}
+.delivery-intro .slabel{margin-bottom:4px}
 .delivery-intro h2{
   font-size:clamp(32px,3.4vw,48px);line-height:1.08;letter-spacing:-1.2px;margin:0
 }
-.delivery-intro .ssub{font-size:16px;line-height:1.7;margin:0 0 4px}
 .delivery-wrap{
-  margin:56px auto 0;max-width:920px;background:var(--bg1);
-  border:1px solid var(--border);border-radius:24px;padding:40px
+  margin:96px auto 0;max-width:640px;text-align:center
 }
-.delivery-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}
-.delivery-top h3{font-size:21px;font-weight:800;color:var(--ink);margin:0}
-.delivery-picker{margin-bottom:22px}
-.delivery-picker-label{
-  display:block;font-size:10px;font-weight:700;letter-spacing:1.2px;
-  text-transform:uppercase;color:var(--muted);margin-bottom:9px
-}
-.delivery-options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.delivery-option{
-  padding:10px 14px;border-radius:11px;border:1.5px solid var(--border);
-  background:#fff;color:var(--muted);font-family:'Inter',sans-serif;
-  font-size:12px;font-weight:700;cursor:pointer;transition:all .2s
-}
-.delivery-option:hover{border-color:var(--indigo-m);color:var(--orange)}
-.delivery-option.active{
-  background:var(--orange);border-color:var(--orange);color:#fff;
-  box-shadow:0 4px 14px rgba(249,115,22,.2)
-}
-.delivery-compare{display:flex;flex-direction:column;gap:20px}
-.delivery-row{background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px}
-.delivery-row.clevr{border-color:var(--indigo-m);box-shadow:var(--shadow)}
-.delivery-row-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:13px}
-.delivery-name{display:block;font-size:16px;font-weight:800;color:var(--ink)}
-.delivery-note{display:block;font-size:11px;color:var(--muted);margin-top:2px}
-.delivery-time{font-size:22px;font-weight:900;letter-spacing:-.8px;color:var(--ink);white-space:nowrap}
+.delivery-top{margin-bottom:52px}
+.delivery-top h3{font-size:28px;font-weight:800;color:var(--ink);letter-spacing:-.6px;margin:0 0 12px}
+.delivery-lead{font-size:16px;color:var(--muted);line-height:1.65;max-width:520px;margin:0 auto}
+
+.delivery-compare{display:flex;flex-direction:column;gap:26px;text-align:left;margin-bottom:60px}
+.delivery-row-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:9px}
+.delivery-name{font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+.delivery-row.clevr .delivery-name{color:var(--orange)}
+.delivery-time{font-size:19px;font-weight:800;letter-spacing:-.4px;color:var(--ink);white-space:nowrap}
 .delivery-row.clevr .delivery-time{color:var(--orange)}
-.delivery-track{height:10px;background:#E9EDF5;border-radius:100px;overflow:hidden}
-.delivery-bar{height:100%;border-radius:100px;transition:width .45s cubic-bezier(.16,1,.3,1)}
-.delivery-row.clevr .delivery-bar{width:25%;background:linear-gradient(90deg,var(--orange),#FB923C)}
-.delivery-row.traditional .delivery-bar{width:100%;background:#AAB4C3}
-.delivery-context{
-  margin:20px 2px 0;font-size:13px;color:var(--muted);line-height:1.7
+.delivery-track{height:3px;background:#EEF0F5;border-radius:100px;overflow:hidden}
+.delivery-bar{height:100%;border-radius:100px}
+.delivery-row.clevr .delivery-bar{width:16%;background:var(--orange)}
+.delivery-row.traditional .delivery-bar{width:100%;background:#C7CEDA}
+
+.delivery-timeline{position:relative;display:flex;justify-content:space-between;gap:20px}
+.delivery-timeline::before{
+  content:'';position:absolute;top:5px;left:6%;right:6%;height:1px;background:var(--border)
 }
-.delivery-context strong{color:var(--ink)}
-.delivery-includes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
-.delivery-step{
-  position:relative;background:#fff;border:1px solid var(--border);
-  border-radius:16px;padding:22px 18px
-}
-.delivery-step h4{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:7px}
-.delivery-step p{font-size:12px;color:var(--muted);line-height:1.6}
+.delivery-tl-step{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;gap:9px}
+.delivery-tl-dot{width:10px;height:10px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 5px var(--bg)}
+.delivery-tl-step h4{font-size:14px;font-weight:700;color:var(--ink);margin:0}
+.delivery-tl-step p{font-size:12.5px;color:var(--muted);margin:2px 0 0;line-height:1.5}
 @media(max-width:600px){
-  .delivery-intro{grid-template-columns:1fr;gap:14px}
-  .delivery-intro .slabel{grid-column:auto;margin-bottom:0}
   .delivery-intro h2{font-size:clamp(28px,8vw,38px);letter-spacing:-.8px}
-  .delivery-intro .ssub{font-size:15px}
-  .delivery-wrap{padding:24px 18px;margin-top:32px}
-  .delivery-top{align-items:flex-start;flex-direction:column;margin-bottom:22px}
-  .delivery-row{padding:17px 15px}
-  .delivery-time{font-size:19px}
-  .delivery-option{padding:9px 6px;font-size:11px}
-  .delivery-includes{grid-template-columns:1fr}
+  .delivery-wrap{margin-top:56px}
+  .delivery-top{margin-bottom:40px}
+  .delivery-top h3{font-size:24px}
+  .delivery-timeline{flex-direction:column;align-items:stretch;gap:22px}
+  .delivery-timeline::before{display:none}
+  .delivery-tl-step{flex-direction:row;align-items:flex-start;gap:14px;text-align:left}
+  .delivery-tl-step p{margin-top:2px}
+  .delivery-tl-dot{margin-top:5px;flex:0 0 auto}
 }
 
 /* ── CASOS ── */
@@ -657,6 +635,7 @@ textarea{min-height:110px}
 .cap-feat strong{display:block;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px}
 .cap-feat p{font-size:14px;color:var(--muted);margin:0;line-height:1.5}
 
+
 /* ── RUBRO SELECTOR ── */
 .rubro-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:640px;margin:0 auto 32px}
 .rubro-btn{
@@ -694,7 +673,6 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   .nichos-g,.team-g{grid-template-columns:1fr!important}
   .prop-layout{grid-template-columns:1fr;gap:40px}
   .phone-wrap{display:none}
-  .delivery-includes{grid-template-columns:1fr}
 }
 @media(max-width:768px){
   #neuralCanvas{display:none}
@@ -730,7 +708,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   section{padding:56px 20px}
   .prop-features{gap:32px}
   .pv-feat{padding-left:16px}
-  .delivery-wrap{padding:24px 16px;margin-top:32px}
+  .delivery-wrap{margin-top:48px}
   h2{font-size:clamp(28px,7vw,44px);letter-spacing:-1px}
   .form-wrap{padding:26px 18px}
   .frow{grid-template-columns:1fr}
@@ -1032,61 +1010,47 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
     <div class="delivery-intro r">
       <p class="slabel">Software hecho para tu empresa</p>
       <h2>Tu empresa no debería adaptarse al software.<br><span class="i">El software debería adaptarse a tu empresa.</span></h2>
-      <p class="ssub">Las soluciones genéricas te obligan a cambiar la forma en que trabajas. En Clevr partimos de tus procesos y construimos una solución a medida, con avances en semanas.</p>
     </div>
 
     <div class="delivery-wrap r d1">
       <div class="delivery-top">
         <h3>De la idea a una solución funcionando</h3>
-      </div>
-
-      <div class="delivery-picker">
-        <span class="delivery-picker-label">Plazo habitual de una empresa tradicional</span>
-        <div class="delivery-options" role="group" aria-label="Comparar tiempos de implementación">
-          <button class="delivery-option active" type="button" data-clevr="≈ 1 semana" data-traditional="≈ 4 semanas" data-width="25" aria-pressed="true">4 semanas</button>
-          <button class="delivery-option" type="button" data-clevr="≈ 3 semanas" data-traditional="≈ 8 semanas" data-width="38" aria-pressed="false">8 semanas</button>
-          <button class="delivery-option" type="button" data-clevr="≈ 8 semanas" data-traditional="≈ 24 semanas" data-width="33" aria-pressed="false">24 semanas</button>
-        </div>
+        <p class="delivery-lead">Mientras una empresa tradicional tarda semanas o meses, nosotros entregamos una solución funcional en aproximadamente una semana.</p>
       </div>
 
       <div class="delivery-compare">
         <div class="delivery-row clevr">
           <div class="delivery-row-head">
-            <div>
-              <span class="delivery-name">Clevr</span>
-              <span class="delivery-note">Nuestro plazo habitual</span>
-            </div>
-            <strong class="delivery-time" id="deliveryClevrTime">≈ 1 semana</strong>
+            <span class="delivery-name">Clevr</span>
+            <strong class="delivery-time">≈ 1 semana</strong>
           </div>
-          <div class="delivery-track"><div class="delivery-bar" id="deliveryClevrBar"></div></div>
+          <div class="delivery-track"><div class="delivery-bar"></div></div>
         </div>
 
         <div class="delivery-row traditional">
           <div class="delivery-row-head">
-            <div>
-              <span class="delivery-name">Empresa tradicional</span>
-              <span class="delivery-note">Proceso comparable</span>
-            </div>
-            <strong class="delivery-time" id="deliveryTraditionalTime">≈ 4 semanas</strong>
+            <span class="delivery-name">Empresa tradicional</span>
+            <strong class="delivery-time">≈ 4 semanas</strong>
           </div>
           <div class="delivery-track"><div class="delivery-bar"></div></div>
         </div>
       </div>
 
-      <p class="delivery-context"><strong>No instalamos una plantilla y desaparecemos.</strong> Te acompañamos desde la primera conversación hasta que la solución queda implementada en tu operación.</p>
-
-      <div class="delivery-includes">
-        <div class="delivery-step">
-          <h4>Asesoría</h4>
-          <p>Entendemos cómo funciona tu empresa, qué necesitas resolver y dónde está la oportunidad real.</p>
+      <div class="delivery-timeline">
+        <div class="delivery-tl-step">
+          <span class="delivery-tl-dot"></span>
+          <h4>Descubrimiento</h4>
+          <p>Entendemos tu proceso</p>
         </div>
-        <div class="delivery-step">
-          <h4>Propuesta a medida</h4>
-          <p>Definimos una solución pensada para tus procesos, prioridades y forma de trabajar.</p>
+        <div class="delivery-tl-step">
+          <span class="delivery-tl-dot"></span>
+          <h4>Diseño</h4>
+          <p>Diseñamos la solución</p>
         </div>
-        <div class="delivery-step">
+        <div class="delivery-tl-step">
+          <span class="delivery-tl-dot"></span>
           <h4>Implementación</h4>
-          <p>Construimos, ajustamos y ponemos la solución a funcionar dentro de tu operación.</p>
+          <p>Dejamos todo funcionando</p>
         </div>
       </div>
     </div>
@@ -1141,7 +1105,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
     <div class="r" style="text-align:center;max-width:520px;margin:0 auto 40px">
       <p class="slabel">Empecemos</p>
       <h2>¿Cómo podemos<br><span class="i">ayudarte?</span></h2>
-      <p style="margin-top:12px;font-size:15px;color:var(--muted)">O escríbenos directo a <a href="mailto:contacto@clevr.cl" style="color:var(--orange);font-weight:600;text-decoration:none">contacto@clevr.cl</a></p>
+      <p style="margin-top:12px;font-size:15px;color:var(--muted)">O escríbenos directo a <a href="mailto:contact@clevr.cl" style="color:var(--orange);font-weight:600;text-decoration:none">contact@clevr.cl</a></p>
     </div>
     <div class="form-wrap r">
       <div id="form-fields">
@@ -1199,7 +1163,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
     LinkedIn
   </a>
   <div>
-    <a href="https://clevr-internal-os.vercel.app/" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:rgba(255,255,255,.3);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s" onmouseover="this.style.color='rgba(255,255,255,.6)'" onmouseout="this.style.color='rgba(255,255,255,.3)'">Portal Admin</a>
+    <a href="https://admin.clevr.cl/" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:rgba(255,255,255,.3);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s" onmouseover="this.style.color='rgba(255,255,255,.6)'" onmouseout="this.style.color='rgba(255,255,255,.3)'">Portal Admin</a>
   </div>
 </footer>
 
@@ -1328,27 +1292,6 @@ function runDemo() {
 }
 
 setTimeout(runDemo, 1500);
-
-/* ─── COMPARADOR DE PLAZOS ─── */
-(function(){
-  const options = document.querySelectorAll('.delivery-option');
-  const clevrTime = document.getElementById('deliveryClevrTime');
-  const traditionalTime = document.getElementById('deliveryTraditionalTime');
-  const clevrBar = document.getElementById('deliveryClevrBar');
-
-  options.forEach(option=>{
-    option.addEventListener('click',()=>{
-      options.forEach(item=>{
-        const isActive = item === option;
-        item.classList.toggle('active',isActive);
-        item.setAttribute('aria-pressed',String(isActive));
-      });
-      clevrTime.textContent = option.dataset.clevr;
-      traditionalTime.textContent = option.dataset.traditional;
-      clevrBar.style.width = `${option.dataset.width}%`;
-    });
-  });
-})();
 
 /* ─── NEURAL NETWORK BACKGROUND ─── */
 (function(){
