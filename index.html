@@ -441,26 +441,50 @@ h2 .o{color:var(--orange)}
 
 /* ── PROBLEMA ── */
 #problema{background:var(--bg)}
-.impact-wrap{margin-top:56px;background:var(--bg1);border:1px solid var(--border);border-radius:24px;padding:40px;max-width:860px;margin-left:auto;margin-right:auto}
-.impact-tabs{display:flex;gap:10px;margin-bottom:36px;flex-wrap:wrap}
-.impact-tab{
-  padding:10px 24px;border-radius:100px;font-size:13px;font-weight:700;
-  border:1.5px solid var(--border);background:#fff;color:var(--muted);
-  cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif
+.delivery-wrap{
+  margin:56px auto 0;max-width:920px;background:var(--bg1);
+  border:1px solid var(--border);border-radius:24px;padding:40px
 }
-.impact-tab.active{background:var(--orange);color:#fff;border-color:var(--orange);box-shadow:0 4px 14px rgba(249,115,22,.3)}
-.impact-chart{position:relative;width:100%;height:220px;margin-bottom:32px}
-.impact-chart svg{width:100%;height:100%}
-.impact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.impact-card{
-  background:#fff;border:1.5px solid var(--border);border-radius:16px;
-  padding:20px;transition:all .3s;opacity:.35;transform:translateY(4px)
+.delivery-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}
+.delivery-top h3{font-size:21px;font-weight:800;color:var(--ink);margin:0}
+.delivery-chip{
+  flex-shrink:0;background:var(--orange-l);border:1px solid #FED7AA;color:#C2410C;
+  border-radius:100px;padding:7px 13px;font-size:11px;font-weight:800;letter-spacing:.4px
 }
-.impact-card.active{opacity:1;transform:none;border-color:var(--indigo-m);box-shadow:var(--shadow)}
-.impact-card-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-.impact-card-val{font-size:30px;font-weight:900;color:var(--orange);letter-spacing:-1.5px;line-height:1;margin-bottom:4px}
-.impact-card-desc{font-size:12px;color:var(--muted);line-height:1.6}
-@media(max-width:600px){.impact-cards{grid-template-columns:1fr}.impact-wrap{padding:24px 18px}}
+.delivery-compare{display:flex;flex-direction:column;gap:20px}
+.delivery-row{background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px}
+.delivery-row.clevr{border-color:var(--indigo-m);box-shadow:var(--shadow)}
+.delivery-row-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:13px}
+.delivery-name{display:block;font-size:16px;font-weight:800;color:var(--ink)}
+.delivery-note{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.delivery-time{font-size:22px;font-weight:900;letter-spacing:-.8px;color:var(--ink);white-space:nowrap}
+.delivery-row.clevr .delivery-time{color:var(--orange)}
+.delivery-track{height:10px;background:#E9EDF5;border-radius:100px;overflow:hidden}
+.delivery-bar{height:100%;border-radius:100px}
+.delivery-row.clevr .delivery-bar{width:50%;background:linear-gradient(90deg,var(--orange),#FB923C)}
+.delivery-row.traditional .delivery-bar{width:100%;background:#AAB4C3}
+.delivery-context{
+  margin:20px 2px 0;font-size:13px;color:var(--muted);line-height:1.7
+}
+.delivery-context strong{color:var(--ink)}
+.delivery-includes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.delivery-step{
+  position:relative;background:#fff;border:1px solid var(--border);
+  border-radius:16px;padding:22px 18px
+}
+.delivery-step-num{
+  width:30px;height:30px;border-radius:9px;background:var(--orange-l);color:var(--orange);
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;margin-bottom:14px
+}
+.delivery-step h4{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:7px}
+.delivery-step p{font-size:12px;color:var(--muted);line-height:1.6}
+@media(max-width:600px){
+  .delivery-wrap{padding:24px 18px;margin-top:32px}
+  .delivery-top{align-items:flex-start;flex-direction:column;margin-bottom:22px}
+  .delivery-row{padding:17px 15px}
+  .delivery-time{font-size:19px}
+  .delivery-includes{grid-template-columns:1fr}
+}
 
 /* ── COMO ── */
 #como{background:var(--bg1);overflow:hidden}
@@ -726,7 +750,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   .nichos-g,.team-g{grid-template-columns:1fr!important}
   .prop-layout{grid-template-columns:1fr;gap:40px}
   .phone-wrap{display:none}
-  .impact-cards{grid-template-columns:1fr}
+  .delivery-includes{grid-template-columns:1fr}
 }
 @media(max-width:768px){
   #neuralCanvas{display:none}
@@ -763,10 +787,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   section{padding:56px 20px}
   .prop-features{gap:32px}
   .pv-feat{padding-left:16px}
-  .impact-wrap{padding:24px 16px;margin-top:32px}
-  .impact-tabs{gap:6px}
-  .impact-tab{padding:8px 16px;font-size:12px}
-  .impact-chart{height:160px}
+  .delivery-wrap{padding:24px 16px;margin-top:32px}
   h2{font-size:clamp(28px,7vw,44px);letter-spacing:-1px}
   .form-wrap{padding:26px 18px}
   .frow{grid-template-columns:1fr}
@@ -781,7 +802,6 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   h1{font-size:clamp(28px,8vw,40px);letter-spacing:-.5px}
   .wf-conn{width:16px}
   .wf-node{padding:10px 4px}
-  .impact-tab{padding:7px 12px;font-size:11px}
 }
 
 /* ── WHATSAPP FLOTANTE ── */
@@ -1067,74 +1087,58 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 <section id="problema">
   <div class="container">
     <div class="r" style="max-width:680px">
-      <p class="slabel">Impacto real · basado en datos</p>
-      <h2>Lo que cambia en tu negocio<br><span class="i">mes a mes</span></h2>
-      <p class="ssub" style="margin-top:12px">El 60% de las pymes pierde tiempo y dinero por errores manuales todos los días. Digitalizar cambia eso desde el primer mes. Esto es lo que ven nuestros clientes:</p>
+      <p class="slabel">Software hecho para tu empresa</p>
+      <h2>Tu empresa no debería adaptarse al software.<br><span class="i">El software debería adaptarse a tu empresa.</span></h2>
+      <p class="ssub" style="margin-top:12px">Las soluciones genéricas te obligan a cambiar la forma en que trabajas. En Clevr partimos de tus procesos y construimos una solución a medida, con avances en semanas.</p>
     </div>
 
-    <div class="impact-wrap r d1">
-      <div class="impact-tabs">
-        <button class="impact-tab active" data-month="3">3 meses</button>
-        <button class="impact-tab" data-month="6">6 meses</button>
-        <button class="impact-tab" data-month="9">9 meses</button>
+    <div class="delivery-wrap r d1">
+      <div class="delivery-top">
+        <h3>De la idea a una solución funcionando</h3>
+        <span class="delivery-chip">HASTA 2× MÁS RÁPIDO</span>
       </div>
 
-      <div class="impact-chart">
-        <svg id="impactSvg" viewBox="0 0 800 200" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#F97316"/>
-              <stop offset="100%" stop-color="#22C55E"/>
-            </linearGradient>
-            <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#F97316" stop-opacity=".18"/>
-              <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <!-- grid lines -->
-          <line x1="0" y1="170" x2="800" y2="170" stroke="#E2E8F0" stroke-width="1"/>
-          <line x1="0" y1="120" x2="800" y2="120" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4"/>
-          <line x1="0" y1="70"  x2="800" y2="70"  stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4"/>
-          <line x1="0" y1="20"  x2="800" y2="20"  stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4 4"/>
-          <!-- y labels -->
-          <text x="8" y="173" font-size="11" fill="#8896A8">0h</text>
-          <text x="8" y="123" font-size="11" fill="#8896A8">30h</text>
-          <text x="8" y="73"  font-size="11" fill="#8896A8">70h</text>
-          <text x="8" y="23"  font-size="11" fill="#8896A8">100h</text>
-          <!-- x labels -->
-          <text x="50"  y="190" font-size="11" fill="#8896A8" text-anchor="middle">Inicio</text>
-          <text x="283" y="190" font-size="11" fill="#8896A8" text-anchor="middle">Mes 3</text>
-          <text x="516" y="190" font-size="11" fill="#8896A8" text-anchor="middle">Mes 6</text>
-          <text x="750" y="190" font-size="11" fill="#8896A8" text-anchor="middle">Mes 9</text>
-          <!-- area fill -->
-          <path id="impactArea" d="M50,170 C120,170 200,140 283,118 C366,96 433,60 516,46 C599,32 680,24 750,18 L750,170 Z" fill="url(#areaGrad)"/>
-          <!-- line -->
-          <path id="impactLine"
-            d="M50,170 C120,170 200,140 283,118 C366,96 433,60 516,46 C599,32 680,24 750,18"
-            fill="none" stroke="url(#lineGrad)" stroke-width="3" stroke-linecap="round"
-            style="stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 1.4s cubic-bezier(.16,1,.3,1)"/>
-          <!-- dots -->
-          <circle id="dot3" cx="283" cy="118" r="7" fill="#F97316" stroke="#fff" stroke-width="3" style="cursor:pointer;filter:drop-shadow(0 2px 6px rgba(249,115,22,.4))"/>
-          <circle id="dot6" cx="516" cy="46"  r="7" fill="#EA580C" stroke="#fff" stroke-width="3" style="cursor:pointer;filter:drop-shadow(0 2px 6px rgba(234,88,12,.4))"/>
-          <circle id="dot9" cx="750" cy="18"  r="7" fill="#22C55E" stroke="#fff" stroke-width="3" style="cursor:pointer;filter:drop-shadow(0 2px 6px rgba(34,197,94,.4))"/>
-        </svg>
+      <div class="delivery-compare">
+        <div class="delivery-row clevr">
+          <div class="delivery-row-head">
+            <div>
+              <span class="delivery-name">Clevr</span>
+              <span class="delivery-note">Nuestro plazo habitual</span>
+            </div>
+            <strong class="delivery-time">≈ 2 meses</strong>
+          </div>
+          <div class="delivery-track"><div class="delivery-bar"></div></div>
+        </div>
+
+        <div class="delivery-row traditional">
+          <div class="delivery-row-head">
+            <div>
+              <span class="delivery-name">Empresa tradicional</span>
+              <span class="delivery-note">Proceso comparable</span>
+            </div>
+            <strong class="delivery-time">≈ 4 meses</strong>
+          </div>
+          <div class="delivery-track"><div class="delivery-bar"></div></div>
+        </div>
       </div>
 
-      <div class="impact-cards">
-        <div class="impact-card active" id="icard-horas">
-          <div class="impact-card-label">Horas ahorradas / mes</div>
-          <div class="impact-card-val" id="iv-horas">42h</div>
-          <div class="impact-card-desc" id="id-horas">Cotizaciones, órdenes y registros dejan de hacerse a mano. El equipo recupera cerca de 10 horas semanales que antes se iban en tareas repetitivas.</div>
+      <p class="delivery-context"><strong>No instalamos una plantilla y desaparecemos.</strong> Te acompañamos desde la primera conversación hasta que la solución queda implementada en tu operación.</p>
+
+      <div class="delivery-includes">
+        <div class="delivery-step">
+          <div class="delivery-step-num">01</div>
+          <h4>Asesoría</h4>
+          <p>Entendemos cómo funciona tu empresa, qué necesitas resolver y dónde está la oportunidad real.</p>
         </div>
-        <div class="impact-card active" id="icard-errores">
-          <div class="impact-card-label">Errores eliminados</div>
-          <div class="impact-card-val" id="iv-errores">−72%</div>
-          <div class="impact-card-desc" id="id-errores">Sin doble digitación, sin archivos perdidos, sin errores de traspaso. El dato llega solo cuando el sistema trabaja por ti.</div>
+        <div class="delivery-step">
+          <div class="delivery-step-num">02</div>
+          <h4>Propuesta a medida</h4>
+          <p>Definimos una solución pensada para tus procesos, prioridades y forma de trabajar.</p>
         </div>
-        <div class="impact-card active" id="icard-roi">
-          <div class="impact-card-label">Ahorro estimado</div>
-          <div class="impact-card-val" id="iv-roi">$250k</div>
-          <div class="impact-card-desc" id="id-roi">Calculado sobre $6.000/h de trabajo operativo. En los primeros meses el ahorro ya empieza a cubrir el costo del proyecto.</div>
+        <div class="delivery-step">
+          <div class="delivery-step-num">03</div>
+          <h4>Implementación</h4>
+          <p>Construimos, ajustamos y ponemos la solución a funcionar dentro de tu operación.</p>
         </div>
       </div>
     </div>
@@ -1270,7 +1274,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
           <button type="submit" class="fsubmit" id="form-submit-btn">Enviar mensaje →</button>
         </form>
         <div class="contact-btns" style="margin-top:12px">
-          <a href="https://calendly.com/alan-kulka99/new-meeting" target="_blank" rel="noopener" class="fsubmit btn-agenda" style="gap:8px;text-decoration:none;display:flex;align-items:center;justify-content:center">📅 Agendar reunión</a>
+          <a href="https://calendar.app.google/P7WYxWAZBaXdNvYq9" target="_blank" rel="noopener" class="fsubmit btn-agenda" style="gap:8px;text-decoration:none;display:flex;align-items:center;justify-content:center">📅 Agendar 30 min con Alan</a>
           <a href="https://www.linkedin.com/company/softwarefactoryclevr/" target="_blank" rel="noopener" class="fsubmit btn-agenda" style="gap:8px;text-decoration:none;display:flex;align-items:center;justify-content:center">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             Seguirnos en LinkedIn
@@ -1431,71 +1435,6 @@ function runDemo() {
 }
 
 setTimeout(runDemo, 1500);
-
-/* ─── IMPACT CHART ─── */
-(function(){
-  const data = {
-    3: { horas:'42h', errores:'−72%',  roi:'$250k',
-         hdesc:'Cotizaciones, órdenes y registros dejan de hacerse a mano. El equipo recupera cerca de 10 horas semanales que antes se iban en tareas repetitivas.',
-         edesc:'Sin doble digitación, sin archivos perdidos, sin errores de traspaso. El dato llega solo cuando el sistema trabaja por ti.',
-         rdesc:'Calculado sobre $6.000/h de trabajo operativo. En los primeros meses el ahorro ya empieza a cubrir el costo del proyecto.' },
-    6: { horas:'80h', errores:'−88%',  roi:'$480k',
-         hdesc:'El sistema corre solo. Reportes, inventario y seguimiento de clientes son automáticos. El equipo deja de apagar incendios y empieza a enfocarse en vender.',
-         edesc:'Prácticamente cero errores en los procesos core del negocio. La operación ya no depende de WhatsApp ni de papel.',
-         rdesc:'El ahorro acumulado a 6 meses supera el costo total del proyecto. El software se paga solo.' },
-    9: { horas:'110h', errores:'−94%', roi:'$660k',
-         hdesc:'Operación casi sin intervención manual. El negocio escala sin contratar más personal para tareas administrativas.',
-         edesc:'El equipo trabaja en lo que importa. Los procesos que antes tomaban días ahora toman minutos.',
-         rdesc:'ROI acumulado equivale a más de 3 veces el costo del proyecto. El software dejó de ser un gasto y se convirtió en ventaja competitiva.' }
-  };
-
-  let active = 3;
-  let lineDrawn = false;
-
-  function setMonth(m){
-    active = m;
-    const d = data[m];
-    document.getElementById('iv-horas').textContent   = d.horas;
-    document.getElementById('iv-errores').textContent = d.errores;
-    document.getElementById('iv-roi').textContent     = d.roi;
-    document.getElementById('id-horas').textContent   = d.hdesc;
-    document.getElementById('id-errores').textContent = d.edesc;
-    document.getElementById('id-roi').textContent     = d.rdesc;
-
-    // highlight active dot
-    ['dot3','dot6','dot9'].forEach((id,i)=>{
-      const el = document.getElementById(id);
-      el.setAttribute('r', [3,6,9][i] === m ? '9' : '7');
-    });
-
-    // update tab styles
-    document.querySelectorAll('.impact-tab').forEach(t=>{
-      t.classList.toggle('active', +t.dataset.month === m);
-    });
-  }
-
-  function drawLine(){
-    if(lineDrawn) return;
-    lineDrawn = true;
-    document.getElementById('impactLine').style.strokeDashoffset = '0';
-  }
-
-  // tabs
-  document.querySelectorAll('.impact-tab').forEach(t=>{
-    t.addEventListener('click',()=>{ setMonth(+t.dataset.month); drawLine(); });
-  });
-
-  // dots
-  document.getElementById('dot3').addEventListener('click',()=>setMonth(3));
-  document.getElementById('dot6').addEventListener('click',()=>setMonth(6));
-  document.getElementById('dot9').addEventListener('click',()=>setMonth(9));
-
-  // animate on scroll
-  const io = new IntersectionObserver(entries=>{
-    if(entries[0].isIntersecting) drawLine();
-  },{threshold:.3});
-  io.observe(document.getElementById('problema'));
-})();
 
 /* ─── NEURAL NETWORK BACKGROUND ─── */
 (function(){
