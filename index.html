@@ -448,12 +448,37 @@ h2 .o{color:var(--orange)}
 .delivery-intro h2{
   font-size:clamp(32px,3.4vw,48px);line-height:1.08;letter-spacing:-1.2px;margin:0
 }
+.delivery-divider{width:48px;height:3px;background:var(--orange);border-radius:100px;margin:64px auto 0}
 .delivery-wrap{
-  margin:96px auto 0;max-width:640px;text-align:center
+  margin:56px auto 0;max-width:640px;text-align:center
 }
 .delivery-top{margin-bottom:52px}
 .delivery-top h3{font-size:28px;font-weight:800;color:var(--ink);letter-spacing:-.6px;margin:0 0 12px}
 .delivery-lead{font-size:16px;color:var(--muted);line-height:1.65;max-width:520px;margin:0 auto}
+
+.delivery-slider-block{max-width:400px;margin:0 auto 48px}
+.delivery-slider-label{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:1.1px;
+  text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:16px
+}
+.delivery-slider{
+  -webkit-appearance:none;appearance:none;width:100%;height:3px;
+  background:var(--border);border-radius:100px;outline:none;cursor:pointer;
+  margin:0;display:block
+}
+.delivery-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;
+  background:var(--orange);border:3px solid #fff;box-shadow:0 2px 10px rgba(249,115,22,.4);
+  cursor:pointer;transition:transform .15s
+}
+.delivery-slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.delivery-slider::-moz-range-track{background:var(--border);height:3px;border-radius:100px}
+.delivery-slider::-moz-range-thumb{
+  width:18px;height:18px;border-radius:50%;background:var(--orange);border:3px solid #fff;
+  box-shadow:0 2px 10px rgba(249,115,22,.4);cursor:pointer
+}
+.delivery-slider-ticks{display:flex;justify-content:space-between;margin-top:12px}
+.delivery-slider-ticks span{font-size:11.5px;font-weight:600;color:var(--muted)}
 
 .delivery-compare{display:flex;flex-direction:column;gap:26px;text-align:left;margin-bottom:60px}
 .delivery-row-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:9px}
@@ -462,9 +487,9 @@ h2 .o{color:var(--orange)}
 .delivery-time{font-size:19px;font-weight:800;letter-spacing:-.4px;color:var(--ink);white-space:nowrap}
 .delivery-row.clevr .delivery-time{color:var(--orange)}
 .delivery-track{height:3px;background:#EEF0F5;border-radius:100px;overflow:hidden}
-.delivery-bar{height:100%;border-radius:100px}
-.delivery-row.clevr .delivery-bar{width:16%;background:var(--orange)}
-.delivery-row.traditional .delivery-bar{width:100%;background:#C7CEDA}
+.delivery-bar{height:100%;border-radius:100px;transition:width .4s cubic-bezier(.16,1,.3,1)}
+.delivery-row.clevr .delivery-bar{width:4.2%;background:var(--orange)}
+.delivery-row.traditional .delivery-bar{width:16.7%;background:#C7CEDA}
 
 .delivery-timeline{position:relative;display:flex;justify-content:space-between;gap:20px}
 .delivery-timeline::before{
@@ -476,7 +501,8 @@ h2 .o{color:var(--orange)}
 .delivery-tl-step p{font-size:12.5px;color:var(--muted);margin:2px 0 0;line-height:1.5}
 @media(max-width:600px){
   .delivery-intro h2{font-size:clamp(28px,8vw,38px);letter-spacing:-.8px}
-  .delivery-wrap{margin-top:56px}
+  .delivery-divider{margin-top:40px}
+  .delivery-wrap{margin-top:40px}
   .delivery-top{margin-bottom:40px}
   .delivery-top h3{font-size:24px}
   .delivery-timeline{flex-direction:column;align-items:stretch;gap:22px}
@@ -1009,8 +1035,10 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   <div class="container">
     <div class="delivery-intro r">
       <p class="slabel">Software hecho para tu empresa</p>
-      <h2>Tu empresa no debería adaptarse al software.<br><span class="i">El software debería adaptarse a tu empresa.</span></h2>
+      <h2>La empresa no debería adaptarse al software.<br><span class="i">El software debería adaptarse a la empresa.</span></h2>
     </div>
+
+    <div class="delivery-divider"></div>
 
     <div class="delivery-wrap r d1">
       <div class="delivery-top">
@@ -1018,21 +1046,27 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
         <p class="delivery-lead">Mientras una empresa tradicional tarda semanas o meses, nosotros entregamos una solución funcional en aproximadamente una semana.</p>
       </div>
 
+      <div class="delivery-slider-block">
+        <span class="delivery-slider-label">Ajusta el plazo de una empresa tradicional</span>
+        <input type="range" id="deliverySlider" class="delivery-slider" min="0" max="2" step="1" value="0" aria-label="Ajustar plazo de una empresa tradicional">
+        <div class="delivery-slider-ticks"><span>4 semanas</span><span>8 semanas</span><span>24 semanas</span></div>
+      </div>
+
       <div class="delivery-compare">
         <div class="delivery-row clevr">
           <div class="delivery-row-head">
             <span class="delivery-name">Clevr</span>
-            <strong class="delivery-time">≈ 1 semana</strong>
+            <strong class="delivery-time" id="deliveryClevrTime">≈ 1 semana</strong>
           </div>
-          <div class="delivery-track"><div class="delivery-bar"></div></div>
+          <div class="delivery-track"><div class="delivery-bar" id="deliveryClevrBar"></div></div>
         </div>
 
         <div class="delivery-row traditional">
           <div class="delivery-row-head">
             <span class="delivery-name">Empresa tradicional</span>
-            <strong class="delivery-time">≈ 4 semanas</strong>
+            <strong class="delivery-time" id="deliveryTraditionalTime">≈ 4 semanas</strong>
           </div>
-          <div class="delivery-track"><div class="delivery-bar"></div></div>
+          <div class="delivery-track"><div class="delivery-bar" id="deliveryTraditionalBar"></div></div>
         </div>
       </div>
 
@@ -1292,6 +1326,33 @@ function runDemo() {
 }
 
 setTimeout(runDemo, 1500);
+
+/* ─── COMPARADOR DE PLAZOS ─── */
+(function(){
+  const slider = document.getElementById('deliverySlider');
+  if(!slider) return;
+  const scenarios = [
+    {traditional:4, clevr:1},
+    {traditional:8, clevr:3},
+    {traditional:24, clevr:8}
+  ];
+  const MAX = 24;
+  const clevrTime = document.getElementById('deliveryClevrTime');
+  const traditionalTime = document.getElementById('deliveryTraditionalTime');
+  const clevrBar = document.getElementById('deliveryClevrBar');
+  const traditionalBar = document.getElementById('deliveryTraditionalBar');
+
+  function render(i){
+    const s = scenarios[i];
+    clevrTime.textContent = `≈ ${s.clevr} semana${s.clevr === 1 ? '' : 's'}`;
+    traditionalTime.textContent = `≈ ${s.traditional} semanas`;
+    clevrBar.style.width = (s.clevr / MAX * 100) + '%';
+    traditionalBar.style.width = (s.traditional / MAX * 100) + '%';
+  }
+
+  slider.addEventListener('input', () => render(+slider.value));
+  render(+slider.value);
+})();
 
 /* ─── NEURAL NETWORK BACKGROUND ─── */
 (function(){
