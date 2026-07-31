@@ -441,16 +441,21 @@ h2 .o{color:var(--orange)}
 
 /* ── PROBLEMA ── */
 #problema{background:var(--bg)}
+.delivery-intro{
+  display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);
+  column-gap:56px;row-gap:8px;align-items:end;max-width:none
+}
+.delivery-intro .slabel{grid-column:1/-1;margin-bottom:4px}
+.delivery-intro h2{
+  font-size:clamp(32px,3.4vw,48px);line-height:1.08;letter-spacing:-1.2px;margin:0
+}
+.delivery-intro .ssub{font-size:16px;line-height:1.7;margin:0 0 4px}
 .delivery-wrap{
   margin:56px auto 0;max-width:920px;background:var(--bg1);
   border:1px solid var(--border);border-radius:24px;padding:40px
 }
 .delivery-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}
 .delivery-top h3{font-size:21px;font-weight:800;color:var(--ink);margin:0}
-.delivery-chip{
-  flex-shrink:0;background:var(--orange-l);border:1px solid #FED7AA;color:#C2410C;
-  border-radius:100px;padding:7px 13px;font-size:11px;font-weight:800;letter-spacing:.4px
-}
 .delivery-picker{margin-bottom:22px}
 .delivery-picker-label{
   display:block;font-size:10px;font-weight:700;letter-spacing:1.2px;
@@ -491,87 +496,16 @@ h2 .o{color:var(--orange)}
 .delivery-step h4{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:7px}
 .delivery-step p{font-size:12px;color:var(--muted);line-height:1.6}
 @media(max-width:600px){
+  .delivery-intro{grid-template-columns:1fr;gap:14px}
+  .delivery-intro .slabel{grid-column:auto;margin-bottom:0}
+  .delivery-intro h2{font-size:clamp(28px,8vw,38px);letter-spacing:-.8px}
+  .delivery-intro .ssub{font-size:15px}
   .delivery-wrap{padding:24px 18px;margin-top:32px}
   .delivery-top{align-items:flex-start;flex-direction:column;margin-bottom:22px}
   .delivery-row{padding:17px 15px}
   .delivery-time{font-size:19px}
   .delivery-option{padding:9px 6px;font-size:11px}
   .delivery-includes{grid-template-columns:1fr}
-}
-
-/* ── COMO ── */
-#como{background:var(--bg1);overflow:hidden}
-.steps-flow{
-  display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;
-  align-items:start;gap:0;margin-top:60px
-}
-.step-new{
-  background:#fff;border:1.5px solid var(--border);border-radius:20px;
-  padding:32px 28px;transition:all .35s;position:relative;overflow:hidden;
-  cursor:default
-}
-.step-new:hover{
-  border-color:var(--indigo-m);transform:translateY(-6px);
-  box-shadow:0 24px 56px rgba(249,115,22,.13)
-}
-/* big ghost number behind */
-.step-new::before{
-  content:attr(data-n);
-  position:absolute;top:-12px;right:-4px;
-  font-size:100px;font-weight:900;color:var(--indigo);opacity:.05;
-  line-height:1;pointer-events:none;letter-spacing:-4px
-}
-.step-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  background:var(--indigo-l);border:1px solid var(--indigo-m);
-  color:var(--indigo);font-size:11px;font-weight:700;
-  padding:4px 11px;border-radius:100px;margin-bottom:18px;letter-spacing:.3px
-}
-.sb-teal{background:var(--teal-l)!important;border-color:#99F6E4!important;color:#0F766E!important}
-.sb-org{background:var(--orange-l)!important;border-color:#FED7AA!important;color:#C2410C!important}
-.step-icon-wrap{
-  width:54px;height:54px;border-radius:15px;margin-bottom:18px;
-  display:flex;align-items:center;justify-content:center;font-size:26px
-}
-.si-ind{background:var(--indigo-l)}
-.si-teal{background:var(--teal-l)}
-.si-org{background:var(--orange-l)}
-.step-new h3{font-size:20px;font-weight:800;color:var(--ink);margin-bottom:10px;letter-spacing:-.4px}
-.step-new p{font-size:14px;color:var(--muted);line-height:1.78}
-/* mini visual snippets inside each step */
-.step-visual{
-  margin-top:20px;padding:14px;border-radius:12px;
-  background:var(--bg1);border:1px solid var(--border)
-}
-.sv-row{
-  display:flex;align-items:center;gap:8px;padding:4px 0;
-  font-size:12px;color:var(--muted)
-}
-.sv-row:not(:last-child){border-bottom:1px solid var(--border)}
-.sv-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.sd-red{background:#F87171}
-.sd-yellow{background:#FBBF24}
-.sd-green{background:#34D399}
-.sd-ind{background:var(--indigo)}
-.sv-val{font-weight:600;color:var(--ink2);margin-left:auto;font-size:11px}
-.sv-arrow{font-size:16px;color:var(--indigo);font-weight:700;margin:0 2px}
-/* step connector arrows */
-.step-arrow{
-  display:flex;align-items:center;justify-content:center;
-  margin-top:120px;color:var(--indigo-m);
-}
-.step-arrow svg{width:28px;height:28px}
-/* output tag at bottom */
-.step-output{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:18px;padding:8px 14px;border-radius:10px;
-  background:linear-gradient(135deg,var(--indigo-l),#F0FDF4);
-  border:1px solid var(--indigo-m);
-  font-size:12px;font-weight:600;color:var(--indigo)
-}
-@media(max-width:900px){
-  .steps-flow{grid-template-columns:1fr;gap:16px}
-  .step-arrow{margin-top:0;transform:rotate(90deg)}
 }
 
 /* ── CASOS ── */
@@ -754,12 +688,9 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1100px){
-  .steps-flow{grid-template-columns:1fr 32px 1fr 32px 1fr}
   .nichos-g{grid-template-columns:1fr 1fr}
 }
 @media(max-width:900px){
-  .steps-flow{grid-template-columns:1fr;gap:16px}
-  .step-arrow{margin-top:0;transform:rotate(90deg)}
   .nichos-g,.team-g{grid-template-columns:1fr!important}
   .prop-layout{grid-template-columns:1fr;gap:40px}
   .phone-wrap{display:none}
@@ -1099,24 +1030,23 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 <!-- PROBLEMA -->
 <section id="problema">
   <div class="container">
-    <div class="r" style="max-width:680px">
+    <div class="delivery-intro r">
       <p class="slabel">Software hecho para tu empresa</p>
       <h2>Tu empresa no debería adaptarse al software.<br><span class="i">El software debería adaptarse a tu empresa.</span></h2>
-      <p class="ssub" style="margin-top:12px">Las soluciones genéricas te obligan a cambiar la forma en que trabajas. En Clevr partimos de tus procesos y construimos una solución a medida, con avances en semanas.</p>
+      <p class="ssub">Las soluciones genéricas te obligan a cambiar la forma en que trabajas. En Clevr partimos de tus procesos y construimos una solución a medida, con avances en semanas.</p>
     </div>
 
     <div class="delivery-wrap r d1">
       <div class="delivery-top">
         <h3>De la idea a una solución funcionando</h3>
-        <span class="delivery-chip" id="deliveryRatio">4× MÁS RÁPIDO</span>
       </div>
 
       <div class="delivery-picker">
         <span class="delivery-picker-label">Plazo habitual de una empresa tradicional</span>
         <div class="delivery-options" role="group" aria-label="Comparar tiempos de implementación">
-          <button class="delivery-option active" type="button" data-clevr="≈ 1 semana" data-traditional="≈ 4 semanas" data-ratio="4× MÁS RÁPIDO" data-width="25" aria-pressed="true">4 semanas</button>
-          <button class="delivery-option" type="button" data-clevr="≈ 3 semanas" data-traditional="≈ 2 meses" data-ratio="MÁS DE 2× MÁS RÁPIDO" data-width="38" aria-pressed="false">2 meses</button>
-          <button class="delivery-option" type="button" data-clevr="≈ 2 meses" data-traditional="≈ 6 meses" data-ratio="3× MÁS RÁPIDO" data-width="33" aria-pressed="false">6 meses</button>
+          <button class="delivery-option active" type="button" data-clevr="≈ 1 semana" data-traditional="≈ 4 semanas" data-width="25" aria-pressed="true">4 semanas</button>
+          <button class="delivery-option" type="button" data-clevr="≈ 3 semanas" data-traditional="≈ 8 semanas" data-width="38" aria-pressed="false">8 semanas</button>
+          <button class="delivery-option" type="button" data-clevr="≈ 8 semanas" data-traditional="≈ 24 semanas" data-width="33" aria-pressed="false">24 semanas</button>
         </div>
       </div>
 
@@ -1164,61 +1094,6 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   </div>
 </section>
 
-
-<div class="div"></div>
-
-<!-- CÓMO FUNCIONA -->
-<section id="como">
-  <div class="container">
-    <div class="r" style="max-width:600px">
-      <p class="slabel">Cómo funciona</p>
-      <h2>Así de simple.<br>Sin <span class="i">vueltas.</span></h2>
-      <p class="ssub">Tres pasos para pasar de tu caos actual a un sistema que trabaja solo. Sin tecnicismos, sin contrato anual, sin sorpresas.</p>
-    </div>
-
-    <div class="steps-flow">
-
-      <!-- PASO 1 -->
-      <div class="step-new r d1" data-n="01">
-        <div class="step-icon-wrap si-ind" style="font-size:18px;font-weight:900;color:var(--orange)">01</div>
-        <h3>Analizamos tu proceso en profundidad</h3>
-        <p>Nos metemos en cómo funciona tu negocio hoy y detectamos exactamente dónde se pierden horas y dónde hay oportunidad de mejora.</p>
-        <div class="step-output">Tu proceso 100% mapeado</div>
-      </div>
-
-      <!-- ARROW 1→2 -->
-      <div class="step-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M13 6l6 6-6 6"/>
-        </svg>
-      </div>
-
-      <!-- PASO 2 -->
-      <div class="step-new r d2" data-n="02">
-        <div class="step-icon-wrap si-teal" style="font-size:18px;font-weight:900;color:#0F766E">02</div>
-        <h3>Hacemos un MVP personalizado a tu medida</h3>
-        <p>Construimos el software exacto para tu rubro, rápido y sin sorpresas. Hecho para resolver tus problemas específicos, no los de otro.</p>
-        <div class="step-output" style="background:linear-gradient(135deg,var(--teal-l),#F0FDF4);border-color:#99F6E4;color:#0F766E">MVP listo para usar</div>
-      </div>
-
-      <!-- ARROW 2→3 -->
-      <div class="step-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M13 6l6 6-6 6"/>
-        </svg>
-      </div>
-
-      <!-- PASO 3 -->
-      <div class="step-new r d3" data-n="03">
-        <div class="step-icon-wrap si-org" style="font-size:18px;font-weight:900;color:#C2410C">03</div>
-        <h3>Lo implementamos contigo, de forma acompañada</h3>
-        <p>No te dejamos solo. Estamos contigo en cada paso de la implementación hasta que el sistema funcione como parte natural de tu negocio.</p>
-        <div class="step-output" style="background:linear-gradient(135deg,var(--orange-l),#FFF7ED);border-color:#FED7AA;color:#C2410C">Tu negocio digitalizado</div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <div class="div"></div>
 
@@ -1461,7 +1336,6 @@ setTimeout(runDemo, 1500);
   const clevrTime = document.getElementById('deliveryClevrTime');
   const traditionalTime = document.getElementById('deliveryTraditionalTime');
   const clevrBar = document.getElementById('deliveryClevrBar');
-  const ratio = document.getElementById('deliveryRatio');
 
   options.forEach(option=>{
     option.addEventListener('click',()=>{
@@ -1472,7 +1346,6 @@ setTimeout(runDemo, 1500);
       });
       clevrTime.textContent = option.dataset.clevr;
       traditionalTime.textContent = option.dataset.traditional;
-      ratio.textContent = option.dataset.ratio;
       clevrBar.style.width = `${option.dataset.width}%`;
     });
   });
