@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -34,7 +34,7 @@
   --radius:16px;
 }
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:#F1F3FC}
 ::-webkit-scrollbar-thumb{background:var(--indigo);border-radius:2px}
@@ -129,8 +129,9 @@ nav ul a.nav-active{color:var(--indigo);font-weight:700}
 .badge-dot{width:6px;height:6px;background:var(--indigo);border-radius:50%;animation:blink 2s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
 h1{
-  font-size:clamp(34px,4.5vw,64px);font-weight:400;
-  line-height:1.15;letter-spacing:-.5px;color:var(--ink);margin-bottom:32px
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(34px,4.5vw,64px);font-weight:500;
+  line-height:1.08;letter-spacing:-1.8px;color:var(--ink);margin-bottom:32px
 }
 .gi{background:linear-gradient(135deg,#F97316,#EA580C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .gt{background:linear-gradient(135deg,#F97316,#FB923C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -147,7 +148,7 @@ h1{
   background:var(--indigo);color:#fff;padding:15px 30px;
   border-radius:100px;font-size:15px;font-weight:700;
   text-decoration:none;transition:all .3s;border:none;cursor:pointer;
-  font-family:'Inter',sans-serif;
+  font-family:'Manrope',sans-serif;
   box-shadow:0 4px 20px rgba(249,115,22,.3)
 }
 .btn-p:hover{background:#4338CA;transform:translateY(-2px);box-shadow:0 12px 32px rgba(249,115,22,.4)}
@@ -156,7 +157,7 @@ h1{
   background:#fff;color:var(--ink);padding:15px 30px;
   border-radius:100px;font-size:15px;font-weight:600;
   text-decoration:none;border:1.5px solid var(--border);transition:all .3s;
-  cursor:pointer;font-family:'Inter',sans-serif
+  cursor:pointer;font-family:'Manrope',sans-serif
 }
 .btn-s:hover{border-color:var(--indigo);color:var(--indigo);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
 .hero-stats{
@@ -318,12 +319,15 @@ section{padding:96px 40px}
   color:var(--indigo);margin-bottom:14px
 }
 .experts-headline{
+  font-family:'Space Grotesk',sans-serif;
   font-size:clamp(26px,3.5vw,52px);font-weight:800;color:var(--ink);
   letter-spacing:-1px;line-height:1.15;margin-bottom:0
 }
 h2{
-  font-size:clamp(34px,4.2vw,56px);font-weight:800;color:var(--ink);
-  letter-spacing:-1.5px;line-height:1.08;margin-bottom:16px
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(34px,4.2vw,56px);font-weight:600;color:var(--ink);
+  letter-spacing:-1.8px;line-height:1.04;margin-bottom:16px;
+  width:100%;text-align:justify;text-align-last:justify
 }
 h2 .i{color:var(--indigo)}
 h2 .t{color:var(--teal)}
@@ -589,7 +593,7 @@ input,textarea,select{
   width:100%;background:var(--bg1);
   border:1.5px solid var(--border);border-radius:11px;
   padding:12px 15px;font-size:14px;color:var(--ink);
-  font-family:'Inter',sans-serif;transition:all .2s;outline:none;resize:vertical;
+  font-family:'Manrope',sans-serif;transition:all .2s;outline:none;resize:vertical;
   -webkit-appearance:none;appearance:none
 }
 input:focus,textarea:focus,select:focus{
@@ -604,7 +608,7 @@ textarea{min-height:110px}
   width:100%;background:var(--indigo);color:#fff;
   padding:15px 32px;border-radius:11px;font-size:15px;font-weight:700;
   border:none;cursor:pointer;transition:all .3s;margin-top:6px;
-  font-family:'Inter',sans-serif;
+  font-family:'Manrope',sans-serif;
   box-shadow:0 4px 20px rgba(249,115,22,.25)
 }
 .fsubmit:hover{background:#4338CA;transform:translateY(-2px);box-shadow:0 12px 32px rgba(249,115,22,.35)}
@@ -630,7 +634,7 @@ textarea{min-height:110px}
   background:#fff;border:1.5px solid var(--border);
   border-radius:100px;padding:11px 22px;
   font-size:14px;font-weight:600;color:var(--ink2);
-  cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif
+  cursor:pointer;transition:all .2s;font-family:'Manrope',sans-serif
 }
 .rubro-btn:hover{border-color:var(--indigo-m);color:var(--indigo);background:var(--indigo-l)}
 .rubro-btn.selected{border-color:var(--indigo);background:var(--indigo-l);color:var(--indigo);box-shadow:0 0 0 3px rgba(249,115,22,.08)}
@@ -693,7 +697,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   section{padding:56px 20px}
   .prop-features{gap:32px}
   .pv-feat{padding-left:16px}
-  h2{font-size:clamp(28px,7vw,38px);letter-spacing:-1px}
+  h2{font-size:clamp(28px,7vw,38px);letter-spacing:-1px;text-align:left;text-align-last:auto}
   .form-wrap{padding:26px 18px}
   .frow{grid-template-columns:1fr}
   .expertos-section{padding:48px 20px}
