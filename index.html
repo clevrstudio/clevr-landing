@@ -485,6 +485,25 @@ h2 .o{color:var(--orange)}
   .delivery-intro h2{font-size:clamp(28px,7vw,38px);letter-spacing:-.8px}
 }
 
+/* ── INTEGRACIONES ── */
+#integraciones{background:var(--bg1);overflow:hidden}
+.integrations-intro{max-width:720px;margin-bottom:56px}
+.integrations-intro h2{text-align:left;text-align-last:left}
+.integrations-board{position:relative;display:grid;grid-template-columns:1fr 240px 1fr;gap:90px;align-items:center}
+.integration-column{position:relative;z-index:2;display:flex;flex-direction:column;gap:12px}
+.integration-label{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.integration-card{height:64px;display:flex;align-items:center;gap:14px;padding:0 20px;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:0 2px 8px rgba(10,15,30,.03);font-size:15px;font-weight:700;color:var(--ink)}
+.integration-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;color:var(--orange);flex-shrink:0}
+.integration-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.integration-core{position:relative;z-index:3;height:176px;background:#fff;border:1.5px solid var(--indigo-m);border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 38px rgba(249,115,22,.08)}
+.integration-core .logo-text{font-size:44px;letter-spacing:-2px}
+.integration-lines{position:absolute;z-index:1;left:calc(33.333% - 15px);right:calc(33.333% - 15px);top:26px;width:calc(33.333% + 30px);height:calc(100% - 52px);overflow:visible;pointer-events:none}
+.integration-line{fill:none;stroke:#FED7AA;stroke-width:2;vector-effect:non-scaling-stroke}
+.integration-pulse{fill:none;stroke:var(--orange);stroke-width:3;stroke-linecap:round;stroke-dasharray:5 95;vector-effect:non-scaling-stroke;animation:integration-flow 2.8s linear infinite}
+.integration-pulse.out{animation-direction:reverse}
+.integration-pulse.delay-1{animation-delay:-.7s}.integration-pulse.delay-2{animation-delay:-1.4s}.integration-pulse.delay-3{animation-delay:-2.1s}
+@keyframes integration-flow{to{stroke-dashoffset:-100}}
+
 /* ── CASOS ── */
 @media(max-width:900px){.casos-grid{grid-template-columns:1fr!important}}
 .caso-card{
@@ -671,6 +690,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 @media(max-width:900px){
   .nichos-g,.team-g{grid-template-columns:1fr!important}
   .prop-layout{grid-template-columns:1fr;gap:40px}
+  .integrations-board{gap:44px;grid-template-columns:1fr 190px 1fr}
 }
 @media(max-width:768px){
   #neuralCanvas{display:none}
@@ -716,6 +736,20 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   .hero-stats{gap:24px}
   .nichos-g{grid-template-columns:1fr!important}
   .team-g{grid-template-columns:1fr!important}
+  .integrations-intro{margin-bottom:36px}
+  .integrations-board{display:flex;flex-direction:column;gap:42px;align-items:stretch}
+  .integration-column{gap:10px}
+  .integration-card{height:58px;padding:0 16px}
+  .integration-core{height:120px;margin:0 18px}
+  .integration-core .logo-text{font-size:38px}
+  .integration-lines{display:none}
+  .integration-core::before,.integration-core::after{
+    content:'';position:absolute;left:50%;width:3px;height:43px;transform:translateX(-50%);
+    background:repeating-linear-gradient(to bottom,var(--orange) 0 7px,transparent 7px 14px);
+    background-size:100% 28px;animation:mobile-flow .9s linear infinite
+  }
+  .integration-core::before{bottom:100%}.integration-core::after{top:100%}
+  @keyframes mobile-flow{to{background-position-y:28px}}
 }
 @media(max-width:400px){
   h1{font-size:clamp(28px,8vw,40px);letter-spacing:-.5px}
@@ -987,6 +1021,50 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<div class="div"></div>
+
+<!-- INTEGRACIONES -->
+<section id="integraciones">
+  <div class="container">
+    <div class="integrations-intro r">
+      <p class="slabel">Conectamos tu operación</p>
+      <h2>Se integra a tu operación</h2>
+      <p class="ssub">Clevr conecta tus sistemas actuales, automatiza el flujo de información y devuelve procesos más rápidos, ordenados y eficientes.</p>
+    </div>
+
+    <div class="integrations-board r">
+      <div class="integration-column">
+        <p class="integration-label">Tus sistemas</p>
+        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01"/></svg></span>ERP</div>
+        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.5-4 2.3-6 5.5-6s5 2 5.5 6M16 8h5M18.5 5.5v5"/></svg></span>CRM</div>
+        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4zM7 4h10v3M7 12h4M15 12h2M7 15h2"/></svg></span>Cobranza</div>
+        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><path d="M4 9h16M5 9v10M10 9v10M14 9v10M19 9v10M3 19h18M12 3l9 5H3z"/></svg></span>Contabilidad</div>
+      </div>
+
+      <div class="integration-core" aria-label="Clevr">
+        <span class="logo-text">clev<span>r</span></span>
+      </div>
+
+      <div class="integration-column">
+        <p class="integration-label">Tu negocio optimizado</p>
+        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/><circle cx="12" cy="12" r="4"/></svg></span>Automatizaciones guiadas</div>
+        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Menos tiempo perdido</div>
+        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>Información centralizada</div>
+      </div>
+
+      <svg class="integration-lines" viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true">
+        <path id="in1" class="integration-line" d="M0 60 C95 60 105 200 250 200"/><path class="integration-pulse" d="M0 60 C95 60 105 200 250 200"/>
+        <path id="in2" class="integration-line" d="M0 150 C100 150 125 200 250 200"/><path class="integration-pulse delay-1" d="M0 150 C100 150 125 200 250 200"/>
+        <path id="in3" class="integration-line" d="M0 250 C100 250 125 200 250 200"/><path class="integration-pulse delay-2" d="M0 250 C100 250 125 200 250 200"/>
+        <path id="in4" class="integration-line" d="M0 340 C95 340 105 200 250 200"/><path class="integration-pulse delay-3" d="M0 340 C95 340 105 200 250 200"/>
+        <path class="integration-line" d="M250 200 C375 200 400 90 500 90"/><path class="integration-pulse out" d="M250 200 C375 200 400 90 500 90"/>
+        <path class="integration-line" d="M250 200 C390 200 405 200 500 200"/><path class="integration-pulse out delay-1" d="M250 200 C390 200 405 200 500 200"/>
+        <path class="integration-line" d="M250 200 C375 200 400 310 500 310"/><path class="integration-pulse out delay-2" d="M250 200 C375 200 400 310 500 310"/>
+      </svg>
     </div>
   </div>
 </section>
