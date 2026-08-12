@@ -157,6 +157,7 @@ footer a:hover{color:#fff}
   .gallery-section{padding:56px 20px}
   .gallery-head{margin-bottom:28px}
   .gallery-track{grid-auto-columns:100%;gap:14px;padding-right:0}
+  .gallery-slide:nth-last-child(-n+3){display:none}
   .gallery-slide{aspect-ratio:4/3;background:var(--bg1);border-radius:18px;overflow:hidden}
   .gallery-slide img{
     height:100%;max-height:none;object-fit:contain;background:var(--bg1)
@@ -321,10 +322,19 @@ window.addEventListener('scroll',()=>{
 const trainingGallery = document.getElementById('trainingGallery');
 document.querySelectorAll('[data-gallery-direction]').forEach(button=>{
   button.addEventListener('click',()=>{
-    const slide = trainingGallery.querySelector('.gallery-slide');
+    const slides = [...trainingGallery.querySelectorAll('.gallery-slide')]
+      .filter(slide => getComputedStyle(slide).display !== 'none');
+    if (!slides.length) return;
     const gap = parseFloat(getComputedStyle(trainingGallery).columnGap) || 0;
-    const amount = slide.getBoundingClientRect().width + gap;
-    trainingGallery.scrollBy({left: button.dataset.galleryDirection === 'next' ? amount : -amount, behavior:'smooth'});
+    const amount = slides[0].getBoundingClientRect().width + gap;
+    const visibleCount = Math.max(1, Math.round((trainingGallery.clientWidth + gap) / amount));
+    const lastPosition = Math.max(0, slides.length - visibleCount);
+    const currentPosition = Math.min(lastPosition, Math.round(trainingGallery.scrollLeft / amount));
+    const nextPosition = button.dataset.galleryDirection === 'next'
+      ? (currentPosition >= lastPosition ? 0 : currentPosition + 1)
+      : (currentPosition <= 0 ? lastPosition : currentPosition - 1);
+
+    trainingGallery.scrollTo({left: nextPosition * amount, behavior:'smooth'});
   });
 });
 
