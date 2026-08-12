@@ -737,19 +737,34 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   .nichos-g{grid-template-columns:1fr!important}
   .team-g{grid-template-columns:1fr!important}
   .integrations-intro{margin-bottom:36px}
-  .integrations-board{display:flex;flex-direction:column;gap:42px;align-items:stretch}
+  .integrations-board{display:flex;flex-direction:column;gap:48px;align-items:stretch}
   .integration-column{gap:10px}
-  .integration-card{height:58px;padding:0 16px}
-  .integration-core{height:120px;margin:0 18px}
+  .integration-column:first-child{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .integration-column:first-child .integration-label{grid-column:1/-1}
+  .integration-card{height:58px;padding:0 14px;font-size:14px}
+  .integration-column:first-child .integration-card{justify-content:flex-start}
+  .integration-core{height:108px;margin:0;border-radius:18px;box-shadow:0 12px 32px rgba(249,115,22,.1)}
   .integration-core .logo-text{font-size:38px}
   .integration-lines{display:none}
   .integration-core::before,.integration-core::after{
-    content:'';position:absolute;left:50%;width:3px;height:43px;transform:translateX(-50%);
-    background:repeating-linear-gradient(to bottom,var(--orange) 0 7px,transparent 7px 14px);
-    background-size:100% 28px;animation:mobile-flow .9s linear infinite
+    content:'';position:absolute;left:50%;width:4px;height:49px;transform:translateX(-50%);
+    background:linear-gradient(to bottom,var(--indigo-m),var(--indigo-m)) center/2px 100% no-repeat;
+    border-radius:10px;overflow:hidden
   }
   .integration-core::before{bottom:100%}.integration-core::after{top:100%}
-  @keyframes mobile-flow{to{background-position-y:28px}}
+  .integration-core{background-image:linear-gradient(#fff,#fff)}
+  .integration-core .logo-text::before,.integration-core .logo-text::after{
+    content:'';position:absolute;left:50%;z-index:4;width:7px;height:16px;border-radius:10px;
+    background:var(--orange);box-shadow:0 0 10px rgba(249,115,22,.55);
+    animation:mobile-pulse 1.5s linear infinite
+  }
+  .integration-core .logo-text::before{bottom:calc(100% + 32px)}
+  .integration-core .logo-text::after{top:calc(100% + 1px);animation-delay:-.75s}
+  @keyframes mobile-pulse{
+    0%{transform:translate(-50%,-16px);opacity:0}
+    20%,80%{opacity:1}
+    100%{transform:translate(-50%,32px);opacity:0}
+  }
 }
 @media(max-width:400px){
   h1{font-size:clamp(28px,8vw,40px);letter-spacing:-.5px}
