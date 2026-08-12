@@ -147,7 +147,7 @@ footer a:hover{color:#fff}
 @media(max-width:768px){
   nav{padding:12px 16px}
   nav ul{display:none}
-  .nav-mobile-btn{display:none}
+  .nav-mobile-btn{display:inline-flex;align-items:center}
   .talleres-hero{padding:110px 20px 60px}
   .talleres-hero .container,.gallery-section .container,.gallery-shell,.gallery-track{
     width:100%;max-width:calc(100vw - 40px)
@@ -156,10 +156,10 @@ footer a:hover{color:#fff}
   .features-section{padding:56px 20px}
   .gallery-section{padding:56px 20px}
   .gallery-head{margin-bottom:28px}
-  .gallery-track{grid-auto-columns:92%;gap:14px;padding-right:8%}
-  .gallery-slide{aspect-ratio:4/3}
+  .gallery-track{grid-auto-columns:100%;gap:14px;padding-right:0}
+  .gallery-slide{aspect-ratio:auto}
   .gallery-slide img{
-    height:100%;object-fit:cover
+    height:auto;max-height:none;object-fit:contain
   }
   .gallery-controls{margin-top:18px}
   .gallery-control{width:46px;height:46px}
@@ -184,6 +184,7 @@ footer a:hover{color:#fff}
     <li><a href="/#contacto">Contacto</a></li>
     <li><a href="/talleres.html" class="nav-active">Capacitaciones IA Empresa</a></li>
   </ul>
+  <a href="/" class="nav-mobile-btn">Inicio</a>
 </nav>
 
 <!-- HERO -->
