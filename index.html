@@ -305,8 +305,17 @@ h1{
 h1{font-size:clamp(34px,4.5vw,64px);letter-spacing:-.5px}
 
 
-#hero .hero-headline{font-size:clamp(30px,3.5vw,50px);line-height:1.16;color:#000;text-wrap:balance}
-#hero .hero-highlight{color:#F97316}
+#hero .hero-inner{width:100%;max-width:1100px}
+.hero-copy{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:center;text-align:left}
+#hero .hero-headline{margin:0;font-size:clamp(44px,5.3vw,76px);font-weight:500;line-height:1.06;letter-spacing:-2px;color:#000;text-wrap:balance}
+#hero .hero-description{margin:0;font-size:clamp(18px,1.6vw,23px);font-weight:400;line-height:1.65;letter-spacing:0;color:#000;text-wrap:pretty}
+#hero .hero-highlight{color:#F97316;font-weight:700}
+@media(max-width:768px){
+  .hero-copy{grid-template-columns:1fr;gap:28px}
+  #hero .hero-headline{font-size:clamp(44px,11vw,64px);letter-spacing:-1.5px}
+  #hero .hero-description{font-size:18px;line-height:1.65}
+}
+
 
 /* ── SHARED ── */
 section{padding:96px 40px}
@@ -847,7 +856,10 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 
 
   <div class="hero-inner">
-    <h1 class="hero-headline">Diseñamos, desarrollamos y distribuimos sistemas operativos de IA, agentes, copilotos y productos a medida para equipos que <span class="hero-highlight">se niegan a conformarse con software estándar.</span></h1>
+    <div class="hero-copy">
+      <h1 class="hero-headline">IA diseñada<br>para ti</h1>
+      <p class="hero-description">Diseñamos, desarrollamos y distribuimos sistemas operativos de IA, agentes, copilotos y productos a medida para equipos que <span class="hero-highlight">se niegan a conformarse con software estándar.</span></p>
+    </div>
 
     <div class="btns">
       <a href="#contacto" class="btn-p" onclick="document.querySelector('#contacto').scrollIntoView({behavior:'smooth'});return false;">Conversemos →</a>
