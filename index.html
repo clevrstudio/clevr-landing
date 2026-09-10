@@ -136,12 +136,6 @@ h1{
 .gi{background:linear-gradient(135deg,#F97316,#EA580C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .gt{background:linear-gradient(135deg,#F97316,#FB923C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .go{background:linear-gradient(135deg,#F97316,#DC2626);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-cursor{display:inline-block;color:var(--orange);animation:blink .7s step-end infinite;font-weight:300}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.hero-solution{opacity:0;transition:opacity .8s ease}
-.hero-solution.visible{opacity:1}
-.hero-btns-anim{opacity:0;transform:translateY(12px);transition:opacity .7s ease .15s,transform .7s ease .15s}
-.hero-btns-anim.visible{opacity:1;transform:translateY(0)}
 .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:40px}
 .btn-p{
   display:inline-flex;align-items:center;gap:8px;
@@ -310,6 +304,9 @@ h1{
 .hero-inner{max-width:1000px;text-align:center}
 h1{font-size:clamp(34px,4.5vw,64px);letter-spacing:-.5px}
 
+
+#hero .hero-headline{font-size:clamp(30px,3.5vw,50px);line-height:1.16;color:#000;text-wrap:balance}
+#hero .hero-highlight{color:#F97316}
 
 /* ── SHARED ── */
 section{padding:96px 40px}
@@ -850,12 +847,9 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 
 
   <div class="hero-inner">
-    <h1>
-      <span id="hero-typed"></span><span class="hero-cursor">|</span><br>
-      <span class="gi hero-solution" id="hero-solution">Creamos la solución<br>que los resuelve.</span>
-    </h1>
+    <h1 class="hero-headline">Diseñamos, desarrollamos y distribuimos sistemas operativos de IA, agentes, copilotos y productos a medida para equipos que <span class="hero-highlight">se niegan a conformarse con software estándar.</span></h1>
 
-    <div class="btns hero-btns-anim">
+    <div class="btns">
       <a href="#contacto" class="btn-p" onclick="document.querySelector('#contacto').scrollIntoView({behavior:'smooth'});return false;">Conversemos →</a>
     </div>
 
@@ -1471,28 +1465,6 @@ setTimeout(runDemo, 1500);
   resize();init();loop();
 })();
 
-// ── TYPEWRITER HERO ──
-(function(){
-  const text = '¿Procesos manuales\nen tu negocio?';
-  const el = document.getElementById('hero-typed');
-  const solution = document.getElementById('hero-solution');
-  const btns = document.querySelector('.hero-btns-anim');
-  let i = 0;
-  function type(){
-    if(i <= text.length){
-      el.innerHTML = text.slice(0,i).replace('\n','<br>');
-      i++;
-      setTimeout(type, i < 10 ? 60 : 45);
-    } else {
-      document.querySelector('.hero-cursor').style.display = 'none';
-      setTimeout(()=>{
-        solution.classList.add('visible');
-        setTimeout(()=>{ btns.classList.add('visible'); }, 400);
-      }, 200);
-    }
-  }
-  setTimeout(type, 300);
-})();
 </script>
 </body>
 </html>
