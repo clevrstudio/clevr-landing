@@ -330,6 +330,9 @@ section{padding:96px 40px}
   font-size:clamp(26px,3.5vw,52px);font-weight:800;color:var(--ink);
   letter-spacing:-1px;line-height:1.15;margin-bottom:0
 }
+.experts-message{display:flex;align-items:center;gap:28px}
+.experts-message .etm-logo{width:132px;height:auto;max-height:70px;object-fit:contain;flex-shrink:0}
+@media(max-width:600px){.experts-message{align-items:flex-start;gap:16px}.experts-message .etm-logo{width:96px;max-height:58px}}
 h2{
   font-family:'Space Grotesk',sans-serif;
   font-size:clamp(34px,4.2vw,56px);font-weight:600;color:var(--ink);
@@ -924,7 +927,10 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   <div class="container">
     <div class="r" style="max-width:760px">
       <p class="slabel" style="color:rgba(255,255,255,0.4)">Lo que hacemos</p>
-      <p class="experts-headline reveal" style="color:#fff">En Clevr somos tu partner de <span class="gi">transformación tecnológica</span> con IA.</p>
+      <div class="experts-message">
+        <p class="experts-headline reveal" style="color:#fff">En Clevr somos tu partner de <span class="gi">transformación tecnológica</span> con IA.</p>
+        <img class="etm-logo" src="ima%20clientes/etm%20.png" alt="ETM Day">
+      </div>
       <div class="clients-bar">
         <div class="clients-divider"></div>
         <span class="clients-lbl">Confían en nosotros</span>
