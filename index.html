@@ -421,6 +421,21 @@ h2 .o{color:var(--orange)}
   font-size:clamp(38px,4.4vw,56px);text-align:center;text-align-last:center;
   white-space:nowrap
 }
+.agenda-primary-wrap{text-align:center;margin:0 auto;max-width:620px}
+.agenda-primary{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-width:320px;padding:24px 48px;border-radius:16px;
+  background:var(--orange);color:#fff;text-decoration:none;
+  font-size:26px;font-weight:900;box-shadow:0 14px 34px rgba(249,115,22,.32);
+  transition:all .25s
+}
+.agenda-primary:hover{transform:translateY(-3px);box-shadow:0 20px 42px rgba(249,115,22,.4);background:#EA580C}
+.contact-question{max-width:680px;margin:34px auto 0;border-top:1px solid var(--border);padding-top:24px}
+.contact-question summary{cursor:pointer;list-style:none;text-align:center;color:var(--ink2);font-size:15px;font-weight:700}
+.contact-question summary::-webkit-details-marker{display:none}
+.contact-question summary::after{content:' ↓';color:var(--orange)}
+.contact-question[open] summary::after{content:' ↑'}
+.contact-form-lead{text-align:center;color:var(--muted);font-size:14px;margin:22px auto 0}
 
 /* Phone mockup */
 .phone-wrap{display:flex;justify-content:center;perspective:1000px}
@@ -1253,10 +1268,15 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   <div class="container">
     <div class="r contact-intro">
       <p class="slabel">Empecemos</p>
-      <h2>¿Cómo podemos <span class="i">ayudarte?</span></h2>
-      <p style="margin-top:12px;font-size:15px;color:var(--muted)">O escríbenos directo a <a href="mailto:contacto@clevr.cl" style="color:var(--orange);font-weight:600;text-decoration:none">contacto@clevr.cl</a></p>
+      <h2>Agenda una conversación <span class="i">con Clevr.</span></h2>
     </div>
-    <div class="form-wrap r">
+    <div class="agenda-primary-wrap r">
+      <a href="https://calendar.app.google/P7WYxWAZBaXdNvYq9" target="_blank" rel="noopener" class="agenda-primary">📅 Agendar <span aria-hidden="true">→</span></a>
+    </div>
+    <details class="contact-question r">
+      <summary>¿Tienes una duda? Contáctanos</summary>
+      <p class="contact-form-lead">Escríbenos y te responderemos a la brevedad. También puedes escribirnos directo a <a href="mailto:contacto@clevr.cl" style="color:var(--orange);font-weight:600;text-decoration:none">contacto@clevr.cl</a></p>
+    <div class="form-wrap contact-form-wrap">
       <div id="form-fields">
         <form id="clevr-form">
           <div class="frow">
@@ -1280,7 +1300,6 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
           <button type="submit" class="fsubmit" id="form-submit-btn">Enviar mensaje →</button>
         </form>
         <div class="contact-btns" style="margin-top:12px">
-          <a href="https://calendar.app.google/P7WYxWAZBaXdNvYq9" target="_blank" rel="noopener" class="fsubmit btn-agenda" style="gap:8px;text-decoration:none;display:flex;align-items:center;justify-content:center">📅 Agendar</a>
           <a href="https://www.linkedin.com/company/softwarefactoryclevr/" target="_blank" rel="noopener" class="fsubmit btn-agenda" style="gap:8px;text-decoration:none;display:flex;align-items:center;justify-content:center">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             Seguirnos en LinkedIn
@@ -1293,6 +1312,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
         <p>Nos pondremos en contacto contigo a la brevedad.</p>
       </div>
     </div>
+    </details>
   </div>
 </section>
 
