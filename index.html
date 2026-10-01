@@ -416,10 +416,10 @@ h2 .o{color:var(--orange)}
 }
 .prop-cloud h2{font-size:21px;line-height:1.3;letter-spacing:-.4px;margin:0}
 
-.contact-intro{text-align:center;max-width:760px;margin:0 auto 40px}
+.contact-intro{text-align:center;max-width:none;width:100%;margin:0 auto 40px}
 .contact-intro h2{
   font-size:clamp(38px,4.4vw,56px);text-align:center;text-align-last:center;
-  white-space:nowrap
+  white-space:nowrap;margin:0 auto
 }
 .agenda-primary-wrap{text-align:center;margin:0 auto;max-width:620px}
 .agenda-primary{
@@ -430,8 +430,13 @@ h2 .o{color:var(--orange)}
   transition:all .25s
 }
 .agenda-primary:hover{transform:translateY(-3px);box-shadow:0 20px 42px rgba(249,115,22,.4);background:#EA580C}
-.contact-question{max-width:680px;margin:34px auto 0;border-top:1px solid var(--border);padding-top:24px}
-.contact-question summary{cursor:pointer;list-style:none;text-align:center;color:var(--ink2);font-size:15px;font-weight:700}
+.contact-question{max-width:680px;margin:34px auto 0;padding-top:0}
+.contact-question summary{
+  cursor:pointer;list-style:none;text-align:center;color:var(--orange);font-size:16px;font-weight:800;
+  background:var(--orange-l);border:1.5px solid var(--orange);border-radius:14px;padding:15px 22px;
+  box-shadow:0 5px 18px rgba(249,115,22,.12);transition:all .2s
+}
+.contact-question summary:hover{background:#fff;border-color:var(--orange);box-shadow:0 9px 24px rgba(249,115,22,.2);transform:translateY(-2px)}
 .contact-question summary::-webkit-details-marker{display:none}
 .contact-question summary::after{content:' ↓';color:var(--orange)}
 .contact-question[open] summary::after{content:' ↑'}
