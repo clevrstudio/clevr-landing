@@ -1,0 +1,31 @@
+{
+  "inmobiliarias-y-gestion-de-activos": [
+    3,
+    2,
+    4,
+    5
+  ],
+  "laboratorios": [
+    11,
+    0,
+    1
+  ],
+  "distribucion-b2b": [
+    7,
+    10,
+    1
+  ],
+  "manufactura": [
+    6,
+    2
+  ],
+  "centros-de-evaluacion": [
+    12
+  ],
+  "gimnasios": [
+    13
+  ],
+  "educacion": [
+    14
+  ]
+}

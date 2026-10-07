@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clevr — Partner de transformación tecnológica con IA</title>
+<title>Automatización de procesos e IA para empresas | Clevr</title>
 <meta name="google-site-verification" content="O9Ruy71AIi34YngNHydsGhlm1GOlNnIHFkGgBJReEog" />
 <meta name="description" content="En Clevr entendemos tu negocio e integramos IA con los sistemas que ya usas para automatizar procesos manuales. Te acompañamos desde el diagnóstico hasta la mantención.">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -33,13 +33,13 @@
   --shadow-lg:0 16px 48px rgba(249,115,22,.14);
   --radius:16px;
 }
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--ink);overflow-x:clip;line-height:1.6}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:#F1F3FC}
 ::-webkit-scrollbar-thumb{background:var(--indigo);border-radius:2px}
 
-/* ── NEURAL CANVAS ── */
+/* ── INTERACTIVE WEB CANVAS ── */
 #neuralCanvas{
   position:absolute;inset:0;width:100%;height:100%;
   pointer-events:none;z-index:2;opacity:1
@@ -75,7 +75,7 @@ nav ul a.nav-active{color:var(--indigo);font-weight:700}
 #hero{
   position:relative;min-height:100vh;
   display:flex;align-items:center;justify-content:center;
-  overflow:hidden;padding:180px 380px 140px;
+  overflow:visible;padding:180px 380px 140px;
   background:linear-gradient(155deg,#FFF7ED 0%,#FFEDD5 25%,#FFF7ED 60%,#FFFFFF 100%)
 }
 /* animated gradient blobs */
@@ -300,21 +300,44 @@ h1{
 }
 
 /* hero ajustes */
-#hero{padding:140px 40px 0;flex-direction:column;justify-content:flex-start;align-items:center}
-.hero-inner{max-width:1000px;text-align:center}
+#hero{min-height:210vh;padding:0;flex-direction:column;justify-content:flex-start;align-items:center}
+.hero-inner{max-width:1000px;text-align:left}
 h1{font-size:clamp(34px,4.5vw,64px);letter-spacing:-.5px}
 
 
-#hero .hero-inner{width:100%;max-width:1100px}
-.hero-copy{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start;text-align:left}
-#hero .hero-headline{margin:0;font-size:clamp(44px,5.3vw,76px);font-weight:500;line-height:1.06;letter-spacing:-2px;color:#000;text-wrap:balance}
-#hero .hero-description{margin:0;font-size:clamp(18px,1.6vw,23px);font-weight:400;line-height:1.65;letter-spacing:0;color:#000;text-wrap:pretty}
+#hero .hero-inner{position:sticky;top:68px;width:100%;height:calc(100vh - 68px);max-width:1100px;margin:0 auto;text-align:left;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);align-items:center;gap:28px}
+.hero-copy{display:flex;flex-direction:column;align-items:flex-start;gap:22px;text-align:left}
+#hero .hero-headline{max-width:760px;margin:0;font-size:clamp(52px,6vw,76px);font-weight:500;line-height:1.02;letter-spacing:-2.6px;color:#000;text-wrap:balance}
+#hero .hero-description{max-width:740px;margin:0;font-size:clamp(18px,1.6vw,23px);font-weight:400;line-height:1.65;letter-spacing:0;color:#000;text-wrap:pretty}
 #hero .hero-right .btns{justify-content:flex-start;margin-top:28px}
 #hero .hero-highlight{color:#F97316;font-weight:700}
+#hero .hero-headline::before{content:"";display:block;width:44px;height:4px;border-radius:3px;background:#F97316;margin:0 0 14px}
+#clevrMark{position:fixed;inset:0;width:100vw;height:100vh;z-index:2;pointer-events:none}
+#clevrTouchZone{display:none}
 @media(max-width:768px){
-  .hero-copy{grid-template-columns:1fr;gap:28px}
-  #hero .hero-headline{font-size:clamp(44px,11vw,64px);letter-spacing:-1.5px}
-  #hero .hero-description{font-size:18px;line-height:1.65}
+  #hero{min-height:100svh;height:100svh;padding:0}
+  #hero .hero-inner{position:relative;top:auto;height:auto;grid-template-columns:1fr;align-items:start;gap:10px;padding:64px 20px 0}
+  #clevrMark{position:absolute;inset:0;width:100%;height:100%}
+  #clevrTouchZone{display:block;position:absolute;z-index:2;border-radius:50%;background:transparent;pointer-events:auto;touch-action:none}
+  .hero-copy{gap:20px;align-items:center;text-align:center}
+  #hero .hero-headline{max-width:100%;font-size:clamp(42px,9vw,60px);letter-spacing:-1.8px;text-align:center}
+  #hero .hero-headline::before{width:38px;height:4px;margin:0 auto 12px}
+  #hero .hero-right{width:100%;text-align:center}
+  #hero .hero-description{font-size:18px;line-height:1.65;text-align:center}
+  #hero .hero-right .btns{justify-content:center}
+}
+
+@media(max-height:500px) and (orientation:landscape){
+  #hero{min-height:100svh;height:100svh;padding:0}
+  #clevrMark{position:absolute;inset:0;width:100%;height:100%}
+  #clevrTouchZone{display:block;position:absolute;z-index:2;border-radius:50%;background:transparent;pointer-events:auto;touch-action:none}
+  #hero .hero-inner{position:relative;top:auto;height:100%;max-width:none;padding:78px 24px 12px;grid-template-columns:minmax(0,1fr);align-items:start}
+  .hero-copy{gap:12px;align-items:center;text-align:center}
+  #hero .hero-headline{max-width:60%;font-size:clamp(30px,6vh,44px);line-height:1.02;letter-spacing:-1.3px;text-align:center}
+  #hero .hero-headline::before{width:34px;height:3px;margin:0 auto 8px}
+  #hero .hero-right{width:100%;text-align:center}
+  #hero .hero-description{max-width:58%;font-size:clamp(14px,3.3vh,17px);line-height:1.4;text-align:center}
+  #hero .hero-right .btns{justify-content:center;margin-top:10px}
 }
 
 
@@ -331,9 +354,13 @@ section{padding:96px 40px}
   letter-spacing:-1px;line-height:1.15;margin-bottom:0
 }
 .experts-message{display:flex;align-items:center;gap:28px}
-.experts-message .partner-logos{width:154px;margin-left:auto;transform:translateX(300px);padding:14px;background:#fff;border-radius:16px;box-shadow:0 10px 28px rgba(0,0,0,.18);display:flex;flex-direction:column;align-items:center;gap:10px;flex-shrink:0}
-.experts-message .partner-logos img{width:100%;height:58px;object-fit:contain}
-@media(max-width:600px){.experts-message{align-items:flex-start;gap:16px}.experts-message .partner-logos{width:108px;transform:none;padding:10px;border-radius:12px;gap:6px}.experts-message .partner-logos img{height:42px}}
+.experts-photo{width:500px;height:375px;margin-left:auto;transform:none;border-radius:18px;overflow:hidden;flex-shrink:0;box-shadow:0 14px 34px rgba(0,0,0,.22)}
+.experts-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.partner-logos{box-sizing:border-box;width:min(340px,100%);margin:22px 0 0;padding:8px 12px;background:#fff;border-radius:12px;box-shadow:0 8px 22px rgba(0,0,0,.16);display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
+.partner-logos img{width:calc((100% - 24px)/3);height:42px;object-fit:contain}
+.partner-logos img[alt="ChileCompra Mercado Público"]{transform:scale(1.25)}
+@media(max-width:900px){.experts-photo{transform:none}}
+@media(max-width:600px){.experts-message{display:block}.experts-photo{box-sizing:border-box;width:100%;height:auto;aspect-ratio:4/3;margin:22px 0 0;transform:none;border-radius:14px}.partner-logos{width:min(340px,100%);margin:20px 0 0;padding:8px 10px;border-radius:10px;gap:10px}.partner-logos img{width:calc((100% - 20px)/3);height:38px}}
 h2{
   font-family:'Space Grotesk',sans-serif;
   font-size:clamp(34px,4.2vw,56px);font-weight:600;color:var(--ink);
@@ -443,51 +470,70 @@ h2 .o{color:var(--orange)}
 .contact-form-lead{text-align:center;color:var(--muted);font-size:14px;margin:22px auto 0}
 
 /* Phone mockup */
-.phone-wrap{display:flex;justify-content:center;perspective:1000px}
+.phone-wrap{display:flex;justify-content:center;perspective:none}
 .phone-tilt{
-  transform:rotateY(-8deg) rotateX(4deg);
-  transition:transform .4s ease;
-  filter:drop-shadow(0 40px 60px rgba(0,0,0,.18)) drop-shadow(0 8px 20px rgba(249,115,22,.1))
+  transform:none;
+  transition:transform .3s ease;
+  filter:drop-shadow(0 28px 36px rgba(15,23,42,.18))
 }
-.phone-wrap:hover .phone-tilt{transform:rotateY(0deg) rotateX(0deg)}
+.phone-wrap:hover .phone-tilt{transform:translateY(-3px)}
 .phone-frame{
-  width:260px;
-  background:linear-gradient(160deg,#2A2A2A,#111);
-  border-radius:44px;padding:10px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 0 0 1px rgba(0,0,0,.3)
+  position:relative;width:276px;
+  background:linear-gradient(112deg,#a94613 0%,#f97316 9%,#ffad65 14%,#ea580c 22%,#f97316 76%,#ffbd84 88%,#a43c0c 100%);
+  border-radius:48px;padding:8px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.62),inset 0 0 0 2px rgba(94,39,9,.38),0 0 0 1px rgba(120,49,14,.5)
 }
 .phone-notch{
-  width:90px;height:26px;background:#111;border-radius:0 0 18px 18px;
-  margin:0 auto 0;position:relative;z-index:2
+  position:absolute;z-index:3;top:15px;left:50%;transform:translateX(-50%);
+  width:91px;height:25px;background:#08090b;border:1px solid #252629;border-radius:20px;
+  box-shadow:inset 0 1px 2px rgba(255,255,255,.12)
 }
 .phone-screen{
-  background:#0F172A;border-radius:36px;overflow:hidden;
-  margin-top:-26px;padding-top:36px
+  position:relative;min-height:510px;
+  background:linear-gradient(180deg,#fafbfc,#f2f4f7);border-radius:41px;overflow:hidden;
+  padding-top:45px;color:#17191d;
+  box-shadow:inset 0 0 0 1px rgba(16,24,40,.14)
 }
+.phone-screen::before{content:'9:41';position:absolute;left:22px;top:15px;font-size:10px;font-weight:700;color:#17191d;letter-spacing:.1px}
+.phone-screen::after{content:'';position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:82px;height:4px;background:#17191d;border-radius:5px}
+.phone-frame::before,.phone-frame::after{content:'';position:absolute;left:-3px;width:3px;background:linear-gradient(90deg,#888b90,#d9dade);border-radius:3px 0 0 3px}
+.phone-frame::before{top:112px;height:31px;box-shadow:0 44px 0 #bfc1c5,0 82px 0 #bfc1c5}
+.phone-frame::after{right:-3px;left:auto;top:142px;height:54px;border-radius:0 3px 3px 0}
 .ph-bar{padding:10px 18px 8px;display:flex;justify-content:space-between;align-items:center}
-.ph-title{font-size:11px;color:rgba(255,255,255,.35);font-weight:500}
-.ph-dot{width:6px;height:6px;border-radius:50%;background:#22C55E;animation:blink 2s infinite}
+.ph-title{font-size:11px;color:#737984;font-weight:600}
+.ph-dot{width:6px;height:6px;border-radius:50%;background:#22a06b}
 .ph-header{padding:0 18px 16px}
-.ph-header-title{font-size:16px;font-weight:700;color:#fff;margin-bottom:2px}
-.ph-header-sub{font-size:11px;color:rgba(255,255,255,.35)}
+.ph-header-title{font-size:20px;font-weight:750;color:#17191d;margin-bottom:2px;letter-spacing:-.5px}
+.ph-header-sub{font-size:11px;color:#737984}
 .ph-section{padding:0 18px 14px}
-.ph-section-label{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px}
-.ph-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-.ph-stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px}
-.ph-stat-val{font-size:20px;font-weight:800;color:#F97316;letter-spacing:-1px;line-height:1}
-.ph-stat-lbl{font-size:9px;color:rgba(255,255,255,.4);margin-top:3px}
-.ph-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 14px;margin-bottom:8px}
+.ph-section-label{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#737984;margin-bottom:10px}
+.ph-card{background:#fff;border:1px solid #e6e8ec;border-radius:13px;padding:12px 14px;margin-bottom:8px;box-shadow:0 2px 5px rgba(16,24,40,.035);transform:translateY(5px);opacity:.82;transition:transform .35s ease,opacity .35s ease,border-color .25s ease,box-shadow .25s ease}
 .ph-card-row{display:flex;align-items:center;justify-content:space-between}
-.ph-card-name{font-size:12px;color:rgba(255,255,255,.75);font-weight:600}
-.ph-card-val{font-size:11px;color:#22C55E;font-weight:700}
-.ph-bar-track{height:4px;background:rgba(255,255,255,.08);border-radius:100px;margin-top:8px;overflow:hidden}
-.ph-bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,#F97316,#22C55E);animation:ph-grow 3s ease-in-out infinite alternate}
-@keyframes ph-grow{0%{width:45%}100%{width:82%}}
-.ph-notif{background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.25);border-radius:14px;padding:12px 14px;margin:0 18px 18px}
+.ph-card-name{font-size:12px;color:#343840;font-weight:600}
+.ph-card-val{font-size:11px;color:#16865b;font-weight:700}
+.ph-bar-track{height:4px;background:#e8eaee;border-radius:100px;margin-top:8px;overflow:hidden}
+.ph-bar-fill{height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,#f97316,#e85d04);transition:width 1.25s cubic-bezier(.2,.7,.2,1)}
+.phone-screen.is-active .ph-bar-fill{width:82%}
+.phone-screen.is-active .ph-card{transform:translateY(0);opacity:1}
+.phone-screen.is-active .ph-bar-fill{animation:ph-data-cycle 3.6s 1.1s ease-in-out infinite alternate}
+@keyframes ph-data-cycle{0%{width:58%}100%{width:88%}}
+.ph-chart{margin:0 18px 14px;padding:10px 12px 8px;background:#fff;border:1px solid #e6e8ec;border-radius:13px;box-shadow:0 2px 5px rgba(16,24,40,.035)}
+.ph-chart-head{display:flex;align-items:center;justify-content:space-between;font-size:10px;font-weight:700;color:#414650}
+.ph-chart-head strong{color:#16865b;font-size:10px}
+.ph-chart svg{display:block;width:100%;height:48px;margin-top:5px;overflow:visible}
+.ph-chart-grid{fill:none;stroke:#edf0f3;stroke-width:1}
+.ph-chart-area{fill:rgba(249,115,22,.09);opacity:0;transition:opacity .6s ease .45s}
+.ph-chart-line{fill:none;stroke:#f97316;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:260;stroke-dashoffset:260}
+.phone-screen.is-active .ph-chart-area{opacity:1}
+.phone-screen.is-active .ph-chart-line{animation:ph-chart-draw 1.45s .12s ease-out forwards}
+@keyframes ph-chart-draw{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){.phone-screen.is-active .ph-bar-fill{animation:none;width:82%}.phone-screen.is-active .ph-chart-line{animation:none;stroke-dashoffset:0}}
+.ph-card:hover{border-color:#fdba74;box-shadow:0 5px 14px rgba(249,115,22,.12)}
+.ph-notif{background:#fff;border:1px solid #e6e8ec;border-radius:13px;padding:12px 14px;margin:0 18px 18px;box-shadow:0 2px 5px rgba(16,24,40,.035)}
 .ph-notif-top{display:flex;align-items:center;gap:6px;margin-bottom:4px}
 .ph-notif-ico{width:16px;height:16px;border-radius:5px;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:9px}
-.ph-notif-app{font-size:9px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px}
-.ph-notif-msg{font-size:11px;color:rgba(255,255,255,.7);line-height:1.5}
+.ph-notif-app{font-size:9px;font-weight:700;color:#737984;text-transform:uppercase;letter-spacing:.5px}
+.ph-notif-msg{font-size:11px;color:#42464e;line-height:1.5}
 
 @media(max-width:900px){
   .prop-layout{grid-template-columns:1fr}
@@ -509,15 +555,30 @@ h2 .o{color:var(--orange)}
 /* ── PROBLEMA ── */
 #problema{background:var(--bg)}
 .delivery-intro{
-  text-align:left;max-width:700px;margin:0
+  text-align:center;max-width:980px;margin:0 auto
 }
 .delivery-intro .slabel{margin-bottom:4px}
-.delivery-intro .problem-copy{max-width:680px;margin-top:20px;font-size:clamp(16px,1.5vw,19px);line-height:1.75;color:var(--muted)}
+.delivery-intro .problem-copy{max-width:820px;margin:20px auto 0;font-size:clamp(16px,1.5vw,19px);line-height:1.75;color:var(--muted)}
+.ai-adoption{width:100%;max-width:980px;margin:36px auto 0;padding:30px;background:linear-gradient(135deg,#FFF7ED,#FFFFFF);border:1px solid var(--indigo-m);border-radius:var(--radius);box-shadow:var(--shadow);text-align:center}
+.ai-adoption-heading{max-width:760px;margin:0 auto 22px}
+.ai-adoption-heading h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(21px,2.5vw,28px);line-height:1.2;letter-spacing:-.5px}
+.ai-adoption-heading p{margin-top:8px;color:var(--muted);font-size:14px}
+.ai-adoption-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ai-adoption-stat{padding:20px;background:#fff;border:1px solid var(--border);border-radius:12px;text-align:center}
+.ai-adoption-stat strong{display:block;color:var(--orange);font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,4vw,44px);line-height:1;letter-spacing:-1.5px}
+.ai-adoption-stat span{display:block;margin-top:10px;color:var(--ink2);font-size:13px;line-height:1.55}
+.ai-adoption-source{max-width:820px;margin:16px auto 0;color:var(--muted);font-size:11px;line-height:1.6}
+.ai-adoption-source a{color:var(--ink2);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .delivery-intro h2{
   font-size:clamp(32px,3.4vw,48px);line-height:1.08;letter-spacing:-1.2px;margin:0
 }
+.delivery-intro h2.title-left{text-align:center;text-align-last:center;max-width:820px;margin:0 auto}
 @media(max-width:600px){
   .delivery-intro h2{font-size:clamp(28px,7vw,38px);letter-spacing:-.8px}
+  .ai-adoption{padding:22px 18px}
+  .ai-adoption-grid{grid-template-columns:1fr;gap:10px}
+  .ai-adoption-stat{display:grid;grid-template-columns:82px 1fr;align-items:center;gap:14px;padding:15px}
+  .ai-adoption-stat span{margin-top:0}
 }
 
 /* ── INTEGRACIONES ── */
@@ -761,7 +822,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
     display:inline-flex;align-items:center;background:#fff;color:var(--orange);
     border:1.5px solid var(--orange);font-weight:600;box-shadow:none
   }
-  #hero{min-height:0;height:auto;padding:100px 20px 0;overflow:hidden}
+  #hero{min-height:100svh;height:100svh;padding:0;overflow:visible}
   .hero-inner{max-width:100%}
   h1{font-size:clamp(32px,8.5vw,48px);letter-spacing:-1px;line-height:1.12}
   .btns{margin-top:28px}
@@ -857,6 +918,13 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 #topBtn.visible{opacity:1;transform:translateY(0)}
 #topBtn:hover{background:#EA580C}
 </style>
+<link rel="canonical" href="https://www.clevr.cl/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Automatización de procesos e IA para empresas | Clevr">
+<meta property="og:description" content="En Clevr entendemos tu negocio e integramos IA con los sistemas que ya usas para automatizar procesos manuales. Te acompañamos desde el diagnóstico hasta la mantención.">
+<meta property="og:url" content="https://www.clevr.cl/">
+<meta property="og:image" content="https://www.clevr.cl/android-chrome-512x512.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://www.clevr.cl/#organization", "name": "Clevr", "url": "https://www.clevr.cl/", "email": "contacto@clevr.cl", "telephone": "+56 9 6898 7762", "logo": "https://www.clevr.cl/android-chrome-512x512.png"}</script>
 </head>
 <body>
 
@@ -868,6 +936,8 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
     <span class="logo-text">clev<span>r</span></span>
   </a>
   <ul>
+    <li><a href="/soluciones/">Soluciones</a></li>
+    <li><a href="/industrias/">Industrias</a></li>
     <li><a href="#equipo" data-section="equipo">Equipo</a></li>
     <li><a href="#contacto" data-section="contacto">Contacto</a></li>
     <li><a href="/talleres.html" id="nav-talleres">Capacitaciones IA Empresa</a></li>
@@ -886,7 +956,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 
   <div class="hero-inner">
     <div class="hero-copy">
-      <h1 class="hero-headline">IA diseñada<br>para tu empresa</h1>
+      <h1 class="hero-headline">IA diseñada para tu empresa</h1>
       <div class="hero-right">
         <p class="hero-description">Entendemos tu negocio y construimos sobre los sistemas que ya usas para automatizar lo que hoy te quita tiempo.</p>
         <div class="btns">
@@ -897,65 +967,23 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 
   </div>
 
-  <!-- Monitor 3D -->
-  <div class="monitor-scene">
-    <div class="monitor-3d">
-      <div class="monitor-frame">
-        <div class="monitor-screen" id="monitorScreen">
-          <div class="screen-cursor" id="screenCursor"></div>
-          <div class="screen-bar">
-            <div class="screen-dots"><span></span><span></span><span></span></div>
-            <div class="screen-title">clevr · tu proceso</div>
-            <div class="screen-live"><span class="live-dot"></span>En vivo</div>
-          </div>
-          <div class="screen-progress"><div class="screen-progress-bar" id="screenProgress"></div></div>
-          <div class="workflow">
-            <div class="wf-node wf-start" id="wfn0" onclick="activateNode(0)">
-              <div class="wf-done-mark">✓</div>
-              <div class="wf-ico">🔍</div>
-              <div class="wf-lbl">Diagnóstico<br>del proceso</div>
-            </div>
-            <div class="wf-conn"><svg viewBox="0 0 40 16"><line x1="0" y1="8" x2="40" y2="8" stroke="#F97316" stroke-width="1.5" stroke-dasharray="5 3"><animate attributeName="stroke-dashoffset" from="16" to="0" dur=".9s" repeatCount="indefinite"/></line><polygon points="34,4 40,8 34,12" fill="#F97316"/></svg></div>
-            <div class="wf-node" id="wfn1" onclick="activateNode(1)">
-              <div class="wf-done-mark">✓</div>
-              <div class="wf-ico">🛠️</div>
-              <div class="wf-lbl">Diseñamos<br>la solución</div>
-            </div>
-            <div class="wf-conn"><svg viewBox="0 0 40 16"><line x1="0" y1="8" x2="40" y2="8" stroke="#F97316" stroke-width="1.5" stroke-dasharray="5 3"><animate attributeName="stroke-dashoffset" from="16" to="0" dur=".9s" begin=".3s" repeatCount="indefinite"/></line><polygon points="34,4 40,8 34,12" fill="#F97316"/></svg></div>
-            <div class="wf-node" id="wfn2" onclick="activateNode(2)">
-              <div class="wf-done-mark">✓</div>
-              <div class="wf-ico">🚀</div>
-              <div class="wf-lbl">Implementamos<br>e integramos</div>
-            </div>
-            <div class="wf-conn"><svg viewBox="0 0 40 16"><line x1="0" y1="8" x2="40" y2="8" stroke="#F97316" stroke-width="1.5" stroke-dasharray="5 3"><animate attributeName="stroke-dashoffset" from="16" to="0" dur=".9s" begin=".6s" repeatCount="indefinite"/></line><polygon points="34,4 40,8 34,12" fill="#F97316"/></svg></div>
-            <div class="wf-node" id="wfn3" onclick="activateNode(3)">
-              <div class="wf-done-mark">✓</div>
-              <div class="wf-ico">🛠️</div>
-              <div class="wf-lbl">Mantención<br>y mejora</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="monitor-neck"></div>
-      <div class="monitor-base-3d"></div>
-    </div>
-  </div>
-
+  <canvas id="clevrMark" aria-hidden="true"></canvas>
+  <div id="clevrTouchZone" aria-hidden="true"></div>
 </section>
 
 
 <div class="div"></div>
 
 <!-- EXPERTOS SECTION -->
+<section id="explorar-soluciones" style="background:#fff7ed;padding:64px 24px"><div style="max-width:1100px;margin:auto"><h2 style="text-align:left">Explora lo que hemos desarrollado</h2><p style="max-width:720px;color:#465366;margin:20px 0 28px">Cobranza, conciliación, portales B2B, órdenes de compra y calidad con IA. Conoce nuestros 15 módulos y sus aplicaciones en distintas industrias.</p><div style="display:flex;gap:20px;flex-wrap:wrap"><a href="/soluciones/" style="background:#c2410c;color:#fff;border-radius:100px;padding:14px 22px;text-decoration:none;font-weight:700">Ver soluciones</a><a href="/industrias/" style="color:#9a3412;border:1px solid #fed7aa;border-radius:100px;padding:14px 22px;text-decoration:none;font-weight:700">Encontrar mi industria</a></div></div></section>
 <section class="expertos-section" style="background:var(--ink)">
   <div class="container">
-    <div class="r" style="max-width:760px">
+    <div class="r" style="max-width:1100px">
       <p class="slabel" style="color:rgba(255,255,255,0.4)">Lo que hacemos</p>
       <div class="experts-message">
         <p class="experts-headline reveal" style="color:#fff">En Clevr somos tu partner de <span class="gi">transformación tecnológica</span> con IA.</p>
-        <div class="partner-logos">
-          <img src="ima%20clientes/etm%20.png" alt="ETM Day">
-          <img src="ima%20clientes/jbiz.png" alt="JBIZ">
+        <div class="experts-photo">
+          <img src="/imagenes/optimizadas/taller-ia-clevr-ab631d8.webp" alt="Equipo participando en una capacitación de IA de Clevr" width="1600" height="1198" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="clients-bar">
@@ -963,24 +991,26 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
         <span class="clients-lbl">Confían en nosotros</span>
         <div class="clients-track-wrap mobile-only">
           <div class="clients-inner">
-            <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
-            <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
-            <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
-            <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
-            <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-            <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas"></div>
-            <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed"></div>
-            <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec"></div>
-            <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun"></div>
-            <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
-            <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
-            <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
-            <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
-            <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-            <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas"></div>
-            <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed"></div>
-            <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec"></div>
-            <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun"></div>
+            <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline" width="500" height="185" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC" width="225" height="225" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="/imagenes/optimizadas/salimax-logo-2c1868e.webp" alt="Salimax" width="1600" height="426" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB" width="1200" height="628" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades" width="822" height="334" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas" width="184" height="184" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed" width="3618" height="863" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec" width="447" height="447" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun" width="630" height="326" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/brent.png" alt="Brent Abogados" width="528" height="200" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline" width="500" height="185" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC" width="225" height="225" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="/imagenes/optimizadas/salimax-logo-2c1868e.webp" alt="Salimax" width="1600" height="426" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB" width="1200" height="628" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades" width="822" height="334" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas" width="184" height="184" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed" width="3618" height="863" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec" width="447" height="447" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun" width="630" height="326" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/brent.png" alt="Brent Abogados" width="528" height="200" loading="lazy" decoding="async"></div>
           </div>
         </div>
       </div>
@@ -988,61 +1018,72 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 
     <div class="clients-track-wrap full-bleed">
       <div class="clients-inner">
-        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
-        <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
-        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun"></div>
-        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
-        <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
-        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun"></div>
-        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
-        <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
-        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun"></div>
-        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
-        <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
-        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun"></div>
-        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
-        <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
-        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun"></div>
-        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC"></div>
-        <div class="client-logo-wrap"><img src="imagenes/salimax-logo.jpg" alt="Salimax"></div>
-        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB"></div>
-        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec"></div>
-        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline" width="500" height="185" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC" width="225" height="225" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="/imagenes/optimizadas/salimax-logo-2c1868e.webp" alt="Salimax" width="1600" height="426" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB" width="1200" height="628" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades" width="822" height="334" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas" width="184" height="184" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed" width="3618" height="863" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec" width="447" height="447" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun" width="630" height="326" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/brent.png" alt="Brent Abogados" width="528" height="200" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline" width="500" height="185" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC" width="225" height="225" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="/imagenes/optimizadas/salimax-logo-2c1868e.webp" alt="Salimax" width="1600" height="426" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB" width="1200" height="628" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades" width="822" height="334" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas" width="184" height="184" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed" width="3618" height="863" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec" width="447" height="447" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun" width="630" height="326" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/brent.png" alt="Brent Abogados" width="528" height="200" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline" width="500" height="185" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC" width="225" height="225" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="/imagenes/optimizadas/salimax-logo-2c1868e.webp" alt="Salimax" width="1600" height="426" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB" width="1200" height="628" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades" width="822" height="334" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas" width="184" height="184" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed" width="3618" height="863" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec" width="447" height="447" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun" width="630" height="326" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/brent.png" alt="Brent Abogados" width="528" height="200" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline" width="500" height="185" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC" width="225" height="225" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="/imagenes/optimizadas/salimax-logo-2c1868e.webp" alt="Salimax" width="1600" height="426" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB" width="1200" height="628" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades" width="822" height="334" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas" width="184" height="184" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed" width="3618" height="863" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec" width="447" height="447" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun" width="630" height="326" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/brent.png" alt="Brent Abogados" width="528" height="200" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline" width="500" height="185" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC" width="225" height="225" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="/imagenes/optimizadas/salimax-logo-2c1868e.webp" alt="Salimax" width="1600" height="426" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB" width="1200" height="628" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades" width="822" height="334" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas" width="184" height="184" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed" width="3618" height="863" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec" width="447" height="447" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun" width="630" height="326" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/brent.png" alt="Brent Abogados" width="528" height="200" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap filteronline"><img src="imagenes/filteronline-logo.webp" alt="FilterOnline" width="500" height="185" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cmlc-logo.png" alt="CMLC" width="225" height="225" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="/imagenes/optimizadas/salimax-logo-2c1868e.webp" alt="Salimax" width="1600" height="426" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/cslab-logo.png" alt="CSLAB" width="1200" height="628" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="imagenes/inhouse-logo.png" alt="Inhouse Propiedades" width="822" height="334" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/grupo%20farcas.png" alt="Grupo Farcas" width="184" height="184" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/arquimed.webp" alt="Arquimed" width="3618" height="863" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/automec.jpeg" alt="Automec" width="447" height="447" loading="lazy" decoding="async"></div>
+        <div class="client-logo-wrap"><img src="ima%20clientes/hardfun.jpeg" alt="Hard Fun" width="630" height="326" loading="lazy" decoding="async"></div>
+            <div class="client-logo-wrap"><img src="ima%20clientes/brent.png" alt="Brent Abogados" width="528" height="200" loading="lazy" decoding="async"></div>
       </div>
+    </div>
+    <div class="partner-logos" aria-label="Organizaciones colaboradoras">
+      <img src="ima%20clientes/etm%20.png" alt="ETM Day" width="330" height="154" loading="lazy" decoding="async">
+      <img src="ima%20clientes/jbiz.png" alt="OLAMI JBIZ" width="360" height="110" loading="lazy" decoding="async">
+      <img src="ima%20clientes/mercado-publico.png" alt="ChileCompra Mercado Público" width="1024" height="554" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -1092,19 +1133,6 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
                 <div class="ph-header-sub">Actualizado hace 2 min</div>
               </div>
               <div class="ph-section">
-                <div class="ph-section-label">Este mes</div>
-                <div class="ph-stat-row">
-                  <div class="ph-stat">
-                    <div class="ph-stat-val">847</div>
-                    <div class="ph-stat-lbl">Clientes activos</div>
-                  </div>
-                  <div class="ph-stat">
-                    <div class="ph-stat-val">0</div>
-                    <div class="ph-stat-lbl">Errores manuales</div>
-                  </div>
-                </div>
-              </div>
-              <div class="ph-section">
                 <div class="ph-section-label">Automatización</div>
                 <div class="ph-card">
                   <div class="ph-card-row">
@@ -1120,6 +1148,14 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
                   </div>
                   <div class="ph-bar-track"><div class="ph-bar-fill" style="animation-delay:.4s"></div></div>
                 </div>
+              </div>
+              <div class="ph-chart">
+                <div class="ph-chart-head"><span>Actividad</span><strong>+18%</strong></div>
+                <svg viewBox="0 0 220 58" role="img" aria-label="Actividad creciente esta semana">
+                  <path class="ph-chart-grid" d="M0 12H220M0 30H220M0 48H220"/>
+                  <path class="ph-chart-area" d="M2 46 C24 42 24 34 48 38 S77 29 94 33 S120 24 138 28 S164 13 180 19 S205 8 218 5 L218 56H2Z"/>
+                  <path class="ph-chart-line" d="M2 46 C24 42 24 34 48 38 S77 29 94 33 S120 24 138 28 S164 13 180 19 S205 8 218 5"/>
+                </svg>
               </div>
               <div class="ph-notif">
                 <div class="ph-notif-top">
@@ -1153,13 +1189,17 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
         <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01"/></svg></span>ERP</div>
         <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19c.5-4 2.3-6 5.5-6s5 2 5.5 6M16 8h5M18.5 5.5v5"/></svg></span>CRM</div>
         <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><path d="M4 7h16v11H4zM7 4h10v3M7 12h4M15 12h2M7 15h2"/></svg></span>Cobranza</div>
-        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><path d="M4 9h16M5 9v10M10 9v10M14 9v10M19 9v10M3 19h18M12 3l9 5H3z"/></svg></span>Contabilidad</div>
+        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h17M8 16v-4M13 16V8M18 16V5"/></svg></span>Informes</div>
+        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><path d="m3 11 17-6v14L3 13v-2ZM3 13l3 7h5l-3-5M20 10c1.2.7 1.8 1.4 1.8 2s-.6 1.3-1.8 2"/></svg></span>Marketing</div>
+        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-10Z"/><path d="M8 20v-7h8v7M5.5 10.5h.01M18.5 10.5h.01"/></svg></span>Inventario</div>
       </div>
 
       <svg class="mobile-integration-web" viewBox="0 0 350 64" preserveAspectRatio="none" aria-hidden="true">
         <path class="integration-line" d="M42 0 C42 30 145 24 175 64"/><path class="integration-pulse" d="M42 0 C42 30 145 24 175 64"/>
         <path class="integration-line" d="M130 0 C130 30 160 32 175 64"/><path class="integration-pulse delay-1" d="M130 0 C130 30 160 32 175 64"/>
+        <path class="integration-line" d="M175 0 C175 30 175 32 175 64"/><path class="integration-pulse delay-2" d="M175 0 C175 30 175 32 175 64"/>
         <path class="integration-line" d="M220 0 C220 30 190 32 175 64"/><path class="integration-pulse delay-2" d="M220 0 C220 30 190 32 175 64"/>
+        <path class="integration-line" d="M263 0 C263 30 195 28 175 64"/><path class="integration-pulse delay-1" d="M263 0 C263 30 195 28 175 64"/>
         <path class="integration-line" d="M308 0 C308 30 205 24 175 64"/><path class="integration-pulse delay-3" d="M308 0 C308 30 205 24 175 64"/>
       </svg>
 
@@ -1169,24 +1209,30 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 
       <svg class="mobile-integration-web" viewBox="0 0 350 64" preserveAspectRatio="none" aria-hidden="true">
         <path class="integration-line" d="M175 0 C175 34 70 28 42 64"/><path class="integration-pulse" d="M175 0 C175 34 70 28 42 64"/>
+        <path class="integration-line" d="M175 0 C175 34 130 32 130 64"/><path class="integration-pulse delay-1" d="M175 0 C175 34 130 32 130 64"/>
         <path class="integration-line" d="M175 0 C175 34 175 36 175 64"/><path class="integration-pulse delay-1" d="M175 0 C175 34 175 36 175 64"/>
-        <path class="integration-line" d="M175 0 C175 34 280 28 308 64"/><path class="integration-pulse delay-2" d="M175 0 C175 34 280 28 308 64"/>
+        <path class="integration-line" d="M175 0 C175 34 220 32 220 64"/><path class="integration-pulse delay-2" d="M175 0 C175 34 220 32 220 64"/>
+        <path class="integration-line" d="M175 0 C175 34 280 28 308 64"/><path class="integration-pulse delay-3" d="M175 0 C175 34 280 28 308 64"/>
       </svg>
 
       <div class="integration-column">
         <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/><circle cx="12" cy="12" r="4"/></svg></span>Automatizaciones guiadas</div>
         <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Menos tiempo perdido</div>
         <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>Información centralizada</div>
+        <div class="integration-card"><span class="integration-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v5c0 4.6 3.2 7.8 7.5 10 4.3-2.2 7.5-5.4 7.5-10V6L12 3Z"/><circle cx="12" cy="10" r="2.2"/><path d="M8.5 16c.4-1.8 1.6-2.8 3.5-2.8s3.1 1 3.5 2.8"/></svg></span>Agentes</div>
       </div>
 
-      <svg class="integration-lines" viewBox="0 0 500 400" preserveAspectRatio="none" aria-hidden="true">
-        <path id="in1" class="integration-line" d="M0 60 C95 60 105 200 250 200"/><path class="integration-pulse" d="M0 60 C95 60 105 200 250 200"/>
-        <path id="in2" class="integration-line" d="M0 150 C100 150 125 200 250 200"/><path class="integration-pulse delay-1" d="M0 150 C100 150 125 200 250 200"/>
-        <path id="in3" class="integration-line" d="M0 250 C100 250 125 200 250 200"/><path class="integration-pulse delay-2" d="M0 250 C100 250 125 200 250 200"/>
-        <path id="in4" class="integration-line" d="M0 340 C95 340 105 200 250 200"/><path class="integration-pulse delay-3" d="M0 340 C95 340 105 200 250 200"/>
-        <path class="integration-line" d="M250 200 C375 200 400 90 500 90"/><path class="integration-pulse out" d="M250 200 C375 200 400 90 500 90"/>
-        <path class="integration-line" d="M250 200 C390 200 405 200 500 200"/><path class="integration-pulse out delay-1" d="M250 200 C390 200 405 200 500 200"/>
-        <path class="integration-line" d="M250 200 C375 200 400 310 500 310"/><path class="integration-pulse out delay-2" d="M250 200 C375 200 400 310 500 310"/>
+      <svg class="integration-lines" viewBox="0 0 500 460" preserveAspectRatio="none" aria-hidden="true">
+        <path id="in1" class="integration-line" d="M0 8 C95 8 105 230 250 230"/><path class="integration-pulse" d="M0 8 C95 8 105 230 250 230"/>
+        <path id="in2" class="integration-line" d="M0 96 C100 96 125 230 250 230"/><path class="integration-pulse delay-1" d="M0 96 C100 96 125 230 250 230"/>
+        <path id="in3" class="integration-line" d="M0 185 C100 185 125 230 250 230"/><path class="integration-pulse delay-2" d="M0 185 C100 185 125 230 250 230"/>
+        <path id="in4" class="integration-line" d="M0 275 C95 275 105 230 250 230"/><path class="integration-pulse delay-3" d="M0 275 C95 275 105 230 250 230"/>
+        <path id="in5" class="integration-line" d="M0 364 C95 364 105 230 250 230"/><path class="integration-pulse delay-1" d="M0 364 C95 364 105 230 250 230"/>
+        <path id="in6" class="integration-line" d="M0 452 C95 452 105 230 250 230"/><path class="integration-pulse delay-2" d="M0 452 C95 452 105 230 250 230"/>
+        <path class="integration-line" d="M250 230 C375 230 400 96 500 96"/><path class="integration-pulse out" d="M250 230 C375 230 400 96 500 96"/>
+        <path class="integration-line" d="M250 230 C375 230 400 185 500 185"/><path class="integration-pulse out delay-1" d="M250 230 C375 230 400 185 500 185"/>
+        <path class="integration-line" d="M250 230 C375 230 400 275 500 275"/><path class="integration-pulse out delay-2" d="M250 230 C375 230 400 275 500 275"/>
+        <path class="integration-line" d="M250 230 C375 230 400 364 500 364"/><path class="integration-pulse out delay-3" d="M250 230 C375 230 400 364 500 364"/>
       </svg>
     </div>
   </div>
@@ -1200,7 +1246,18 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
     <div class="delivery-intro r">
       <p class="slabel">El desafío de hoy</p>
       <h2 class="title-left">La IA avanza rápido. Las soluciones genéricas dejan trabajo <span class="i">a medio hacer.</span></h2>
-      <p class="problem-copy">Terminas pagando por una herramienta que resuelve una parte del problema y deja el resto en planillas, por WhatsApp o todavía a mano. En Clevr encontramos contigo dónde está el dolor y construimos sobre lo que ya usas.</p>
+      <div class="ai-adoption">
+        <div class="ai-adoption-heading">
+          <h3>La oportunidad está en llevar la IA más allá de lo básico</h3>
+          <p>Entre las empresas chilenas que ya adoptaron IA, su nivel de integración todavía es desigual:</p>
+        </div>
+        <div class="ai-adoption-grid" aria-label="Niveles de adopción de inteligencia artificial en empresas chilenas">
+          <div class="ai-adoption-stat"><strong>58%</strong><span>la usa para tareas básicas, como chatbots públicos</span></div>
+          <div class="ai-adoption-stat"><strong>25%</strong><span>la integra en sus productos o servicios</span></div>
+          <div class="ai-adoption-stat"><strong>17%</strong><span>usa sistemas avanzados, desarrollos propios o agentes autónomos</span></div>
+        </div>
+        <p class="ai-adoption-source">Fuente: estudio de Strand Partners para Amazon Web Services (AWS), basado en una encuesta a 1.000 líderes empresariales en Chile. <a href="https://www.pauta.cl/tendencias/2026/09/25/el-45-de-las-empresas-chilenas-usa-inteligencia-artificial-pero-la-mayoria-aun-la-ocupa-para-tareas-basicas.html" target="_blank" rel="noopener noreferrer">Ver información del estudio</a>.</p>
+      </div>
     </div>
 
   </div>
@@ -1239,7 +1296,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
     </div>
     <div class="team-g">
       <div class="tc r d1">
-        <div class="avatar" style="background:none;box-shadow:none;overflow:hidden;padding:0"><img src="imagenes/alberto-blanche.jpg" alt="Alberto Blanche" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%"></div>
+        <div class="avatar" style="background:none;box-shadow:none;overflow:hidden;padding:0"><img src="imagenes/alberto-blanche.jpg" alt="Alberto Blanche" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%" width="1200" height="1600" loading="lazy" decoding="async"></div>
         <h3>Alberto Blanche</h3>
         <a href="https://www.linkedin.com/in/alberto-blanche-pupkin-595b7a2bb/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;color:#0A66C2;text-decoration:none;font-size:12px;font-weight:600">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -1247,7 +1304,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
         </a>
       </div>
       <div class="tc r d2">
-        <div class="avatar av-o" style="background:none;box-shadow:none;overflow:hidden;padding:0"><img src="imagenes/benjamin-apt.jpg" alt="Benjamín Apt" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%"></div>
+        <div class="avatar av-o" style="background:none;box-shadow:none;overflow:hidden;padding:0"><img src="imagenes/benjamin-apt.jpg" alt="Benjamín Apt" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%" width="1060" height="1600" loading="lazy" decoding="async"></div>
         <h3>Benjamín Apt</h3>
         <a href="https://www.linkedin.com/in/benjamín-apt-a38253290/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;color:#0A66C2;text-decoration:none;font-size:12px;font-weight:600">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -1255,7 +1312,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
         </a>
       </div>
       <div class="tc r d3">
-        <div class="avatar av-t" style="background:none;box-shadow:none;overflow:hidden;padding:0"><img src="imagenes/alan-kulka.png" alt="Alan Kulka" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%"></div>
+        <div class="avatar av-t" style="background:none;box-shadow:none;overflow:hidden;padding:0"><img src="/imagenes/optimizadas/alan-kulka-7c6837d.webp" alt="Alan Kulka" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%" width="1087" height="1446" loading="lazy" decoding="async"></div>
         <h3>Alan Kulka</h3>
         <a href="https://www.linkedin.com/in/alan-kulka-9431182bb/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:5px;margin-top:10px;color:#0A66C2;text-decoration:none;font-size:12px;font-weight:600">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -1339,7 +1396,7 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   <div>
     <a href="https://admin.clevr.cl/" target="_blank" rel="noopener" style="display:inline-block;margin-top:14px;color:rgba(255,255,255,.3);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s" onmouseover="this.style.color='rgba(255,255,255,.6)'" onmouseout="this.style.color='rgba(255,255,255,.3)'">Portal Admin</a>
   </div>
-</footer>
+<nav aria-label="Soluciones e industrias" style="position:static;display:flex;justify-content:center;flex-wrap:wrap;gap:24px;background:transparent;border:0;padding:20px"><a style="color:inherit" href="/soluciones/">Soluciones</a><a style="color:inherit" href="/industrias/">Industrias</a></nav></footer>
 
 <script>
 /* ─── SCROLL REVEAL ─── */
@@ -1412,131 +1469,320 @@ document.getElementById('clevr-form').addEventListener('submit', async function(
 });
 
 
-/* ─── MONITOR INTERACTIVO ─── */
-const monitorScreen = document.getElementById('monitorScreen');
-const screenCursor  = document.getElementById('screenCursor');
-const nodes = [
-  ...document.querySelectorAll('#monitorScreen .wf-node')
-];
-const progressBar = document.getElementById('screenProgress');
-let nodeState = nodes.map(() => 0);
-let demoGen = 0; // incrementar cancela todos los callbacks viejos
-
-
-function resetNodes() {
-  nodes.forEach((n,i) => { n.classList.remove('wf-active','wf-done'); nodeState[i]=0; });
-  progressBar.style.width = '0%';
-}
-
-function updateProgress() {
-  const done   = nodeState.filter(s=>s===2).length;
-  const active = nodeState.filter(s=>s===1).length;
-  progressBar.style.width = (done===nodes.length ? 100 : Math.round((done + active*.5) / nodes.length * 100)) + '%';
-}
-
-function runDemo() {
-  demoGen++;
-  const gen = demoGen;
-  resetNodes();
-  let step = 0;
-
-  function tick() {
-    if (demoGen !== gen) return; // cancelado por nueva generación
-    // completar paso anterior
-    if (step > 0) {
-      nodes[step-1].classList.remove('wf-active');
-      nodes[step-1].classList.add('wf-done');
-      nodeState[step-1] = 2;
-      updateProgress();
-    }
-    if (step < nodes.length) {
-      nodes[step].classList.add('wf-active');
-      nodeState[step] = 1;
-      updateProgress();
-      step++;
-      setTimeout(tick, 1300);
-    } else {
-      updateProgress();
-      setTimeout(() => { if (demoGen === gen) runDemo(); }, 2200);
-    }
-  }
-  setTimeout(tick, 500);
-}
-
-setTimeout(runDemo, 1500);
-
-/* ─── NEURAL NETWORK BACKGROUND ─── */
+/* ─── RISING, MOUSE-RESPONSIVE WEB ─── */
 (function(){
   const canvas = document.getElementById('neuralCanvas');
-  const ctx    = canvas.getContext('2d');
-  let nodes    = [];
-  let W, H;
+  const hero = document.getElementById('hero');
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let nodes = [], edges = [], W = 0, H = 0, dpr = 1, startTime = performance.now();
+  const pointer = { x: -1000, y: -1000, drawX: -1000, drawY: -1000, active: false, strength: 0 };
 
   function resize(){
-    const hero = document.getElementById('hero');
-    W = canvas.width  = hero.offsetWidth;
-    H = canvas.height = hero.offsetHeight;
+    const rect = hero.getBoundingClientRect();
+    W = rect.width;
+    H = rect.height;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    buildWeb();
   }
 
-  function init(){
+  function mobileLayout(){
+    return window.innerWidth<=768||(window.innerHeight<=500&&window.matchMedia('(orientation: landscape)').matches);
+  }
+
+  function buildWeb(){
     nodes = [];
-    const nodeCount = window.innerWidth <= 768 ? 24 : 52;
-    for(let i=0;i<nodeCount;i++){
-      nodes.push({
-        x: Math.random()*W,
-        y: Math.random()*H,
-        vx:(Math.random()-.5)*.28,
-        vy:(Math.random()-.5)*.28,
-        r: Math.random()*2+1.2
-      });
-    }
-  }
+    edges = [];
+    const mobile = mobileLayout();
+    // Fine square cells give the hero a calm, technical grid.
+    const cellSize = mobile ? 28 : 40;
+    const cols = Math.max(12, Math.ceil(W / cellSize) + 1);
+    const rows = Math.max(14, Math.ceil(H / cellSize) + 1);
+    const cellW = W / (cols - 1);
+    const cellH = H / (rows - 1);
+    for(let row=0;row<rows;row++){
+      for(let col=0;col<cols;col++){
+        const index = row * cols + col;
+        const colProgress = col / (cols - 1);
+        const baseX = col * cellW + (Math.random() - .5) * cellW * .035;
+        const baseY = row * cellH + (Math.random() - .5) * cellH * .035;
+        const delay = (rows - row - 1) * 52 + Math.abs(colProgress - .5) * 110;
+        nodes.push({ baseX, baseY, x: baseX, y: baseY + (reduceMotion ? 0 : 160), phase: Math.random() * Math.PI * 2, delay, accent: Math.random() < .085, accentAlpha: .58 + Math.random() * .34 });
 
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    const connectionDistance = window.innerWidth <= 768 ? 115 : 180;
-
-    // lines
-    for(let i=0;i<nodes.length;i++){
-      for(let j=i+1;j<nodes.length;j++){
-        const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
-        const d=Math.sqrt(dx*dx+dy*dy);
-        if(d<connectionDistance){
-          const alpha=(1-d/connectionDistance)*.12;
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x,nodes[i].y);
-          ctx.lineTo(nodes[j].x,nodes[j].y);
-          ctx.strokeStyle=`rgba(180,100,30,${alpha * 3})`;
-          ctx.lineWidth=1;
-          ctx.stroke();
-        }
+        if(col < cols - 1) edges.push([index,index+1]);
+        if(row < rows - 1) edges.push([index,index+cols]);
       }
     }
-
-    // dots
-    nodes.forEach(n=>{
-      ctx.beginPath();
-      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(180,100,30,.3)';
-      ctx.fill();
-    });
   }
 
-  function update(){
-    nodes.forEach(n=>{
-      n.x+=n.vx; n.y+=n.vy;
-      if(n.x<0||n.x>W) n.vx*=-1;
-      if(n.y<0||n.y>H) n.vy*=-1;
+  function draw(now){
+    ctx.clearRect(0,0,W,H);
+    const heroRect=hero.getBoundingClientRect();
+    const mobile=mobileLayout();
+    const sectionProgress=Math.max(0,Math.min(1,-heroRect.top/Math.max(1,hero.offsetHeight-window.innerHeight)));
+    const visible=heroRect.bottom>0&&heroRect.top<window.innerHeight;
+    const fade=mobile?(visible?1:0):1-sectionProgress*sectionProgress*(3-2*sectionProgress);
+    canvas.style.opacity=((mobile?.72:1)*fade).toFixed(3);
+    const pointerTarget=pointer.active?1:0;
+    pointer.strength+=(pointerTarget-pointer.strength)*(reduceMotion?1:pointer.active?.24:.11);
+    const pointerEase=reduceMotion?1:.38;
+    pointer.drawX+=(pointer.x-pointer.drawX)*pointerEase;
+    pointer.drawY+=(pointer.y-pointer.drawY)*pointerEase;
+    const elapsed = reduceMotion ? 2000 : now - startTime;
+    const radius = mobile ? 92 : 175;
+    nodes.forEach(node=>{
+      const rise = Math.max(0, Math.min(1, (elapsed - node.delay) / 1150));
+      const easedRise = 1 - Math.pow(1 - rise, 3);
+      const ambient = reduceMotion ? 0 : Math.sin(now * .0007 + node.phase) * 3;
+      let targetX = node.baseX;
+      let targetY = node.baseY + (1 - easedRise) * 160 + ambient;
+
+      if(pointer.strength>0){
+        const dx = node.baseX - pointer.drawX;
+        const dy = node.baseY - pointer.drawY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const influence = Math.max(0, 1 - distance / radius)*pointer.strength;
+        const ripple = mobile ? 0 : Math.sin(distance * .035 - now * .009) * influence * 4;
+        const displacement=mobile?6:13;
+        targetX += (dx / (distance || 1)) * influence * displacement + ripple;
+        targetY += (dy / (distance || 1)) * influence * displacement + ripple;
+      }
+
+      node.x += (targetX - node.x) * (reduceMotion ? 1 : .27);
+      node.y += (targetY - node.y) * (reduceMotion ? 1 : .27);
+    });
+
+    edges.forEach(([a, b])=>{
+      const from = nodes[a], to = nodes[b];
+      const horizontal = Math.abs(a - b) === 1;
+      const midX = (from.x + to.x) / 2, midY = (from.y + to.y) / 2;
+      const rightBias = Math.pow(Math.max(0, Math.min(1, (midX / W - .08) / .92)), 1.25);
+      const lowerBias = mobile?Math.pow(Math.max(0,Math.min(1,midY/H)),1.45):0;
+      const nearPointer = pointer.strength ? Math.max(0, 1 - Math.hypot(midX - pointer.drawX, midY - pointer.drawY) / radius)*pointer.strength : 0;
+      const bend = nearPointer * (mobile?3:8);
+      ctx.beginPath();
+      ctx.moveTo(from.x, from.y);
+      ctx.quadraticCurveTo(horizontal ? midX : midX + bend, horizontal ? midY + bend : midY, to.x, to.y);
+      const baseAlpha=mobile?.10+rightBias*.02+lowerBias*.30:.14+rightBias*.28;
+      ctx.strokeStyle=nearPointer>.025?`rgba(249,115,22,${Math.min(.88,nearPointer*.9)})`:`rgba(139,112,91,${baseAlpha})`;
+      ctx.lineWidth=(mobile?.32+rightBias*.12:.42+rightBias*.18)+nearPointer*(mobile?.42:.5);
+      ctx.lineCap='round';
+      ctx.setLineDash([1.25,3.25]);
+      if(nearPointer>.025){ctx.shadowColor='rgba(249,115,22,.95)';ctx.shadowBlur=nearPointer*(mobile?12:18)}
+      ctx.stroke();
+      ctx.shadowBlur=0;
+    });
+    ctx.setLineDash([]);
+
+    nodes.forEach(node=>{
+      const nearPointer=pointer.strength?Math.max(0,1-Math.hypot(node.x-pointer.drawX,node.y-pointer.drawY)/radius)*pointer.strength:0;
+      if(!node.accent&&nearPointer<.12)return;
+      ctx.beginPath();ctx.arc(node.x,node.y,(mobile?1.65:1.8)+nearPointer*1.7,0,Math.PI*2);
+      ctx.fillStyle=`rgba(249,115,22,${Math.min(.92,node.accentAlpha+nearPointer*.55)})`;
+      if(nearPointer>.12){ctx.shadowColor='rgba(249,115,22,.95)';ctx.shadowBlur=nearPointer*(mobile?8:12)}
+      ctx.fill();ctx.shadowBlur=0;
     });
   }
 
   function loop(){
-    update(); draw();
-    requestAnimationFrame(loop);
+    draw(performance.now());
+    if(!reduceMotion) requestAnimationFrame(loop);
   }
 
-  window.addEventListener('resize',()=>{ resize(); init(); });
-  resize();init();loop();
+  hero.addEventListener('pointermove', event=>{
+    const rect = hero.getBoundingClientRect();
+    pointer.x = event.clientX - rect.left;
+    pointer.y = event.clientY - rect.top;
+    pointer.active = true;
+    if(reduceMotion) draw(performance.now());
+  });
+  hero.addEventListener('pointerdown',event=>{
+    const rect=hero.getBoundingClientRect();
+    pointer.x=event.clientX-rect.left;pointer.y=event.clientY-rect.top;pointer.active=true;
+    if(reduceMotion)draw(performance.now());
+  });
+  hero.addEventListener('pointerup',()=>{pointer.active=false;if(reduceMotion)draw(performance.now());});
+  hero.addEventListener('pointercancel',()=>{pointer.active=false;if(reduceMotion)draw(performance.now());});
+  hero.addEventListener('pointerleave', ()=>{
+    pointer.active = false;
+    if(reduceMotion) draw(performance.now());
+  });
+  window.addEventListener('resize', ()=>{ resize(); if(reduceMotion) draw(performance.now()); });
+  resize();
+  loop();
+})();
+
+/* ─── INTERACTIVE PHONE DEMO ─── */
+(function(){
+  const screen=document.querySelector('.phone-screen');
+  if(!screen)return;
+  const cards=[...screen.querySelectorAll('.ph-stat,.ph-card')];
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let activated=false;
+  function activate(){
+    if(activated)return;
+    activated=true;
+    screen.classList.add('is-active');
+  }
+  if(reduceMotion)activate();
+  else if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      if(entries.some(entry=>entry.isIntersecting)){
+        activate();
+        observer.disconnect();
+      }
+    },{threshold:.3});
+    observer.observe(screen);
+  }else activate();
+  screen.addEventListener('pointermove',event=>{
+    if(reduceMotion)return;
+    cards.forEach(card=>{
+      const rect=card.getBoundingClientRect();
+      const dx=event.clientX-(rect.left+rect.width/2);
+      const dy=event.clientY-(rect.top+rect.height/2);
+      const influence=Math.max(0,1-Math.hypot(dx,dy)/145);
+      card.style.transform=`translateY(${-3*influence}px) scale(${1+influence*.012})`;
+      card.style.borderColor=influence>.18?'#fdba74':'';
+      card.style.boxShadow=influence>.18?'0 5px 14px rgba(249,115,22,.12)':'';
+    });
+  });
+  screen.addEventListener('pointerleave',()=>cards.forEach(card=>{
+    card.style.transform='';card.style.borderColor='';card.style.boxShadow='';
+  }));
+  screen.addEventListener('pointerdown',activate);
+})();
+
+/* ─── CLEV R PARTICLE MARK: SCROLL TO ASSEMBLE ─── */
+(function(){
+  const canvas = document.getElementById('clevrMark');
+  const hero = document.getElementById('hero');
+  if(!canvas || !hero) return;
+  const ctx = canvas.getContext('2d');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const colors = ['#F97316','#EA580C','#F97316','#FB923C'];
+  let W = 0, H = 0, dpr = 1, particles = [], introAt = performance.now(), pointer = {x:-1000,y:-1000,active:false,strength:0};
+
+  function random(min,max){return min + Math.random() * (max - min)}
+  function clamp(value){return Math.max(0,Math.min(1,value))}
+  function smooth(value){const t=clamp(value);return t*t*(3-2*t)}
+  function isMobileLayout(){return W<=768||(H<=500&&window.matchMedia('(orientation: landscape)').matches)}
+
+  function resize(){
+    const mobile=window.innerWidth<=768||(window.innerHeight<=500&&window.matchMedia('(orientation: landscape)').matches);
+    W = mobile?hero.clientWidth:window.innerWidth;
+    H = mobile?hero.clientHeight:window.innerHeight;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    buildParticles();
+  }
+
+  function buildParticles(){
+    const mobile = isMobileLayout();
+    const count = mobile ? 300 : 760;
+    const centerX = W * (mobile ? .54 : .76);
+    const heroRect=hero.getBoundingClientRect();
+    const buttonRect=hero.querySelector('.hero-right .btns a')?.getBoundingClientRect();
+    const buttonBottom=buttonRect?buttonRect.bottom-heroRect.top:H*.48;
+    const radiusLimit=mobile?Math.max(36,(H-buttonBottom-76)/2.16):H*.29;
+    const radius = Math.min(W * (mobile ? .27 : .18), H * (mobile ? (H<=500?.18:.14) : .29),radiusLimit);
+    const centerY = mobile ? buttonBottom+64+radius*1.08 : H*.52;
+    const startAngle = Math.PI * (mobile ? .25 : .31);
+    const arc = Math.PI * (mobile ? 1.5 : 1.38);
+    particles = Array.from({length:count},(_,i)=>{
+      const laneCount=4;
+      const along=mobile?Math.floor(i/laneCount)/(Math.ceil(count/laneCount)-1):Math.random();
+      const angle = startAngle + along*arc + (mobile?random(-.002,.002):0);
+      const lane=mobile?i%laneCount:0;
+      const r = radius * (mobile?.78+lane*.1+random(-.012,.012):random(.62,1.04));
+      const targetX = centerX + Math.cos(angle) * r;
+      const targetY = centerY + Math.sin(angle) * r;
+      return {
+        x:random(W*.52,W*.98), y:random(H*.08,H*.92),
+        targetX, targetY, angle, delay:random(0,520), phase:random(0,Math.PI*2),
+        size:random(mobile?2.7:2.1,mobile?4:4.2), color:colors[i%colors.length],
+        alpha:random(.66,1)
+      };
+    });
+    canvas._mark = {centerX,centerY,radius};
+    const touchZone=document.getElementById('clevrTouchZone');
+    if(touchZone){
+      touchZone.style.display=mobile?'block':'none';
+      touchZone.style.width=touchZone.style.height=`${radius*2.24}px`;
+      touchZone.style.left=`${centerX-radius*1.12}px`;
+      touchZone.style.top=`${centerY-radius*1.12}px`;
+    }
+  }
+
+  function draw(now){
+    ctx.clearRect(0,0,W,H);
+    const rect=hero.getBoundingClientRect();
+    const visible=rect.bottom>0 && rect.top<H;
+    const sectionProgress=clamp(-rect.top/Math.max(1,hero.offsetHeight-H));
+    const mobile=isMobileLayout();
+    const fade=visible?(mobile?1:1-smooth(sectionProgress)):0;
+    canvas.style.opacity=fade.toFixed(3);
+    if(pointer.active) pointer.strength=1;
+    else pointer.strength=Math.max(0,pointer.strength-.025);
+    const linked=[];
+    particles.forEach(p=>{
+      const mix=reduceMotion?1:smooth((now-introAt-p.delay)/1250);
+      const drift=reduceMotion?0:Math.sin(now*.001+p.phase)*(1-mix)*1.2;
+      let x=p.x+(p.targetX-p.x)*mix;
+      let y=p.y+(p.targetY-p.y)*mix+drift;
+      const dx=pointer.x-x,dy=pointer.y-y;
+      const distance=Math.hypot(dx,dy);
+      const hover=reduceMotion?0:Math.max(0,1-distance/(mobile?105:145))*pointer.strength;
+      if(hover){
+        const pull=(mobile?9:12)*hover;
+        x+=(dx/(distance||1))*pull;
+        y+=(dy/(distance||1))*pull;
+        if(hover>.12) linked.push({x,y,hover});
+      }
+      p.renderX=x;p.renderY=y;
+      ctx.beginPath();ctx.arc(x,y,p.size+hover*.7,0,Math.PI*2);
+      ctx.fillStyle=p.color;ctx.globalAlpha=fade*Math.min(1,.86+p.alpha*.14+hover*.12);ctx.fill();
+    });
+    if(linked.length>1){
+      ctx.lineWidth=.8;ctx.lineCap='round';
+      for(let i=0;i<linked.length;i++) for(let j=i+1;j<linked.length;j++){
+        const a=linked[i],b=linked[j],distance=Math.hypot(a.x-b.x,a.y-b.y);
+        if(distance<48){
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+          ctx.strokeStyle=`rgba(249,115,22,${fade*.32*Math.min(a.hover,b.hover)*(1-distance/48)})`;ctx.stroke();
+        }
+      }
+    }
+    ctx.globalAlpha=1;
+  }
+
+  function frame(now){draw(now);if(!reduceMotion)requestAnimationFrame(frame);}
+  function trackMarkPointer(e,pressed){
+    const r=hero.getBoundingClientRect(),mobile=isMobileLayout(),mark=canvas._mark;
+    pointer.x=e.clientX-(mobile?r.left:0);pointer.y=e.clientY-(mobile?r.top:0);
+    const onMark=mark&&Math.hypot(pointer.x-mark.centerX,pointer.y-mark.centerY)<mark.radius*1.55;
+    pointer.active=Boolean(onMark&&(e.pointerType!=='touch'||pressed));
+    if(pointer.active)pointer.strength=1;
+    else if(!onMark)pointer.strength=0;
+  }
+  hero.addEventListener('pointermove',e=>trackMarkPointer(e,e.buttons>0));
+  hero.addEventListener('pointerdown',e=>{
+    const onMark=trackMarkPointer(e,true);
+    if(onMark&&isMobileLayout()){
+      if(e.cancelable)e.preventDefault();
+      try{hero.setPointerCapture(e.pointerId)}catch{}
+    }
+  },{passive:false});
+  hero.addEventListener('pointerup',()=>{pointer.active=false;});
+  hero.addEventListener('pointercancel',()=>{pointer.active=false;});
+  hero.addEventListener('pointerleave',()=>{pointer.active=false;});
+  window.addEventListener('resize',resize);
+  window.addEventListener('scroll',()=>{if(reduceMotion)draw(performance.now());},{passive:true});
+  resize();frame(performance.now());
 })();
 
 </script>
