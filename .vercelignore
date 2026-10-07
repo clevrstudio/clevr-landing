@@ -1,0 +1,8 @@
+.git
+.vercel
+__pycache__
+contenido
+scripts
+tests
+docs
+CLAUDE.md
