@@ -34,6 +34,11 @@
     });
   });
   root.addEventListener('click', event => {
+    // Close the panel before the browser calculates the position of Agendar.
+    if (event.target.closest('a[href="#agendar"]')) {
+      select(null);
+      return;
+    }
     if (panels.hidden || event.target.closest('.explore-tab, .explore-panel, a')) return;
     select(null);
   });
