@@ -14,7 +14,16 @@
     if (focus) tab.focus();
   }
   tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => select(tab.getAttribute('aria-selected') === 'true' ? null : tab));
+    tab.addEventListener('click', () => {
+      const next = tab.getAttribute('aria-selected') === 'true' ? null : tab;
+      select(next);
+      if (next && window.matchMedia('(max-width:600px), (max-height:500px) and (orientation:landscape)').matches) {
+        requestAnimationFrame(() => panels.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+          block: 'start'
+        }));
+      }
+    });
     tab.addEventListener('keydown', event => {
       let next;
       if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
