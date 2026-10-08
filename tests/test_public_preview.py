@@ -13,9 +13,20 @@ class Page(HTMLParser):
    for k in ['href','src','action']:
     if k in a:self.links.append(a[k])
 class Preview(unittest.TestCase):
+ def test_preview_contains_exactly_reviewed_pages(self):
+  preview=ROOT/'preview'
+  pages=list(preview.rglob('*.html'))
+  self.assertEqual(len(pages),26)
+  self.assertEqual(len(list((preview/'soluciones').glob('*/index.html'))),15)
+  self.assertEqual(len(list((preview/'industrias').glob('*/index.html'))),7)
+  for name in ['index.html','talleres.html','soluciones/index.html','industrias/index.html']:
+   self.assertTrue((preview/name).is_file(),name)
+ def test_preview_has_no_editorial_sources_or_internal_tools(self):
+  excluded={'contenido','scripts','tests','docs','CLAUDE.md','.gitignore','.vercelignore','vercel.json','robots.txt','sitemap.xml','cotizador.html','__pycache__'}
+  for path in (ROOT/'preview').rglob('*'):
+   self.assertFalse(set(path.relative_to(ROOT/'preview').parts) & excluded,str(path))
  def test_preview_pages_remain_inside_preview_and_do_not_index(self):
   pages=list((ROOT/'preview').rglob('*.html'))
-  self.assertEqual(len(pages),26)
   for path in pages:
    with self.subTest(page=str(path)):
     page=Page(path.read_text());self.assertTrue(page.noindex)

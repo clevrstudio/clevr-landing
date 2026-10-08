@@ -5,3 +5,16 @@ scripts
 tests
 docs
 CLAUDE.md
+
+# Frozen preview excludes editorial sources and internal tools.
+preview/contenido
+preview/scripts
+preview/tests
+preview/docs
+preview/CLAUDE.md
+preview/.gitignore
+preview/.vercelignore
+preview/vercel.json
+preview/robots.txt
+preview/sitemap.xml
+preview/cotizador.html
