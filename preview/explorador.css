@@ -65,7 +65,8 @@
 .explore-catalog-access{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin:-10px 0 28px;padding:18px 0;border-top:1px solid #e7eaed}
 .explore-catalog-access>p{max-width:530px;font-size:12px;line-height:1.7;color:#647080;margin:0}
 .explore-catalog-access>div{display:flex;flex-wrap:wrap;gap:14px 24px}
-.explore-catalog-access a{font-size:12px;line-height:1.6;font-weight:600;color:#b8490c;text-decoration:none}
+.explore-catalog-access a{display:inline-flex;align-items:center;gap:6px;font-size:12px;line-height:1.6;font-weight:600;color:#b8490c;text-decoration:none}
+.explore-catalog-arrow{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .explore-catalog-access a:hover{text-decoration:underline}
 .explore-catalog-access a:focus-visible{outline:2px solid #b8490c;outline-offset:4px}
 .explore-catalog-access noscript{flex-basis:100%;font-size:12px;line-height:1.7;color:#647080}
