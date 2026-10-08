@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotizador — Clevr</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F8F9FE;--bg1:#fff;--ink:#0A0F1E;--ink2:#2D3748;--muted:#8896A8;
+  --orange:#F97316;--ol:#FFF7ED;--om:#FED7AA;--border:#E2E8F0;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+
+/* ── TOPBAR ── */
+.topbar{
+  position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--border);
+  padding:12px 32px;display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+}
+.tlogo{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.3px;display:flex;align-items:center;gap:6px}
+.tlogo span{color:var(--orange)}
+.tlogo small{font-size:11px;font-weight:500;color:var(--muted);border-left:1px solid var(--border);padding-left:9px;margin-left:6px}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;border:none}
+.btn-p{background:var(--orange);color:#fff;box-shadow:0 4px 12px rgba(249,115,22,.3)}
+.btn-p:hover{background:#ea580c;transform:translateY(-1px)}
+.btn-s{background:#fff;color:var(--ink);border:1.5px solid var(--border)}
+.btn-s:hover{border-color:var(--orange);color:var(--orange)}
+.btn-g{background:transparent;color:var(--muted);border:1.5px solid var(--border)}
+.btn-g:hover{color:var(--ink);border-color:var(--ink2)}
+.btn-a{display:inline-flex;align-items:center;gap:5px;padding:6px 13px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;background:var(--ol);color:var(--orange);border:1px solid var(--om)}
+.btn-a:hover{background:var(--orange);color:#fff}
+.rm{width:26px;height:26px;border-radius:5px;border:none;background:#FEF2F2;color:#DC2626;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;transition:all .2s;flex-shrink:0}
+.rm:hover{background:#DC2626;color:#fff}
+
+/* ── FORM LAYOUT ── */
+.fcont{max-width:860px;margin:0 auto;padding:28px 20px 88px}
+.fsec{background:#fff;border:1px solid var(--border);border-radius:14px;padding:26px;margin-bottom:16px}
+.stitle{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--orange);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.stitle::after{content:'';flex:1;height:1px;background:var(--border)}
+.fg{margin-bottom:13px}
+.fg label{display:block;font-size:12px;font-weight:600;color:var(--ink2);margin-bottom:4px}
+.fg input,.fg textarea,.fg select{
+  width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;
+  padding:9px 12px;font-size:13px;color:var(--ink);font-family:'Inter',sans-serif;
+  transition:all .2s;outline:none;resize:vertical
+}
+.fg input:focus,.fg textarea:focus{border-color:var(--orange);background:#fff;box-shadow:0 0 0 3px rgba(249,115,22,.08)}
+.fg textarea{min-height:88px}
+.fr2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.fr3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:13px}
+
+/* ── DYNAMIC ITEMS ── */
+.dlist{display:flex;flex-direction:column;gap:7px;margin-bottom:10px}
+.ditem{display:flex;align-items:center;gap:7px}
+.ditem input{flex:1}
+
+/* ── MODULE CARD ── */
+.mc{border:1.5px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px;background:var(--bg)}
+.mch{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.mch input{flex:1;font-weight:700}
+
+/* ── WEEK CARD ── */
+.wc{border:1.5px solid var(--border);border-radius:10px;padding:14px;margin-bottom:9px;background:var(--bg)}
+.wch{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.wch input{flex:1}
+.tchips{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:8px}
+.tchip{display:flex;align-items:center;gap:4px;background:var(--orange);color:#fff;padding:4px 10px 4px 12px;border-radius:100px;font-size:12px;font-weight:600}
+.tchip button{background:rgba(255,255,255,.3);border:none;color:#fff;width:15px;height:15px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:9px;transition:background .2s}
+.tchip button:hover{background:rgba(255,255,255,.65);color:var(--orange)}
+.tadd{display:flex;gap:7px;margin-top:6px}
+.tadd input{flex:1}
+
+/* ── COST TABLE ── */
+.ctbl{width:100%;border-collapse:collapse;margin-bottom:10px}
+.ctbl th{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:7px 9px;border-bottom:1px solid var(--border);text-align:left}
+.ctbl td{padding:5px 3px;border-bottom:1px solid var(--border);vertical-align:middle}
+.ctbl td input{background:var(--bg);border:1.5px solid var(--border);border-radius:6px;padding:6px 8px;font-size:12px;font-family:'Inter',sans-serif;color:var(--ink);width:100%;outline:none;transition:border .2s}
+.ctbl td input:focus{border-color:var(--orange)}
+.ctot td{font-weight:700;font-size:13px;color:var(--ink);border-top:1.5px solid var(--ink);border-bottom:none;padding:10px 9px}
+
+/* ── PRICE FIELD ── */
+.pf{position:relative;display:flex;align-items:center}
+.pp{position:absolute;left:11px;font-size:13px;font-weight:600;color:var(--muted);pointer-events:none}
+.pf input{padding-left:26px!important}
+
+/* ── BULLETS EDITOR ── */
+.be{border:1.5px solid var(--border);border-radius:8px;padding:10px;background:var(--bg)}
+.bi{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.bi::before{content:'✓';color:var(--orange);font-size:13px;font-weight:700;flex-shrink:0}
+.bi input{flex:1;background:transparent;border:none;border-bottom:1px solid var(--border);border-radius:0;padding:3px 0;font-size:12px;outline:none}
+.bi input:focus{border-bottom-color:var(--orange)}
+
+/* ── CONDITIONS ── */
+.condg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.condg .fg textarea{min-height:64px;font-size:12px}
+
+/* ── GENERATE BAR ── */
+.gbar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--border);padding:13px 32px;display:flex;align-items:center;justify-content:flex-end;gap:12px;box-shadow:0 -4px 20px rgba(0,0,0,.06);z-index:100}
+.gbar-lbl{font-size:12px;color:var(--muted)}
+.gbar-lbl strong{color:var(--ink)}
+
+/* ══ QUOTE DOCUMENT ══ */
+.qactions{max-width:940px;margin:0 auto;padding:20px 24px 0;display:flex;align-items:center;justify-content:space-between}
+.qactions-l{display:flex;gap:10px}
+#qdoc{max-width:940px;margin:0 auto;padding:20px 24px 48px}
+.qpage{background:#fff;padding:52px 60px;font-family:'Inter',sans-serif;color:#0A0F1E;border:1px solid #E2E8F0;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+
+/* quote header */
+.qhdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:36px;padding-bottom:24px;border-bottom:2.5px solid #F97316}
+.qlogo{font-size:21px;font-weight:800;color:#0A0F1E;letter-spacing:-.3px}
+.qlogo span{color:#F97316}
+.qlogo-sep{font-size:13px;font-weight:400;color:#8896A8;padding-left:11px;border-left:1px solid #E2E8F0;margin-left:9px}
+.qhdr-r{text-align:right}
+.qtitle{font-size:17px;font-weight:700;color:#0A0F1E;margin-bottom:3px}
+.qnum{font-size:12px;color:#8896A8;font-weight:500}
+
+/* client grid */
+.qcgrid{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid #E2E8F0;border-radius:8px;overflow:hidden;margin-bottom:32px}
+.qcc{padding:14px 18px}
+.qcc:not(:last-child){border-right:1px solid #E2E8F0}
+.qcl{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8896A8;margin-bottom:4px}
+.qcv{font-size:14px;font-weight:600;color:#0A0F1E}
+
+/* section label */
+.qsl{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#F97316;margin-bottom:12px;margin-top:28px}
+
+/* description */
+.qdesc{border-left:3px solid #F97316;padding:14px 18px;background:#FFF7ED;border-radius:0 8px 8px 0;font-size:13px;line-height:1.8}
+
+/* modules */
+.qmg{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.qmod{border:1px solid #E2E8F0;border-radius:7px;padding:14px}
+.qmname{font-size:13px;font-weight:700;color:#0A0F1E;margin-bottom:9px}
+.qmitem{font-size:12px;color:#4A5568;padding:5px 0;border-bottom:1px solid #F1F3FC;line-height:1.5}
+.qmitem:last-child{border-bottom:none}
+
+/* team */
+.qtg{display:grid;gap:13px}
+.qtcard{border:1px solid #E2E8F0;border-radius:9px;padding:16px}
+.qtav{width:38px;height:38px;border-radius:50%;background:#F97316;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.qtrole{font-size:13px;font-weight:700;color:#0A0F1E;margin-bottom:3px}
+.qtdesc{font-size:11px;color:#8896A8;line-height:1.6}
+
+/* weeks */
+.qweek{margin-bottom:9px}
+.qwlbl{font-size:12px;color:#4A5568;margin-bottom:5px;font-weight:500}
+.qwtasks{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.qwtask{background:#F97316;color:#fff;text-align:center;padding:7px 10px;border-radius:5px;font-size:11px;font-weight:600}
+
+/* costs table */
+.qctbl{width:100%;border-collapse:collapse}
+.qctbl th{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8896A8;padding:8px 10px;border-bottom:1px solid #E2E8F0;text-align:left}
+.qctbl td{padding:10px;border-bottom:1px solid #F1F3FC;font-size:12px;color:#0A0F1E;vertical-align:top}
+.qctbl td:first-child{font-weight:600}
+.qctbl td:last-child{text-align:right;white-space:nowrap;font-weight:500}
+.qctot td{font-weight:700;font-size:13px;border-top:1.5px solid #0A0F1E;border-bottom:none;padding:12px 10px}
+.qctot td:last-child{color:#F97316}
+
+/* pricing */
+.qpg{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.qpcard{border:1.5px solid #E2E8F0;border-radius:11px;padding:22px}
+.qpcard.hi{border-color:#F97316;background:#FFF7ED}
+.qpbadge{display:inline-block;background:#F97316;color:#fff;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 11px;border-radius:100px;margin-bottom:10px}
+.qpbadge.mant{background:#0A0F1E}
+.qptype{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#8896A8;margin-bottom:3px}
+.qpamt{font-size:34px;font-weight:900;color:#0A0F1E;letter-spacing:-1.5px;line-height:1;margin-bottom:3px}
+.qpsub{font-size:11px;color:#8896A8;margin-bottom:13px}
+.qphl{background:#fff;border-left:3px solid #F97316;padding:7px 11px;border-radius:0 5px 5px 0;font-size:12px;color:#0A0F1E;margin-bottom:12px;line-height:1.6}
+.qpbullets{list-style:none;padding:0}
+.qpbullets li{font-size:12px;color:#4A5568;padding:4px 0;border-bottom:1px solid #F1F3FC;display:flex;align-items:flex-start;gap:7px;line-height:1.5}
+.qpbullets li:last-child{border-bottom:none}
+.qpbullets li::before{content:'✓';color:#F97316;font-weight:700;flex-shrink:0;font-size:11px;margin-top:1px}
+
+/* conditions */
+.qcond-g{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.qcond{border:1px solid #E2E8F0;border-radius:7px;padding:13px 14px;font-size:12px;color:#4A5568;line-height:1.7}
+
+/* signatures */
+.qsigg{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:10px}
+.qsig{padding-top:18px}
+.qsigl{height:1px;background:#CBD5E0;margin-bottom:7px}
+.qsig-label{font-size:11px;color:#8896A8}
+.qsig-name{font-size:12px;color:#0A0F1E;font-weight:500;margin-top:2px}
+
+/* footer */
+.qftr{margin-top:36px;padding-top:18px;border-top:1px solid #E2E8F0;display:flex;align-items:center;justify-content:space-between}
+.qftrlogo{font-size:15px;font-weight:800;color:#F97316;letter-spacing:-.3px}
+.qftrlogo span{color:#0A0F1E}
+.qftr-info{text-align:right;font-size:10px;color:#8896A8;line-height:1.7}
+
+/* ── HISTORY CARDS ── */
+.hcard{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:10px;transition:all .2s}
+.hcard:hover{border-color:var(--om);box-shadow:0 4px 16px rgba(249,115,22,.1)}
+.hcard-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hcot{font-size:13px;font-weight:700;color:var(--orange);margin-bottom:2px}
+.hcli{font-size:15px;font-weight:800;color:var(--ink)}
+.hcard-right{text-align:right;flex-shrink:0}
+.hmes{font-size:12px;color:var(--muted)}
+
+/* ── EDITABLE QUOTE ── */
+.qpage[contenteditable]{outline:none}
+.qpage[contenteditable] *:hover{outline:1px dashed rgba(249,115,22,.35);border-radius:3px;cursor:text}
+.qpage[contenteditable]:focus{outline:none}
+.edit-hint{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px}
+
+/* ── IMPL BREAKDOWN TABLE (quote doc) ── */
+.qictbl{width:100%;border-collapse:collapse;margin-bottom:10px}
+.qictbl td{padding:6px 8px;border-bottom:1px solid #F1F3FC;font-size:11px;color:#4A5568}
+.qictbl td:first-child{font-weight:600;color:#0A0F1E}
+.qictbl td:nth-child(2){color:#8896A8;font-size:10px}
+.qictbl td:last-child{text-align:right;white-space:nowrap;font-weight:500}
+.qictot td{font-weight:700!important;color:#0A0F1E!important;border-top:1.5px solid #0A0F1E!important;border-bottom:none!important;font-size:12px!important}
+.qictot td:last-child{color:#F97316!important}
+
+/* ── PRINT ── */
+@media print{
+  body{background:#fff!important}
+  .no-print{display:none!important}
+  #qdoc{padding:0;max-width:none}
+  .qpage{border:none;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .qmod,.qtcard,.qcond,.qpcard{page-break-inside:avoid}
+  .qsl{page-break-after:avoid}
+  .qpg,.qsigg{page-break-inside:avoid}
+  @page{margin:14mm 16mm;size:A4}
+}
+@media(max-width:640px){
+  .fr2,.fr3,.condg,.qmg,.qpg,.qcgrid,.qsigg,.qcond-g{grid-template-columns:1fr}
+  .fcont{padding:16px 12px 80px}
+  .fsec{padding:18px 14px}
+  .qpage{padding:28px 20px}
+  .qhdr{flex-direction:column;gap:14px}
+  .qwtasks{grid-template-columns:1fr 1fr}
+}
+</style>
+
+<!-- DATALISTS (opciones predefinidas editables) -->
+<datalist id="dl-concepto">
+  <option value="Supabase Pro">
+  <option value="Hosting (Vercel/Railway)">
+  <option value="Hosting (AWS)">
+  <option value="Servicio de email (Resend)">
+  <option value="Servicio de email (SendGrid)">
+  <option value="Monitoreo y backups">
+  <option value="Desarrollador de mantención">
+  <option value="Soporte y gestión">
+  <option value="Dominio y SSL">
+  <option value="CDN y almacenamiento">
+  <option value="Licencia de software">
+</datalist>
+<datalist id="dl-rol">
+  <option value="Desarrollador fullstack">
+  <option value="Desarrollador frontend">
+  <option value="Desarrollador backend">
+  <option value="Desarrollador integración / ERP">
+  <option value="Desarrollador mobile">
+  <option value="QA / Testing">
+  <option value="Product Manager">
+  <option value="Diseñador UI/UX">
+</datalist>
+<datalist id="dl-impl">
+  <option value="Desarrollo fullstack">
+  <option value="Diseño e interfaz (UI/UX)">
+  <option value="Configuración de infraestructura">
+  <option value="Integraciones y APIs externas">
+  <option value="Testing y QA">
+  <option value="Deploy y puesta en producción">
+  <option value="Capacitación al equipo">
+  <option value="Documentación técnica">
+  <option value="Migración de datos">
+  <option value="Onboarding y setup inicial">
+</datalist>
+<datalist id="dl-detalle">
+  <option value="Base de datos, autenticación, almacenamiento e imágenes">
+  <option value="Despliegue del portal y backend en producción con alta disponibilidad">
+  <option value="Alertas automáticas vía Resend o SendGrid">
+  <option value="Uptime monitoring, respaldos automáticos y registro de errores">
+  <option value="Revisión mensual, corrección de bugs y soporte técnico continuo">
+  <option value="Atención a requerimientos, coordinación y mejoras menores">
+  <option value="Almacenamiento de archivos e imágenes en S3 o equivalente">
+</datalist>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+
+<!-- ══ FORM VIEW ══ -->
+<div id="vform">
+
+<div class="topbar no-print">
+  <div class="tlogo">clev<span>r</span><small>cotizador</small></div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span id="tnum" style="font-size:12px;color:var(--muted)"></span>
+    <button class="btn btn-g" style="font-size:12px;padding:7px 16px" onclick="showHist()">📋 Mis cotizaciones</button>
+  </div>
+</div>
+
+<div class="fcont">
+
+  <!-- 1. Datos básicos -->
+  <div class="fsec">
+    <div class="stitle">Datos básicos</div>
+    <div class="fr3">
+      <div class="fg"><label>N° Cotización</label><input id="f-cot" type="text"></div>
+      <div class="fg"><label>Período</label><input id="f-mes" type="text"></div>
+      <div class="fg"><label>Fecha emisión</label><input id="f-fecha" type="text"></div>
+    </div>
+    <div class="fr2">
+      <div class="fg"><label>Cliente (empresa)</label><input id="f-cli" type="text" placeholder="Nombre de la empresa"></div>
+      <div class="fg"><label>Contacto</label><input id="f-con" type="text" placeholder="Nombre del contacto"></div>
+    </div>
+  </div>
+
+  <!-- 2. Descripción -->
+  <div class="fsec">
+    <div class="stitle">Descripción del proyecto</div>
+    <div class="fg"><textarea id="f-desc" rows="4" placeholder="Describe el proyecto, tecnologías involucradas, alcance general..."></textarea></div>
+  </div>
+
+  <!-- 3. Equipo -->
+  <div class="fsec">
+    <div class="stitle">Equipo dedicado</div>
+    <div class="fg" style="max-width:340px"><label>Subtítulo del equipo</label><input id="f-eqtitle" type="text" placeholder="Ej: 3 SEMANAS EXCLUSIVAS"></div>
+    <div id="devs-c" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px"></div>
+    <button class="btn-a" id="btn-adddev" onclick="addDev()">+ Desarrollador</button>
+  </div>
+
+  <!-- 5. Plan de trabajo -->
+  <div class="fsec">
+    <div class="stitle">Plan de trabajo</div>
+    <div id="weeks-c"></div>
+    <button class="btn-a" onclick="addWeek()">+ Semana</button>
+  </div>
+
+  <!-- 6. Costos mensuales -->
+  <div class="fsec">
+    <div class="stitle">Desglose de costos mensuales</div>
+    <table class="ctbl">
+      <thead><tr><th>Concepto</th><th>Detalle</th><th>Costo/mes (CLP)</th><th></th></tr></thead>
+      <tbody id="costs-tb"></tbody>
+      <tfoot><tr class="ctot"><td colspan="2">Total costos mensuales cubiertos por la mantención</td><td id="costs-tot">$0</td><td></td></tr></tfoot>
+    </table>
+    <button class="btn-a" onclick="addCost()">+ Ítem</button>
+  </div>
+
+  <!-- 7. Desglose de implementación -->
+  <div class="fsec">
+    <div class="stitle">Desglose de implementación</div>
+    <table class="ctbl">
+      <thead><tr><th>Concepto</th><th>Detalle</th><th>Monto (CLP)</th><th></th></tr></thead>
+      <tbody id="icosts-tb"></tbody>
+      <tfoot><tr class="ctot"><td colspan="2">Total implementación</td><td id="icosts-tot">$0</td><td></td></tr></tfoot>
+    </table>
+    <button class="btn-a" onclick="addICost()">+ Ítem</button>
+  </div>
+
+  <!-- 8. Condiciones -->
+  <div class="fsec">
+    <div class="stitle">Condiciones y términos</div>
+    <div class="condg" id="cond-c"></div>
+  </div>
+
+</div><!-- /fcont -->
+
+<div class="gbar no-print">
+  <span class="gbar-lbl">Cotización <strong id="gbar-num"></strong></span>
+  <div style="display:flex;align-items:center;gap:10px">
+    <button id="btn-resume" class="btn btn-s" style="font-size:13px;padding:9px 20px;display:none" onclick="resumeQuote()">Ver cotización actual →</button>
+    <button class="btn btn-p" style="font-size:14px;padding:11px 28px" onclick="genQuote()">Generar cotización →</button>
+  </div>
+</div>
+
+</div><!-- /vform -->
+
+<!-- ══ HISTORY VIEW ══ -->
+<div id="vhist" style="display:none">
+  <div class="topbar no-print">
+    <div class="tlogo">clev<span>r</span><small>mis cotizaciones</small></div>
+    <button class="btn btn-s" style="font-size:12px;padding:7px 16px" onclick="backFromHist()">← Volver</button>
+  </div>
+  <div style="max-width:860px;margin:0 auto;padding:28px 20px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px">
+      <div>
+        <h2 style="font-size:22px;font-weight:800;letter-spacing:-.4px;margin-bottom:3px">Mis cotizaciones</h2>
+        <p style="font-size:13px;color:var(--muted)">Se guardan automáticamente. Las ediciones manuales también se preservan.</p>
+      </div>
+      <button class="btn btn-p" style="font-size:12px;padding:8px 18px" onclick="document.getElementById('vhist').style.display='none';document.getElementById('vform').style.display='block';window.scrollTo(0,0)">+ Nueva cotización</button>
+    </div>
+    <div id="hist-list"></div>
+  </div>
+</div>
+
+<!-- ══ QUOTE VIEW ══ -->
+<div id="vquote" style="display:none">
+  <div class="qactions no-print">
+    <div class="qactions-l">
+      <button class="btn btn-s" onclick="backForm()">← Editar formulario</button>
+      <button class="btn btn-g" onclick="showHist()">📋 Mis cotizaciones</button>
+      <button class="btn btn-g" onclick="newQ()">+ Nueva</button>
+      <span class="edit-hint">✏️ Clic en el texto para editar</span>
+    </div>
+    <button class="btn btn-p" id="btn-pdf" onclick="downloadPDF()">⬇ Descargar PDF</button>
+  </div>
+  <div id="qdoc"></div>
+</div>
+
+<script>
+const MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const hoy=new Date();
+function fFecha(d){return d.getDate()+' de '+MESES[d.getMonth()].toLowerCase()+', '+d.getFullYear()}
+function fCLP(n){return '$'+new Intl.NumberFormat('es-CL').format(Math.round(n||0))}
+function e(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function peekNum(){
+  const yr=hoy.getFullYear(),k='clevr_cot_'+yr;
+  return 'COT-'+yr+'-'+String((parseInt(localStorage.getItem(k)||'0')+1)).padStart(3,'0');
+}
+function saveNum(str){
+  const m=str.match(/COT-(\d{4})-(\d+)/);
+  if(m) localStorage.setItem('clevr_cot_'+m[1],parseInt(m[2]));
+}
+
+/* ── IMPL COSTS ── */
+let icosts=[{c:'',d:'',v:0},{c:'',d:'',v:0},{c:'',d:'',v:0}];
+function calcITot(){return icosts.reduce((s,r)=>s+(parseFloat(r.v)||0),0)}
+function rICosts(){
+  document.getElementById('icosts-tb').innerHTML=icosts.map((r,ri)=>`
+    <tr>
+      <td style="width:32%"><input value="${e(r.c)}" placeholder="Concepto" list="dl-impl" oninput="icosts[${ri}].c=this.value" style="font-weight:600"></td>
+      <td><input value="${e(r.d)}" placeholder="Detalle (opcional)" oninput="icosts[${ri}].d=this.value"></td>
+      <td style="width:130px"><input type="number" value="${r.v||''}" placeholder="0" oninput="icosts[${ri}].v=parseFloat(this.value)||0;upITot()"></td>
+      <td style="width:32px"><button class="rm" onclick="rmICost(${ri})">×</button></td>
+    </tr>`).join('');
+  upITot();
+}
+function upITot(){document.getElementById('icosts-tot').textContent=fCLP(calcITot())}
+function addICost(){icosts.push({c:'',d:'',v:0});rICosts()}
+function rmICost(i){icosts.splice(i,1);rICosts()}
+
+/* ── DEVS ── */
+let devs=[{c:'D1',r:'',d:''},{c:'D2',r:'',d:''}];
+function rDevs(){
+  document.getElementById('devs-c').innerHTML=devs.map((dv,di)=>`
+    <div class="mc">
+      <div class="mch">
+        <span style="width:34px;height:34px;border-radius:50%;background:#F97316;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">${dv.c}</span>
+        <input value="${e(dv.r)}" placeholder="Rol (ej: Desarrollador fullstack)" list="dl-rol" oninput="devs[${di}].r=this.value" style="font-weight:700">
+        ${devs.length>1?`<button class="rm" onclick="rmDev(${di})">×</button>`:''}
+      </div>
+      <textarea style="min-height:54px;font-size:12px" placeholder="Descripción del rol..." oninput="devs[${di}].d=this.value">${e(dv.d)}</textarea>
+    </div>`).join('');
+  document.getElementById('btn-adddev').style.display=devs.length>=4?'none':'inline-flex';
+}
+function addDev(){if(devs.length<4)devs.push({c:'D'+(devs.length+1),r:'',d:''});rDevs()}
+function rmDev(i){devs.splice(i,1);devs.forEach((d,i)=>d.c='D'+(i+1));rDevs()}
+
+/* ── WEEKS ── */
+let weeks=[{l:'',tasks:[]}];
+function rWeeks(){
+  document.getElementById('weeks-c').innerHTML=weeks.map((w,wi)=>`
+    <div class="wc">
+      <div class="wch">
+        <input value="${e(w.l)}" placeholder="Ej: Semana 1 — Integración y base" oninput="weeks[${wi}].l=this.value">
+        <button class="rm" onclick="rmWk(${wi})">×</button>
+      </div>
+      <div class="tchips">${w.tasks.map((t,ti)=>`
+        <span class="tchip">${e(t)}<button onclick="rmT(${wi},${ti})">×</button></span>`).join('')}
+      </div>
+      <div class="tadd">
+        <input id="ti-${wi}" placeholder="Nueva tarea..." onkeydown="if(event.key==='Enter'){addT(${wi});event.preventDefault()}">
+        <button class="btn-a" onclick="addT(${wi})">+ Agregar</button>
+      </div>
+    </div>`).join('');
+}
+function addWeek(){weeks.push({l:'',tasks:[]});rWeeks()}
+function rmWk(i){weeks.splice(i,1);rWeeks()}
+function addT(wi){const el=document.getElementById('ti-'+wi),v=el.value.trim();if(v){weeks[wi].tasks.push(v);el.value='';rWeeks();setTimeout(()=>{const n=document.getElementById('ti-'+wi);if(n)n.focus()},10)}}
+function rmT(wi,ti){weeks[wi].tasks.splice(ti,1);rWeeks()}
+
+/* ── COSTS ── */
+let costs=[
+  {c:'Supabase Pro',d:'Base de datos, autenticación, almacenamiento e imágenes',v:23000},
+  {c:'Hosting (Vercel/Railway)',d:'Despliegue del portal y backend en producción',v:15000},
+  {c:'Servicio de email',d:'Alertas automáticas vía Resend o SendGrid',v:10000},
+  {c:'Monitoreo y backups',d:'Uptime monitoring y respaldos automáticos',v:8000},
+  {c:'Desarrollador de mantención',d:'Revisión mensual, corrección de bugs y soporte técnico',v:50000},
+  {c:'Soporte y gestión',d:'Atención a requerimientos, coordinación y mejoras menores',v:244000},
+];
+function calcTot(){return costs.reduce((s,r)=>s+(parseFloat(r.v)||0),0)}
+function rCosts(){
+  document.getElementById('costs-tb').innerHTML=costs.map((r,ri)=>`
+    <tr>
+      <td style="width:22%"><input value="${e(r.c)}" placeholder="Concepto" list="dl-concepto" oninput="costs[${ri}].c=this.value" style="font-weight:600"></td>
+      <td><input value="${e(r.d)}" placeholder="Descripción" list="dl-detalle" oninput="costs[${ri}].d=this.value"></td>
+      <td style="width:130px"><input type="number" value="${r.v}" oninput="costs[${ri}].v=parseFloat(this.value)||0;upTot()"></td>
+      <td style="width:32px"><button class="rm" onclick="rmCost(${ri})">×</button></td>
+    </tr>`).join('');
+  upTot();
+}
+function upTot(){document.getElementById('costs-tot').textContent=fCLP(calcTot())}
+function addCost(){costs.push({c:'',d:'',v:0});rCosts()}
+function rmCost(i){costs.splice(i,1);rCosts()}
+
+/* ── CONDITIONS ── */
+let conds=[
+  'Todos los precios son en pesos chilenos y se adicionan con IVA (19%) según Ley 21.420.',
+  'La mantención mensual tiene una permanencia mínima de 3 meses. Para dar término al servicio, se requiere aviso con 30 días de anticipación.',
+  'Nuevas funcionalidades o cambios de alcance no contemplados aquí se cotizan por separado.',
+  'Esta cotización tiene validez de 30 días desde la fecha de emisión.',
+];
+function rConds(){
+  document.getElementById('cond-c').innerHTML=conds.map((c,ci)=>`
+    <div class="fg"><label>Condición ${ci+1}</label>
+      <textarea style="min-height:62px;font-size:12px" oninput="conds[${ci}]=this.value">${e(c)}</textarea>
+    </div>`).join('');
+}
+
+/* ── INIT ── */
+function init(){
+  const pn=peekNum();
+  document.getElementById('f-cot').value=pn;
+  document.getElementById('tnum').textContent=pn;
+  document.getElementById('gbar-num').textContent=pn;
+  document.getElementById('f-mes').value=MESES[hoy.getMonth()]+' '+hoy.getFullYear();
+  document.getElementById('f-fecha').value=fFecha(hoy);
+  document.getElementById('f-eqtitle').value='3 SEMANAS EXCLUSIVAS';
+  document.getElementById('f-cot').addEventListener('input',function(){
+    document.getElementById('gbar-num').textContent=this.value;
+    document.getElementById('tnum').textContent=this.value;
+  });
+  rICosts();rDevs();rWeeks();rCosts();rConds();
+}
+
+/* ── GENERATE ── */
+function genQuote(){
+  const cotN=document.getElementById('f-cot').value.trim();
+  const cli=document.getElementById('f-cli').value.trim();
+  if(!cotN){alert('Ingresa el número de cotización');return}
+  saveNum(cotN);
+  const data={
+    cot:cotN,
+    mes:document.getElementById('f-mes').value,
+    fecha:document.getElementById('f-fecha').value,
+    cli:cli,
+    con:document.getElementById('f-con').value,
+    desc:document.getElementById('f-desc').value,
+    eqt:document.getElementById('f-eqtitle').value,
+    ipr:calcITot(),
+    icosts,devs,weeks,costs,
+    conds:conds.filter(c=>c.trim()),
+  };
+  const html=buildQ(data);
+  document.getElementById('qdoc').innerHTML=html;
+  const qp=document.getElementById('qdoc').querySelector('.qpage');
+  saveToHist(data, qp);
+  addAutoSave(qp);
+  showResumeBtn();
+  document.getElementById('vform').style.display='none';
+  document.getElementById('vquote').style.display='block';
+  window.scrollTo(0,0);
+}
+function backForm(){
+  const qp=document.getElementById('qdoc').querySelector('.qpage');
+  if(qp) updateHistSnapshot(qp);
+  document.getElementById('vquote').style.display='none';
+  document.getElementById('vform').style.display='block';
+  window.scrollTo(0,0);
+}
+function resumeQuote(){
+  const hist=JSON.parse(localStorage.getItem('clevr_hist')||'[]');
+  const h=hist.find(x=>x.cot===_currentCot);
+  if(!h) return;
+  document.getElementById('qdoc').innerHTML=h.html;
+  const qp=document.getElementById('qdoc').querySelector('.qpage');
+  if(qp){qp.contentEditable='true';qp.spellcheck=false;addAutoSave(qp)}
+  document.getElementById('vform').style.display='none';
+  document.getElementById('vquote').style.display='block';
+  window.scrollTo(0,0);
+}
+function showResumeBtn(){
+  const btn=document.getElementById('btn-resume');
+  if(btn) btn.style.display=_currentCot?'inline-flex':'none';
+  if(btn&&_currentCot) btn.textContent='Ver cotización '+_currentCot+' →';
+}
+function addAutoSave(el){
+  let t;
+  el.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(()=>updateHistSnapshot(el),600)});
+}
+function newQ(){
+  _currentCot=null;
+  showResumeBtn();
+  const pn=peekNum();
+  document.getElementById('f-cot').value=pn;
+  document.getElementById('gbar-num').textContent=pn;
+  document.getElementById('tnum').textContent=pn;
+  document.getElementById('f-cli').value='';
+  document.getElementById('f-con').value='';
+  document.getElementById('f-desc').value='';
+  document.getElementById('f-fecha').value=fFecha(hoy);
+  backForm();
+}
+
+/* ── BUILD QUOTE HTML ── */
+function buildQ(d){
+  const tot=d.costs.reduce((s,r)=>s+(parseFloat(r.v)||0),0);
+  const activeDevs=d.devs.filter(dv=>dv.r||dv.d);
+  const activeWks=d.weeks.filter(w=>w.l||w.tasks.length);
+  const tcols=activeDevs.length===1?'1fr':activeDevs.length===2?'1fr 1fr':'repeat(3,1fr)';
+  const activeIC=(d.icosts||[]).filter(r=>r.c||r.v);
+
+  const devsH=activeDevs.map(dv=>`
+    <div class="qtcard">
+      <div class="qtav">${e(dv.c)}</div>
+      <div class="qtrole">${e(dv.r)}</div>
+      <div class="qtdesc">${e(dv.d)}</div>
+    </div>`).join('');
+
+  const wksH=activeWks.map(w=>`
+    <div class="qweek">
+      <div class="qwlbl">${e(w.l)}</div>
+      <div class="qwtasks">${w.tasks.map(t=>`<div class="qwtask">${e(t)}</div>`).join('')}</div>
+    </div>`).join('');
+
+  const costsH=d.costs.filter(r=>r.c||r.d||r.v).map(r=>`
+    <tr>
+      <td>${e(r.c)}</td>
+      <td style="color:#4A5568;font-size:11px">${e(r.d)}</td>
+      <td>${fCLP(r.v)}</td>
+    </tr>`).join('');
+
+  const cnH=d.conds.map(c=>`<div class="qcond">${e(c)}</div>`).join('');
+
+  return `<div class="qpage" contenteditable="true" spellcheck="false">
+
+  <div class="qhdr">
+    <div class="qlogo">clev<span>r</span><span class="qlogo-sep">software factory</span></div>
+    <div class="qhdr-r">
+      <div class="qtitle">Cotización de servicios</div>
+      <div class="qnum">N° ${e(d.cot)} &nbsp;·&nbsp; ${e(d.mes)}</div>
+    </div>
+  </div>
+
+  <div class="qcgrid">
+    <div class="qcc"><div class="qcl">Cliente</div><div class="qcv">${e(d.cli)||'—'}</div></div>
+    <div class="qcc"><div class="qcl">Contacto</div><div class="qcv">${e(d.con)||'—'}</div></div>
+    <div class="qcc"><div class="qcl">Fecha emisión</div><div class="qcv">${e(d.fecha)}</div></div>
+  </div>
+
+  ${d.desc?`<div class="qsl">Descripción del proyecto</div><div class="qdesc">${e(d.desc)}</div>`:''}
+
+  ${devsH?`<div class="qsl">Equipo dedicado &mdash; ${e(d.eqt)}</div><div class="qtg" style="grid-template-columns:${tcols}">${devsH}</div>`:''}
+
+  ${wksH?`<div class="qsl">Plan de trabajo</div><div>${wksH}</div>`:''}
+
+  ${d.costs.filter(r=>r.c||r.v).length?`
+  <div class="qsl">Desglose de costos mensuales</div>
+  <table class="qctbl">
+    <thead><tr><th>Concepto</th><th>Detalle</th><th style="text-align:right">Costo/mes</th></tr></thead>
+    <tbody>${costsH}</tbody>
+    <tfoot><tr class="qctot"><td colspan="2">Total costos mensuales cubiertos por la mantención</td><td style="text-align:right;color:#F97316">${fCLP(tot)}</td></tr></tfoot>
+  </table>`:''}
+
+  ${activeIC.length?`
+  <div class="qsl">Desglose de implementación</div>
+  <table class="qctbl">
+    <thead><tr><th>Concepto</th><th>Detalle</th><th style="text-align:right">Monto</th></tr></thead>
+    <tbody>${activeIC.map(r=>`<tr><td>${e(r.c)}</td><td style="color:#4A5568;font-size:11px">${e(r.d)}</td><td>${fCLP(r.v)}</td></tr>`).join('')}</tbody>
+    <tfoot><tr class="qctot"><td colspan="2">Total implementación</td><td style="text-align:right;color:#F97316">${fCLP(d.ipr)}</td></tr></tfoot>
+  </table>`:''}
+
+  ${cnH?`<div class="qsl">Condiciones y términos</div><div class="qcond-g">${cnH}</div>`:''}
+
+  <div class="qsl">Firmas</div>
+  <div class="qsigg">
+    <div class="qsig"><div class="qsigl"></div><div class="qsig-label">Por Clevr Software Factory</div><div class="qsig-name">Nombre · Cargo · Fecha</div></div>
+    <div class="qsig"><div class="qsigl"></div><div class="qsig-label">Por ${e(d.cli)||'Cliente'}</div><div class="qsig-name">${e(d.con)||'Nombre'} · Fecha</div></div>
+  </div>
+
+  <div class="qftr">
+    <div class="qftrlogo">clev<span>r</span> | software factory</div>
+    <div class="qftr-info">${e(d.cot)} · ${e(d.mes)}<br>Documento confidencial — uso exclusivo ${e(d.cli)||'cliente'}</div>
+  </div>
+
+</div>`;
+}
+
+/* ── PDF DOWNLOAD ── */
+function downloadPDF(){
+  const btn=document.getElementById('btn-pdf');
+  btn.textContent='Generando PDF...';btn.disabled=true;
+  const el=document.getElementById('qdoc').querySelector('.qpage');
+  // Snapshot current (possibly hand-edited) HTML before generating PDF
+  updateHistSnapshot(el);
+  const cotN=el.querySelector('.qnum')?.textContent?.split('·')[0]?.trim()||'cotizacion';
+  const cli=el.querySelector('.qcv')?.textContent?.trim()||'cliente';
+  const fname=`${cotN.replace(/\s+/g,'-')}_${cli.replace(/\s+/g,'-')}.pdf`;
+  html2pdf().set({
+    margin:[14,16,14,16],
+    filename:fname,
+    html2canvas:{scale:2,useCORS:true,logging:false},
+    jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},
+    pagebreak:{mode:['avoid-all','css','legacy']}
+  }).from(el).save().then(()=>{
+    btn.textContent='⬇ Descargar PDF';btn.disabled=false;
+  });
+}
+
+/* ── HISTORY ── */
+let _currentCot=null; // cot number of the quote currently open
+
+function saveToHist(data, el){
+  const hist=JSON.parse(localStorage.getItem('clevr_hist')||'[]');
+  // If same cot number already exists, replace it
+  const idx=hist.findIndex(h=>h.cot===data.cot);
+  const entry={
+    cot:data.cot,
+    cli:data.cli||'Sin cliente',
+    con:data.con||'',
+    mes:data.mes,
+    ipr:data.ipr,
+    mpr:data.mpr,
+    ts:Date.now(),
+    html:el?el.outerHTML:''
+  };
+  if(idx>=0) hist[idx]=entry;
+  else hist.unshift(entry);
+  if(hist.length>50) hist.pop();
+  localStorage.setItem('clevr_hist',JSON.stringify(hist));
+  _currentCot=data.cot;
+}
+
+function updateHistSnapshot(el){
+  // Update the saved HTML with any manual edits done in contenteditable
+  if(!_currentCot) return;
+  const hist=JSON.parse(localStorage.getItem('clevr_hist')||'[]');
+  const idx=hist.findIndex(h=>h.cot===_currentCot);
+  if(idx>=0){hist[idx].html=el.outerHTML;localStorage.setItem('clevr_hist',JSON.stringify(hist))}
+}
+
+function renderHistory(){
+  const hist=JSON.parse(localStorage.getItem('clevr_hist')||'[]');
+  const c=document.getElementById('hist-list');
+  if(!c) return;
+  if(!hist.length){
+    c.innerHTML=`<div style="text-align:center;padding:48px 20px;color:var(--muted)">
+      <div style="font-size:40px;margin-bottom:12px">📋</div>
+      <div style="font-size:15px;font-weight:600;color:var(--ink2);margin-bottom:6px">Aún no hay cotizaciones</div>
+      <div style="font-size:13px">Cada vez que generes una cotización aparecerá aquí automáticamente.</div>
+    </div>`;
+    return;
+  }
+  c.innerHTML=hist.map((h,i)=>`
+    <div class="hcard">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:44px;height:44px;border-radius:11px;background:var(--ol);border:1px solid var(--om);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px">📄</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:11px;font-weight:700;color:var(--orange);letter-spacing:.5px;margin-bottom:1px">${e(h.cot)}</div>
+          <div style="font-size:15px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${e(h.cli)}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:1px">${e(h.mes)}${h.con?' · '+e(h.con):''}</div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          ${h.ipr?`<div style="font-size:13px;font-weight:700;color:var(--ink)">${fCLP(h.ipr)}</div><div style="font-size:10px;color:var(--muted)">implementación</div>`:''}
+          <div style="display:flex;gap:6px;margin-top:8px;justify-content:flex-end">
+            <button class="btn btn-s" style="font-size:11px;padding:5px 14px" onclick="viewHist(${i})">Ver cotización</button>
+            <button class="rm" onclick="delHist(${i})" title="Eliminar">🗑</button>
+          </div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function viewHist(i){
+  const hist=JSON.parse(localStorage.getItem('clevr_hist')||'[]');
+  const h=hist[i];
+  document.getElementById('qdoc').innerHTML=h.html;
+  const qp=document.getElementById('qdoc').querySelector('.qpage');
+  if(qp){qp.contentEditable='true';qp.spellcheck=false;addAutoSave(qp)}
+  _currentCot=h.cot;
+  document.getElementById('vform').style.display='none';
+  document.getElementById('vhist').style.display='none';
+  document.getElementById('vquote').style.display='block';
+  window.scrollTo(0,0);
+}
+
+function delHist(i){
+  const hist=JSON.parse(localStorage.getItem('clevr_hist')||'[]');
+  const h=hist[i];
+  if(!confirm('¿Eliminar la cotización '+h.cot+' de '+h.cli+'?')) return;
+  hist.splice(i,1);
+  localStorage.setItem('clevr_hist',JSON.stringify(hist));
+  renderHistory();
+}
+function showHist(){
+  renderHistory();
+  document.getElementById('vform').style.display='none';
+  document.getElementById('vquote').style.display='none';
+  document.getElementById('vhist').style.display='block';
+  window.scrollTo(0,0);
+}
+function backFromHist(){
+  document.getElementById('vhist').style.display='none';
+  document.getElementById('vform').style.display='block';
+  window.scrollTo(0,0);
+}
+
+init();
+renderHistory();
+</script>
+</body>
+</html>
