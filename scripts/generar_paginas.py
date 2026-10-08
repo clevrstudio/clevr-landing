@@ -100,21 +100,62 @@ def write(path, html):
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(html + '\n')
 
-for module in MODULES:
-    flow = '<ol class="flow">' + ''.join(
-        f'<li><span class="flow-label">{label}</span><p>{e(text)}</p></li>'
-        for label, text in zip(('Datos de entrada', 'Proceso', 'Resultado'), module['flow'])) + '</ol>'
-    sectors = ''.join(link('/industrias/' + slug + '/', INDUSTRY_NAMES[slug], 'sector-link') for slug in module['industries'])
-    body = f'<section class="overview" id="alcance"><h2>Qué hace el módulo</h2><p>{e(module["body"])}</p></section><section id="como-funciona"><h2>Cómo funciona</h2>{flow}</section>'
-    if sectors: body += f'<section class="sector-block"><h2>Aplicaciones por industria</h2><div class="sector-links">{sectors}</div></section>'
-    body += '<section class="questions" id="preguntas"><h2>Preguntas sobre esta solución</h2>' + ''.join(
-        f'<details><summary>{e(q["question"])}</summary><p>{e(q["answer"])}</p></details>' for q in module['faq']) + '</section>'
-    if module.get('related'):
-        body += '<section id="soluciones-relacionadas"><h2>Soluciones relacionadas</h2>' + cards([MODULE_BY_SLUG[slug] for slug in module['related']], '/soluciones/') + '</section>'
+def module_layout(module):
+    path = '/soluciones/' + module['slug'] + '/'
+    # Keep Benjamín's metadata, canonical URLs and structured data.
+    head = layout(path, module['title'], module['description'], module['h1'], module['intro'], '', 'Soluciones').split('<body>')[0]
+    summaries = {
+        'cobranza-automatizada': 'Organiza el seguimiento de cada factura y reúne respuestas, pendientes y próximas acciones en un panel.',
+        'revision-de-facturas': 'Compara los datos de tus facturas con los registros de referencia y señala diferencias para revisión.',
+        'validacion-pagos-proveedores': 'Cruza facturas con contratos, órdenes de compra y respaldos antes de aprobar un pago.',
+        'traspaso-y-cuadre-contable': 'Transforma reportes de arriendos en archivos listos para revisar y cargar a tu sistema contable.',
+        'conciliacion-bancaria': 'Cruza movimientos bancarios con tus registros y muestra qué coincide y qué necesita revisión.',
+        'gestion-de-fondos-de-inversion': 'Reúne la información de tus fondos y consulta sus antecedentes en lenguaje natural.',
+        'acceso-movil-y-costeo-produccion': 'Consulta stock, ventas y cuentas por cobrar desde el celular. Calcula y compara costos de producción.',
+        'portal-b2b-chatbot-ia': 'Tus clientes consultan productos, disponibilidad y pedidos en un portal conectado al ERP, con un asistente de IA.',
+        'visibilidad-de-leads': 'Reúne tus prospectos en un panel y sigue su origen, estado y avance comercial.',
+        'contenido-de-marketing-con-ia': 'Convierte materiales de tu empresa en borradores de piezas y videos que tu equipo revisa antes de publicar.',
+        'captura-ordenes-compra': 'Extrae los datos de órdenes recibidas por correo o PDF y déjalos listos para validar antes del ERP.',
+        'revision-calidad-informes': 'Contrasta informes con tus procedimientos y criterios de calidad. Entrega observaciones trazables para revisión del equipo.',
+        'evaluacion-psicometrica': 'Automatiza el cálculo de puntajes e índices y guarda cada evaluación. La interpretación permanece en manos del profesional.',
+        'seguimiento-de-socios': 'Organiza objetivos y avances de tus socios, conectado a la aplicación que ya usa tu gimnasio.',
+        'copiloto-docente': 'Reúne alertas académicas, comunicación con apoderados y materiales de nivelación para apoyar al equipo docente.',
+    }
+    capabilities = {
+        'cobranza-automatizada': ('Información centralizada', 'Seguimiento automatizado', 'Control de la gestión'),
+        'revision-de-facturas': ('Documentos conectados', 'Validación de datos', 'Diferencias a la vista'),
+        'validacion-pagos-proveedores': ('Respaldos reunidos', 'Cruce de condiciones', 'Aprobaciones informadas'),
+        'traspaso-y-cuadre-contable': ('Fuentes conectadas', 'Cuadre automatizado', 'Carga contable preparada'),
+        'conciliacion-bancaria': ('Bancos y registros', 'Cruce de movimientos', 'Excepciones identificadas'),
+        'gestion-de-fondos-de-inversion': ('Cartera organizada', 'Consultas con IA', 'Antecedentes accesibles'),
+        'acceso-movil-y-costeo-produccion': ('Datos de la operación', 'Acceso móvil y cálculo', 'Costos comparables'),
+        'portal-b2b-chatbot-ia': ('Integración con ERP', 'Asistente de IA', 'Autoatención comercial'),
+        'visibilidad-de-leads': ('Canales centralizados', 'Seguimiento comercial', 'Visibilidad del avance'),
+        'contenido-de-marketing-con-ia': ('Contexto de tu marca', 'Creación con IA', 'Control editorial'),
+        'captura-ordenes-compra': ('Lectura de correo y PDF', 'Extracción inteligente', 'Preparación para el ERP'),
+        'revision-calidad-informes': ('Tus criterios de calidad', 'Revisión asistida con IA', 'Trazabilidad de hallazgos'),
+        'evaluacion-psicometrica': ('Registro de respuestas', 'Cálculo automatizado', 'Resultados centralizados'),
+        'seguimiento-de-socios': ('Conexión con tu app', 'Seguimiento por hitos', 'Continuidad de atención'),
+        'copiloto-docente': ('Contexto del estudiante', 'Asistencia con IA', 'Apoyo al trabajo docente'),
+    }
+    steps = ''.join(f'<li><span class="module-step-number">0{i+1}</span><h3>{e(label)}</h3><p>{e(text)}</p></li>' for i, (label,text) in enumerate(zip(capabilities[module['slug']], module['flow'])))
+    details = f'<details><summary>Alcance del módulo<span aria-hidden="true">+</span></summary><p>{e(module["body"])}</p></details>'
+    details += ''.join(f'<details><summary>{e(q["question"])}<span aria-hidden="true">+</span></summary><p>{e(q["answer"])}</p></details>' for q in module['faq'])
     if module.get('sources'):
-        body += '<section id="referencias"><h2>Referencias del proyecto</h2><p>' + ' · '.join(link(source['url'], source['name'], 'text-link') for source in module['sources']) + '</p></section>'
-    body += f'<section class="next-step"><h2>{e(module["cta"])}</h2>{link("/agenda", "Agendar una conversación", "text-link")}</section>'
-    write('/soluciones/' + module['slug'] + '/', layout('/soluciones/' + module['slug'] + '/', module['title'], module['description'], module['h1'], module['intro'], body, 'Soluciones'))
+        details += '<details><summary>Reconocimientos y referencias<span aria-hidden="true">+</span></summary><p>' + ' · '.join(link(source['url'], source['name']) for source in module['sources']) + '</p></details>'
+    related = ''
+    if module.get('related'):
+        related = '<aside class="module-related" aria-label="Módulos relacionados"><span>Se puede conectar con</span>' + ''.join(link('/soluciones/' + slug + '/', MODULE_BY_SLUG[slug]['name'] + ' ↗') for slug in module['related']) + '</aside>'
+    return head + f'''<body class="module-page"><a class="skip-link" href="#contenido">Ir al contenido</a>
+<header class="module-header"><div class="module-wrap"><a class="brand" href="/" aria-label="Clevr, inicio">clev<span class="brand-dot">r</span></a>{link('/#explorar-soluciones', '← Explorar soluciones', 'module-back')}</div></header>
+<main id="contenido" class="module-wrap"><header class="module-intro"><p class="module-eyebrow">DESARROLLADO POR CLEVR</p><h1>{e(module['name'])}</h1><p class="module-summary">{e(summaries[module['slug']])}</p></header>
+<section class="module-process" aria-labelledby="module-how"><h2 id="module-how">Qué hacemos posible</h2><ol>{steps}</ol></section>
+<section class="module-details" aria-label="Detalles de la solución">{details}</section>{related}
+<section class="module-cta"><div><h2>¿Lo conectamos a tu operación?</h2><p>{e(module['cta'])}</p></div>{link('/agenda', 'Conversemos ↗', 'button')}</section></main>
+<footer class="module-footer module-wrap"><span>Clevr · Software e inteligencia artificial</span>{link('mailto:contacto@clevr.cl', 'contacto@clevr.cl')}</footer></body></html>'''
+
+for module in MODULES:
+    write('/soluciones/' + module['slug'] + '/', module_layout(module))
 
 for industry in INDUSTRIES:
     related = [MODULES[i] for i in MAPPING[industry['slug']]]
