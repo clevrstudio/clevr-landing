@@ -1,5 +1,20 @@
 {
   "redirects": [
-    { "source": "/agenda", "destination": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2fdODOaVt3J2TZKp5POzlUZDZ4vtQjewEMFJ-NEpmPHXlDGDWHrrvSo3jI0fj5XaRJ41IkASFx", "permanent": false }
+    {
+      "source": "/agenda",
+      "destination": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2fdODOaVt3J2TZKp5POzlUZDZ4vtQjewEMFJ-NEpmPHXlDGDWHrrvSo3jI0fj5XaRJ41IkASFx",
+      "permanent": false
+    }
+  ],
+  "headers": [
+    {
+      "source": "/preview/:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
   ]
 }
