@@ -85,7 +85,7 @@ def layout(path, title, description, h1, intro, body, section):
 <header class="site-header"><a class="brand" href="/" aria-label="Clevr, inicio">clev<span class="brand-dot">r</span></a>
 <nav aria-label="Navegación principal">{link('/soluciones/', 'Soluciones', 'active' if section == 'Soluciones' else '')}{link('/industrias/', 'Industrias', 'active' if section == 'Industrias' else '')}{link('/talleres.html', 'Capacitaciones')}{link('/agenda', 'Agendemos', 'nav-cta')}</nav></header>
 <main id="contenido"><section class="page-hero"><div class="wrap"><nav class="breadcrumb" aria-label="Ruta de navegación">{breadcrumb}</nav>
-<h1>{e(h1)}</h1><p class="intro">{e(intro)}</p><div class="hero-actions">{link('/agenda', 'Conversemos sobre tu proceso', 'button')}{link('/soluciones/' if section == 'Industrias' else '/industrias/', 'Explorar soluciones' if section == 'Industrias' else 'Ver aplicaciones por industria', 'text-link')}</div></div></section>
+<h1>{e(h1)}</h1><p class="intro">{e(intro)}</p><div class="hero-actions">{link('/#agendar', 'Conversemos sobre tu proceso', 'button')}{link('/soluciones/' if section == 'Industrias' else '/industrias/', 'Explorar soluciones' if section == 'Industrias' else 'Ver aplicaciones por industria', 'text-link')}</div></div></section>
 <div class="wrap content">{body}</div>
 <section class="contact-band"><div class="wrap contact-inner"><div><h2>Partamos por tu operación</h2><p>Cuéntanos qué proceso quieres automatizar y qué herramientas usa hoy tu equipo.</p></div>{link('/agenda', 'Agendar una conversación', 'button')}</div></section></main>
 <footer class="site-footer"><div class="wrap"><a class="brand" href="/">clev<span class="brand-dot">r</span></a><p>Transformación y automatización con IA en tu empresa.</p><nav aria-label="Enlaces del pie">{link('/soluciones/', 'Soluciones')}{link('/industrias/', 'Industrias')}{link('/talleres.html', 'Capacitaciones')}{link('mailto:contacto@clevr.cl', 'contacto@clevr.cl')}{link('https://wa.me/56968987762', 'WhatsApp')}</nav></div></footer></body></html>'''
@@ -151,7 +151,7 @@ def module_layout(module):
 <main id="contenido" class="module-wrap"><header class="module-intro"><p class="module-eyebrow">DESARROLLADO POR CLEVR</p><h1>{e(module['name'])}</h1><p class="module-summary">{e(summaries[module['slug']])}</p></header>
 <section class="module-process" aria-labelledby="module-how"><h2 id="module-how">Qué hacemos posible</h2><ol>{steps}</ol></section>
 <section class="module-details" aria-label="Detalles de la solución">{details}</section>{related}
-<section class="module-cta"><div><h2>¿Lo conectamos a tu operación?</h2><p>{e(module['cta'])}</p></div>{link('/agenda', 'Conversemos ↗', 'button')}</section></main>
+<section class="module-cta"><div><h2>¿Lo conectamos a tu operación?</h2><p>{e(module['cta'])}</p></div>{link('/#agendar', 'Conversemos ↗', 'button')}</section></main>
 <footer class="module-footer module-wrap"><span>Clevr · Software e inteligencia artificial</span>{link('mailto:contacto@clevr.cl', 'contacto@clevr.cl')}</footer></body></html>'''
 
 for module in MODULES:

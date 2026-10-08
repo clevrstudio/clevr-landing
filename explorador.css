@@ -58,3 +58,5 @@
 @media (max-width:600px), (max-height:500px) and (orientation:landscape) {
   #explorar-soluciones .explore-heading>p{display:none}
 }
+
+#agendar{scroll-margin-top:100px}
