@@ -9,7 +9,14 @@ ORIGIN = 'https://www.clevr.cl'
 MODULES = json.loads((ROOT / 'contenido/modulos.json').read_text())
 INDUSTRIES = json.loads((ROOT / 'contenido/industrias.json').read_text())
 MAPPING = json.loads((ROOT / 'contenido/industria-modulos.json').read_text())
+MODULE_BY_SLUG = {item['slug']: item for item in MODULES}
 INDUSTRY_NAMES = {item['slug']: item['name'] for item in INDUSTRIES}
+
+groups = [
+    ('Finanzas y gestión de activos', [0, 1, 2, 3, 4, 5]),
+    ('Ventas, atención y marketing', [7, 8, 9, 13]),
+    ('Operación, documentos y calidad', [6, 10, 11]),
+    ('Evaluación y educación', [12, 14])]
 
 def e(value):
     return escape(str(value), quote=True)
@@ -23,10 +30,12 @@ def layout(path, title, description, h1, intro, body, section):
         '@context': 'https://schema.org', '@graph': [
             {'@type': 'Organization', '@id': ORIGIN + '/#organization', 'name': 'Clevr',
              'url': ORIGIN + '/', 'logo': ORIGIN + '/android-chrome-512x512.png',
-             'email': 'contacto@clevr.cl', 'telephone': '+56 9 6898 7762'},
+             'email': 'contacto@clevr.cl', 'telephone': '+56 9 6898 7762',
+             'sameAs': ['https://www.linkedin.com/company/softwarefactoryclevr/']},
             {'@type': 'WebPage', '@id': url + '#page', 'url': url, 'name': title,
              'description': description, 'inLanguage': 'es-CL',
              'isPartOf': {'@id': ORIGIN + '/#website'},
+             'publisher': {'@id': ORIGIN + '/#organization'},
              'breadcrumb': {'@id': url + '#breadcrumb'}},
             {'@type': 'WebSite', '@id': ORIGIN + '/#website', 'url': ORIGIN + '/', 'name': 'Clevr'},
             {'@type': 'BreadcrumbList', '@id': url + '#breadcrumb', 'itemListElement': [
@@ -38,11 +47,25 @@ def layout(path, title, description, h1, intro, body, section):
     if path.count('/') > 2:
         schema['@graph'][-1]['itemListElement'].append(
             {'@type': 'ListItem', 'position': 3, 'name': h1, 'item': url})
-        schema['@graph'].append({'@type': 'CreativeWork' if path == '/soluciones/copiloto-docente/' else 'Service', 'name': h1, 'url': url,
-                               'description': description,
-                               'provider': {'@id': ORIGIN + '/#organization'}})
-    else:
+    if path.startswith('/soluciones/') and path != '/soluciones/':
+        entity_id = url + '#solution'
+        schema['@graph'][1]['mainEntity'] = {'@id': entity_id}
+        entity_type = 'CreativeWork' if path == '/soluciones/copiloto-docente/' else 'Service'
+        entity = {'@type': entity_type, '@id': entity_id, 'name': h1, 'url': url,
+                  'description': description,
+                  'creator' if entity_type == 'CreativeWork' else 'provider': {'@id': ORIGIN + '/#organization'}}
+        schema['@graph'].append(entity)
+    if path in ('/soluciones/', '/industrias/'):
         schema['@graph'][1]['@type'] = 'CollectionPage'
+        items = [MODULES[i] for _, indexes in groups for i in indexes] if path == '/soluciones/' else INDUSTRIES
+        schema['@graph'][1]['mainEntity'] = {'@id': url + '#catalog'}
+        schema['@graph'].append({'@type': 'ItemList', '@id': url + '#catalog',
+            'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'name': item['name'],
+                                 'url': ORIGIN + path + item['slug'] + '/'} for i, item in enumerate(items)]})
+    elif path.startswith('/industrias/'):
+        slug = path.strip('/').split('/')[-1]
+        schema['@graph'][1]['about'] = {'@id': ORIGIN + '/#organization'}
+        schema['@graph'][1]['mentions'] = [{'@id': ORIGIN + '/soluciones/' + MODULES[i]['slug'] + '/#solution'} for i in MAPPING[slug]]
     structured = json.dumps(schema, ensure_ascii=False).replace('<', '\\u003c')
     active = '/soluciones/' if section == 'Soluciones' else '/industrias/'
     breadcrumb = f'{link("/", "Inicio")}<span>/</span>{link(active, section)}'
@@ -82,23 +105,24 @@ for module in MODULES:
         f'<li><span class="flow-label">{label}</span><p>{e(text)}</p></li>'
         for label, text in zip(('Datos de entrada', 'Proceso', 'Resultado'), module['flow'])) + '</ol>'
     sectors = ''.join(link('/industrias/' + slug + '/', INDUSTRY_NAMES[slug], 'sector-link') for slug in module['industries'])
-    body = f'<section class="overview"><h2>Qué hace el módulo</h2><p>{e(module["body"])}</p></section><section><h2>Cómo funciona</h2>{flow}</section>'
+    body = f'<section class="overview" id="alcance"><h2>Qué hace el módulo</h2><p>{e(module["body"])}</p></section><section id="como-funciona"><h2>Cómo funciona</h2>{flow}</section>'
     if sectors: body += f'<section class="sector-block"><h2>Aplicaciones por industria</h2><div class="sector-links">{sectors}</div></section>'
-    body += f'<section class="questions"><h2>Para adaptar esta solución a tu empresa</h2><details><summary>¿Qué necesitamos revisar para comenzar?</summary><p>{e(module["flow"][0])}. Revisamos ejemplos del proceso, los datos disponibles y quién valida cada etapa para definir el alcance.</p></details><details><summary>¿Cómo se conecta con las herramientas que ya usamos?</summary><p>Revisamos las opciones de conexión y los formatos de tus sistemas. El alcance se define para tu operación, incluyendo reglas, permisos y tratamiento de excepciones.</p></details></section><section class="next-step"><h2>{e(module["cta"])}</h2>{link("/agenda", "Agendar una conversación", "text-link")}</section>'
+    body += '<section class="questions" id="preguntas"><h2>Preguntas sobre esta solución</h2>' + ''.join(
+        f'<details><summary>{e(q["question"])}</summary><p>{e(q["answer"])}</p></details>' for q in module['faq']) + '</section>'
+    if module.get('related'):
+        body += '<section id="soluciones-relacionadas"><h2>Soluciones relacionadas</h2>' + cards([MODULE_BY_SLUG[slug] for slug in module['related']], '/soluciones/') + '</section>'
+    if module.get('sources'):
+        body += '<section id="referencias"><h2>Referencias del proyecto</h2><p>' + ' · '.join(link(source['url'], source['name'], 'text-link') for source in module['sources']) + '</p></section>'
+    body += f'<section class="next-step"><h2>{e(module["cta"])}</h2>{link("/agenda", "Agendar una conversación", "text-link")}</section>'
     write('/soluciones/' + module['slug'] + '/', layout('/soluciones/' + module['slug'] + '/', module['title'], module['description'], module['h1'], module['intro'], body, 'Soluciones'))
 
 for industry in INDUSTRIES:
     related = [MODULES[i] for i in MAPPING[industry['slug']]]
     body = f'<section class="overview"><h2>El proceso en tu industria</h2><p>{e(industry["problem"])}</p></section><section><h2>De la información al trabajo del equipo</h2><ol class="industry-flow">' + ''.join(f'<li><h3>{e(step["title"])}</h3><p>{e(step["text"])}</p></li>' for step in industry['process']) + '</ol></section>'
     body += '<section><h2>Soluciones que conectan este proceso</h2>' + cards(related, '/soluciones/') + '</section>'
-    body += '<section class="questions"><h2>Preguntas de tu equipo</h2>' + ''.join(f'<details><summary>{e(q["question"])}</summary><p>{e(q["answer"])}</p></details>' for q in industry['faq']) + '</section>'
+    body += '<section class="questions" id="preguntas"><h2>Preguntas de tu equipo</h2>' + ''.join(f'<details><summary>{e(q["question"])}</summary><p>{e(q["answer"])}</p></details>' for q in industry['faq']) + '</section>'
     write('/industrias/' + industry['slug'] + '/', layout('/industrias/' + industry['slug'] + '/', industry['title'], industry['description'], industry['h1'], industry['intro'], body, 'Industrias'))
 
-groups = [
-    ('Finanzas y gestión de activos', [0, 1, 2, 3, 4, 5]),
-    ('Ventas, atención y marketing', [7, 8, 9, 13]),
-    ('Operación, documentos y calidad', [6, 10, 11]),
-    ('Evaluación y educación', [12, 14])]
 body = ''.join('<section class="catalog-section"><h2>' + e(name) + '</h2>' + cards([MODULES[i] for i in indexes], '/soluciones/') + '</section>' for name, indexes in groups)
 write('/soluciones/', layout('/soluciones/', 'Soluciones de IA y automatización para empresas | Clevr', 'Conoce 15 módulos desarrollados por Clevr: cobranza, conciliación, portales B2B, órdenes de compra, calidad e IA aplicada a tu operación.', 'Soluciones que parten de un proceso real', 'Hemos desarrollado módulos para automatizar procesos, conectar sistemas y trabajar con información. Explora qué hace cada solución y cómo se adapta a la operación de tu empresa.', body, 'Soluciones'))
 write('/industrias/', layout('/industrias/', 'Automatización e IA por industria | Clevr', 'Aplicaciones de IA y automatización para inmobiliarias, laboratorios, distribución, manufactura, evaluación, gimnasios y educación.', 'La misma tecnología. Una operación distinta.', 'Cada industria trabaja con sus propios datos, herramientas y decisiones. Conoce las aplicaciones que hemos desarrollado y encuentra un punto de partida para tu equipo.', '<section><h2>Explora tu industria</h2>' + cards(INDUSTRIES, '/industrias/') + '</section>', 'Industrias'))

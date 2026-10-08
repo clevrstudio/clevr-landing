@@ -79,6 +79,44 @@ class CrawlablePages(unittest.TestCase):
                     if target.is_dir(): target /= 'index.html'
                     self.assertTrue(target.is_file(), f'Broken local link: {link}')
 
+    def test_entities_describe_solutions_and_industries_correctly(self):
+        for path in list((ROOT / 'soluciones').rglob('index.html')) + list((ROOT / 'industrias').rglob('index.html')):
+            with self.subTest(page=str(path.relative_to(ROOT))):
+                graph = json.loads(Page(path.read_text()).schemas[0])['@graph']
+                ids = [node['@id'] for node in graph]
+                self.assertEqual(len(ids), len(set(ids)))
+                webpage = next(node for node in graph if node['@type'] in ('WebPage', 'CollectionPage'))
+                entities = [node for node in graph if node['@type'] in ('Service', 'CreativeWork')]
+                if path.parent.name == 'soluciones' or path.parent.name == 'industrias':
+                    catalog = next(node for node in graph if node['@type'] == 'ItemList')
+                    self.assertEqual(webpage['mainEntity']['@id'], catalog['@id'])
+                    expected = 15 if path.parent.name == 'soluciones' else 7
+                    self.assertEqual(len(catalog['itemListElement']), expected)
+                elif 'soluciones' in path.parts:
+                    self.assertEqual(len(entities), 1)
+                    entity = entities[0]
+                    self.assertEqual(webpage['mainEntity']['@id'], entity['@id'])
+                    self.assertIn('creator' if entity['@type'] == 'CreativeWork' else 'provider', entity)
+                else:
+                    self.assertFalse(entities, 'An industry page must not pretend to be a service')
+                    self.assertTrue(webpage['mentions'])
+                breadcrumb = next(node for node in graph if node['@type'] == 'BreadcrumbList')
+                items = breadcrumb['itemListElement']
+                self.assertEqual([item['position'] for item in items], list(range(1, len(items) + 1)))
+                self.assertEqual(items[-1]['item'], webpage['url'])
+
+    def test_sitemap_matches_public_pages_and_root_canonicals(self):
+        expected = {ORIGIN + '/', ORIGIN + '/talleres.html'}
+        for directory in ('soluciones', 'industrias'):
+            expected.update(ORIGIN + '/' + str(p.parent.relative_to(ROOT)) + '/' for p in (ROOT / directory).rglob('index.html'))
+        urls = [node.text for node in ET.parse(ROOT / 'sitemap.xml').findall('.//{*}loc')]
+        self.assertEqual(set(urls), expected)
+        self.assertEqual(len(urls), len(set(urls)))
+        for filename, url in [('index.html', ORIGIN + '/'), ('talleres.html', ORIGIN + '/talleres.html')]:
+            page = Page((ROOT / filename).read_text())
+            self.assertEqual(page.canonical, [url])
+            self.assertNotIn('noindex', page.meta.get('robots', ''))
+
     def test_internal_quote_tool_is_not_indexable(self):
         page = Page((ROOT / 'cotizador.html').read_text())
         self.assertIn('noindex', page.meta.get('robots', ''))

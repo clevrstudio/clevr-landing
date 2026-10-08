@@ -27,3 +27,9 @@ Se agregaron nuevas páginas, navegación, canonical/Open Graph/JSON-LD, robots 
 Validación inicial: tres pruebas pasan; 26 URLs del sitemap responden 200 en servidor local. Render revisado en Chrome a 1440 y 390 px, sin desbordamiento en muestras de catálogo, industria y módulo; FAQ abre y no presenta errores de consola en módulo revisado. No hay datos GSC ni puntaje PageSpeed (API 429).
 
 La cuenta Vercel disponible es de Benjamín y no tiene acceso al proyecto de Alan. No se ha publicado esta rama. Antes de producción: revisión final del cambio, visto bueno de Benjamín para publicación y deploy por la cuenta autorizada. Verificar home, páginas, sitemap y agenda en dominio público después. No crear otro proyecto ni cambiar DNS para eludir acceso.
+
+## V2 SEO y LLM, 07-10-2026
+
+Revisión Sol/Luna aplicada: FAQ específica para cada uno de los 15 módulos, enlaces entre soluciones relacionadas, nombres acotados para psicometría y socios de gimnasios, referencia pública FEN Universidad de Chile para Maestro AI. Schema distingue páginas de industrias de servicios, enlaza mainEntity con IDs de soluciones, usa creator para CreativeWork, publisher y sameAs del perfil corporativo LinkedIn ya público, e ItemList en el orden visible del catálogo. Secciones con IDs estables para referencias directas.
+
+Cinco pruebas pasan, 26 URLs locales HTTP200; revisión visual de módulo actualizado en escritorio y móvil 390px sin overflow. Revisión independiente Sol sin P1, tres P2 corregidos (aprobación pagos, mentions industrias y orden catálogo). No mide visibilidad ni permite prometer citas. Push dispara preview del mismo proyecto de Alan; para acceso anónimo requiere Share > Anyone with the link por su cuenta. Benjamín autorizó compartir preview v2, no publicar clevr.cl ni cambiar DNS.

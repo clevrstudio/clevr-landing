@@ -15,6 +15,15 @@
     ],
     "industries": [
       "laboratorios"
+    ],
+    "faq": [
+      {
+        "question": "¿Qué muestra el panel de cobranza?",
+        "answer": "Reúne el estado de cada cuenta, las respuestas registradas y las próximas acciones de seguimiento. Las reglas de contacto y las excepciones se configuran según el proceso del equipo."
+      }
+    ],
+    "related": [
+      "revision-de-facturas"
     ]
   },
   {
@@ -34,6 +43,16 @@
     "industries": [
       "laboratorios",
       "distribucion-b2b"
+    ],
+    "faq": [
+      {
+        "question": "¿En qué se diferencia de validar pagos a proveedores?",
+        "answer": "La revisión de facturas compara datos administrativos como razón social, RUT y montos con registros de referencia. La validación de pagos cruza facturas con contratos, órdenes de compra y respaldos para señalar condiciones, montos o posibles duplicados."
+      }
+    ],
+    "related": [
+      "validacion-pagos-proveedores",
+      "captura-ordenes-compra"
     ]
   },
   {
@@ -53,6 +72,16 @@
     "industries": [
       "inmobiliarias-y-gestion-de-activos",
       "manufactura"
+    ],
+    "faq": [
+      {
+        "question": "¿Qué documentos compara para la revisión de un pago?",
+        "answer": "Cruza facturas con contratos, órdenes de compra y otros respaldos. Entrega observaciones sobre condiciones, montos y posibles duplicados para el responsable de aprobar el pago."
+      }
+    ],
+    "related": [
+      "revision-de-facturas",
+      "conciliacion-bancaria"
     ]
   },
   {
@@ -71,6 +100,15 @@
     ],
     "industries": [
       "inmobiliarias-y-gestion-de-activos"
+    ],
+    "faq": [
+      {
+        "question": "¿Qué entrega para la carga contable de arriendos?",
+        "answer": "Prepara un archivo con el formato de carga del sistema y deja visibles las diferencias entre reportes, contratos, facturación y reajustes para revisión del equipo."
+      }
+    ],
+    "related": [
+      "conciliacion-bancaria"
     ]
   },
   {
@@ -89,6 +127,16 @@
     ],
     "industries": [
       "inmobiliarias-y-gestion-de-activos"
+    ],
+    "faq": [
+      {
+        "question": "¿Qué ocurre con los movimientos que no coinciden?",
+        "answer": "El módulo organiza coincidencias y partidas pendientes según los criterios de asignación definidos. El equipo revisa las diferencias usando las cartolas y los registros internos."
+      }
+    ],
+    "related": [
+      "traspaso-y-cuadre-contable",
+      "validacion-pagos-proveedores"
     ]
   },
   {
@@ -107,6 +155,15 @@
     ],
     "industries": [
       "inmobiliarias-y-gestion-de-activos"
+    ],
+    "faq": [
+      {
+        "question": "¿Sobre qué información responde la IA de fondos?",
+        "answer": "Responde sobre los antecedentes incorporados de fondos, aportes, capital calls y dividendos. La calidad y actualidad de las respuestas dependen de esas fuentes y de las reglas de revisión del equipo."
+      }
+    ],
+    "related": [
+      "traspaso-y-cuadre-contable"
     ]
   },
   {
@@ -125,6 +182,15 @@
     ],
     "industries": [
       "manufactura"
+    ],
+    "faq": [
+      {
+        "question": "¿Qué puede consultar el equipo desde el celular?",
+        "answer": "Puede consultar información como stock, ventas y cuentas por cobrar desde las fuentes habilitadas. El cálculo de costos utiliza las reglas de operaciones y se contrasta con los valores registrados en el sistema de gestión."
+      }
+    ],
+    "related": [
+      "validacion-pagos-proveedores"
     ]
   },
   {
@@ -143,6 +209,15 @@
     ],
     "industries": [
       "distribucion-b2b"
+    ],
+    "faq": [
+      {
+        "question": "¿Qué información usa el chatbot del portal B2B?",
+        "answer": "Utiliza el catálogo, stock, precios y estado de pedidos habilitados por la empresa. Las consultas, permisos y acciones disponibles se definen para cada operación."
+      }
+    ],
+    "related": [
+      "captura-ordenes-compra"
     ]
   },
   {
@@ -159,7 +234,16 @@
       "Organización por origen, estado y avance comercial",
       "Panel de captación y seguimiento"
     ],
-    "industries": []
+    "industries": [],
+    "faq": [
+      {
+        "question": "¿Cómo ayuda a seguir los prospectos de distintos canales?",
+        "answer": "Reúne los registros disponibles y muestra el origen, estado y avance comercial de cada prospecto. El panel permite identificar cuáles requieren seguimiento con la información registrada."
+      }
+    ],
+    "related": [
+      "contenido-de-marketing-con-ia"
+    ]
   },
   {
     "slug": "contenido-de-marketing-con-ia",
@@ -175,7 +259,16 @@
       "Generación asistida de piezas y videos con IA",
       "Borradores para revisión y aprobación del equipo"
     ],
-    "industries": []
+    "industries": [],
+    "faq": [
+      {
+        "question": "¿Qué recibe el equipo antes de publicar?",
+        "answer": "Recibe borradores de piezas o videos generados a partir de materiales de la empresa y referencias de marca. El equipo ajusta y aprueba el contenido según el tono, formatos y controles definidos."
+      }
+    ],
+    "related": [
+      "visibilidad-de-leads"
+    ]
   },
   {
     "slug": "captura-ordenes-compra",
@@ -193,6 +286,16 @@
     ],
     "industries": [
       "distribucion-b2b"
+    ],
+    "faq": [
+      {
+        "question": "¿Ingresa las órdenes directamente al ERP?",
+        "answer": "Extrae y valida los campos definidos de las órdenes recibidas por correo o PDF antes del ingreso. El paso al ERP se define según las capacidades del sistema y el proceso aprobado por el equipo."
+      }
+    ],
+    "related": [
+      "portal-b2b-chatbot-ia",
+      "revision-de-facturas"
     ]
   },
   {
@@ -211,14 +314,23 @@
     ],
     "industries": [
       "laboratorios"
+    ],
+    "faq": [
+      {
+        "question": "¿El módulo aprueba o certifica los informes?",
+        "answer": "Entrega observaciones sobre los procedimientos, criterios e instructivos incorporados. El responsable conserva la decisión y la corrección del documento. El módulo no certifica cumplimiento."
+      }
+    ],
+    "related": [
+      "revision-de-facturas"
     ]
   },
   {
     "slug": "evaluacion-psicometrica",
-    "name": "Evaluación clínica automatizada",
+    "name": "Cálculo y registro de evaluaciones psicométricas",
     "title": "Automatización del cálculo de evaluaciones psicométricas | Clevr",
     "description": "Calcula puntajes e índices y centraliza cada evaluación. Conoce este módulo desarrollado por Clevr.",
-    "h1": "Evaluación clínica automatizada",
+    "h1": "Cálculo y registro de evaluaciones psicométricas",
     "intro": "Clevr desarrolló una herramienta configurada para un instrumento definido que calcula puntajes e índices y mantiene el registro de cada evaluación.",
     "body": "El módulo procesa las respuestas conforme a las reglas del instrumento, calcula puntajes e índices y centraliza el registro. El profesional interpreta los resultados dentro de su evaluación.",
     "cta": "Conversemos sobre el instrumento, el flujo profesional y los resguardos necesarios.",
@@ -229,14 +341,21 @@
     ],
     "industries": [
       "centros-de-evaluacion"
-    ]
+    ],
+    "faq": [
+      {
+        "question": "¿Qué parte de la evaluación psicométrica automatiza?",
+        "answer": "Automatiza el cálculo de puntajes e índices según las reglas del instrumento definido y centraliza el registro de cada evaluación. El profesional interpreta los resultados dentro de su evaluación."
+      }
+    ],
+    "related": []
   },
   {
     "slug": "seguimiento-de-socios",
-    "name": "Seguimiento inteligente de clientes",
+    "name": "Seguimiento de socios para gimnasios",
     "title": "Seguimiento de socios y objetivos para gimnasios | Clevr",
     "description": "Seguimiento de socios y objetivos conectado a la app existente. Conoce este módulo desarrollado por Clevr.",
-    "h1": "Seguimiento inteligente de clientes",
+    "h1": "Seguimiento de socios para gimnasios",
     "intro": "Clevr desarrolló seguimiento por hitos conectado a la aplicación existente de la organización, a partir de los datos y eventos disponibles.",
     "body": "El módulo organiza objetivos y hitos de socios y comparte el seguimiento con la aplicación existente del gimnasio. El equipo revisa avances y mantiene continuidad de atención desde sus herramientas.",
     "cta": "Revisemos qué información registra tu aplicación actual.",
@@ -247,12 +366,19 @@
     ],
     "industries": [
       "gimnasios"
-    ]
+    ],
+    "faq": [
+      {
+        "question": "¿Cómo se conecta el seguimiento con la app del gimnasio?",
+        "answer": "Organiza los objetivos e hitos de los socios a partir de los datos y eventos disponibles, y comparte el seguimiento con la aplicación existente. El alcance depende de la información que registra esa aplicación."
+      }
+    ],
+    "related": []
   },
   {
     "slug": "copiloto-docente",
     "name": "Maestro AI, copiloto docente",
-    "title": "Maestro AI, copiloto docente para seguimiento y nivelación",
+    "title": "Maestro AI, copiloto docente para seguimiento y nivelación | Clevr",
     "description": "Alertas, comunicación con apoderados y nivelación con IA. Conoce este módulo desarrollado por Clevr.",
     "h1": "Maestro AI, copiloto docente con inteligencia artificial",
     "intro": "Maestro AI es un copiloto docente desarrollado por Clevr: reúne alertas académicas y de asistencia, comunicación con apoderados y materiales de nivelación generados con IA.",
@@ -265,6 +391,19 @@
     ],
     "industries": [
       "educacion"
+    ],
+    "faq": [
+      {
+        "question": "¿Qué prepara Maestro AI para el docente?",
+        "answer": "Reúne alertas académicas y de asistencia, comunicaciones con apoderados y materiales de nivelación generados con IA. Los equipos educativos revisan la información y los materiales con su criterio profesional."
+      }
+    ],
+    "related": [],
+    "sources": [
+      {
+        "name": "Universidad de Chile: reconocimiento a Maestro AI y Alan Kulka",
+        "url": "https://pregrado.fen.uchile.cl/alan-kulka-representa-a-la-fen-y-gana-el-silver-award-en-certamen-global-de-alivio-a-la-pobreza/"
+      }
     ]
   }
 ]
