@@ -29,7 +29,7 @@ class Preview(unittest.TestCase):
      self.assertTrue(target.is_file(),url)
  def test_noindex_header_is_scoped_to_preview(self):
   config=json.loads((ROOT/'vercel.json').read_text())
-  self.assertEqual(config['headers'],[{'source':'/preview/:path*','headers':[{'key':'X-Robots-Tag','value':'noindex, nofollow'}]}])
+  self.assertEqual(config['headers'],[{'source':source,'headers':[{'key':'X-Robots-Tag','value':'noindex, nofollow'}]} for source in ['/preview/:path*','/preview/:path*/']])
   self.assertEqual(config['redirects'][0]['source'],'/agenda')
  def test_root_does_not_link_to_preview(self):
   for f in ['index.html','talleres.html','cotizador.html']:
