@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capacitaciones de IA para empresas | Clevr</title>
+<meta name="description" content="Capacitaciones de IA personalizadas para tu equipo. Entrenamos a las personas de tu empresa para usar inteligencia artificial en su trabajo diario.">
+<link rel="apple-touch-icon" sizes="180x180" href="/preview/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/preview/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/preview/favicon-16x16.png">
+<link rel="manifest" href="/preview/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFFFF;
+  --bg1:#F8F9FE;
+  --ink:#0A0F1E;
+  --ink2:#2D3748;
+  --muted:#5C6B7A;
+  --indigo:#F97316;
+  --orange:#F97316;
+  --orange-l:#FFF7ED;
+  --border:#E2E8F0;
+  --radius:16px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.6}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 48px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,.06);transition:box-shadow .3s
+}
+nav.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-text{font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.5px}
+.logo-text span{color:var(--orange)}
+nav ul{display:flex;gap:28px;list-style:none;align-items:center}
+nav ul a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+nav ul a:hover{color:var(--indigo)}
+nav ul a.nav-active{color:var(--indigo);font-weight:700}
+.nav-mobile-btn{display:none;background:var(--indigo);border:none;color:#fff;padding:9px 18px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;line-height:1}
+
+.container{width:100%;max-width:1100px;min-width:0;margin:0 auto}
+.slabel{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--indigo);margin-bottom:14px}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif}
+h2{font-size:clamp(34px,4.2vw,56px);font-weight:600;color:var(--ink);letter-spacing:-1.8px;line-height:1.04;margin-bottom:16px;width:100%;text-align:left;text-align-last:left}
+h3{font-size:20px;font-weight:700;color:var(--ink);margin-bottom:8px}
+p{color:var(--muted);line-height:1.7}
+.ssub{font-size:18px;color:var(--muted);line-height:1.65;font-weight:400}
+.i{color:var(--indigo);font-style:normal}
+
+/* HERO */
+.talleres-hero{
+  padding:140px 48px 80px;
+  background:var(--ink);
+  text-align:center;
+}
+.talleres-hero h1{
+  font-size:clamp(38px,5vw,68px);font-weight:600;color:#fff;
+  letter-spacing:-2px;line-height:1.06;margin-bottom:20px
+}
+.talleres-hero p{color:rgba(255,255,255,.65);font-size:18px;max-width:560px;margin:0 auto 36px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.3);
+  color:var(--indigo);padding:8px 16px;border-radius:100px;
+  font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  margin-bottom:24px
+}
+
+/* GALERÍA DE CAPACITACIONES */
+.gallery-section{padding:80px 48px;background:var(--bg1)}
+.gallery-head{max-width:640px;margin:0 auto 38px;text-align:center}
+.gallery-head .ssub{margin-top:12px}
+.gallery-section .container,.gallery-shell,.gallery-track{width:100%;min-width:0}
+.gallery-shell{position:relative;max-width:1180px;margin:0 auto}
+.gallery-track{
+  display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px)/3);
+  gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  scrollbar-width:none;padding:4px 2px 14px;-webkit-overflow-scrolling:touch;
+  overscroll-behavior-inline:contain
+}
+.gallery-track::-webkit-scrollbar{display:none}
+.gallery-slide{scroll-snap-align:start;scroll-snap-stop:always;min-width:0}
+.gallery-slide img{
+  display:block;width:100%;height:300px;object-fit:cover;border-radius:18px;
+  border:1px solid var(--border);box-shadow:0 4px 24px rgba(249,115,22,.08);transition:transform .3s,box-shadow .3s
+}
+.gallery-slide img:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(249,115,22,.14)}
+.gallery-controls{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.gallery-control{
+  width:42px;height:42px;border:1px solid var(--border);border-radius:50%;background:#fff;
+  color:var(--ink);font-size:24px;line-height:1;cursor:pointer;transition:all .2s
+}
+.gallery-control:hover{background:var(--indigo);border-color:var(--indigo);color:#fff}
+
+/* FEATURES */
+.features-section{padding:80px 48px;background:var(--bg)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
+.feat-card{background:var(--bg1);border:1px solid var(--border);border-radius:20px;padding:32px;transition:box-shadow .2s}
+.feat-card:hover{box-shadow:0 8px 32px rgba(249,115,22,.1)}
+.feat-icon{font-size:32px;margin-bottom:16px}
+
+/* FORM */
+.form-section{padding:80px 48px;background:var(--bg1)}
+.form-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;max-width:1000px;margin:0 auto}
+.form-card{background:#fff;border:1px solid rgba(0,0,0,.07);border-radius:24px;padding:40px;box-shadow:0 4px 32px rgba(0,0,0,.07)}
+label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+input,textarea,select{
+  width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;
+  font-family:inherit;font-size:14px;color:var(--ink);background:#fff;
+  transition:border-color .2s;outline:none
+}
+input:focus,textarea:focus{border-color:var(--indigo)}
+textarea{resize:vertical;min-height:100px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:16px}
+.fsubmit{
+  width:100%;padding:14px 24px;background:var(--indigo);color:#fff;
+  border:none;border-radius:100px;font-family:inherit;font-size:15px;
+  font-weight:700;cursor:pointer;transition:background .2s,transform .2s
+}
+.fsubmit:hover{background:#EA580C;transform:translateY(-2px)}
+.fsuccess{display:none;text-align:center;padding:40px 16px}
+.fsuccess p:first-child{font-size:28px;font-weight:800;color:var(--ink);margin-bottom:8px}
+
+/* FOOTER */
+footer{padding:36px 48px;background:var(--ink);text-align:center}
+footer p{color:rgba(255,255,255,.4);font-size:13px}
+footer a{color:rgba(255,255,255,.4);text-decoration:none}
+footer a:hover{color:#fff}
+
+/* BACK TO TOP */
+#topBtn{
+  position:fixed;bottom:24px;right:24px;width:38px;height:38px;
+  background:var(--indigo);color:#fff;border:none;border-radius:50%;
+  font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(249,115,22,.3);opacity:0;transform:translateY(10px);
+  transition:opacity .3s,transform .3s;z-index:90
+}
+#topBtn.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  nav{padding:12px 16px}
+  nav ul{display:none}
+  .nav-mobile-btn{display:inline-flex;align-items:center}
+  .talleres-hero{padding:110px 20px 60px}
+  .talleres-hero .container,.gallery-section .container,.gallery-shell,.gallery-track{
+    width:100%;max-width:calc(100vw - 40px)
+  }
+  .talleres-hero h1{overflow-wrap:anywhere}
+  .features-section{padding:56px 20px}
+  .gallery-section{padding:56px 20px}
+  .gallery-head{margin-bottom:28px}
+  .gallery-track{grid-auto-columns:100%;gap:14px;padding-right:0}
+  .gallery-slide{aspect-ratio:4/3;background:var(--bg1);border-radius:18px;overflow:hidden}
+  .gallery-slide img{
+    height:100%;max-height:none;object-fit:contain;background:var(--bg1)
+  }
+  .gallery-controls{margin-top:18px}
+  .gallery-control{width:46px;height:46px}
+  .form-section{padding:56px 20px}
+  .features-grid{grid-template-columns:1fr}
+  .form-layout{grid-template-columns:1fr;gap:36px}
+  .form-card{padding:24px 18px}
+  .frow{grid-template-columns:1fr}
+  h2{text-align:left;text-align-last:auto}
+  footer{padding:28px 20px}
+}
+</style>
+<link rel="canonical" href="https://www.clevr.cl/talleres.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Capacitaciones de IA para empresas | Clevr">
+<meta property="og:description" content="Capacitaciones de IA personalizadas para tu equipo. Entrenamos a las personas de tu empresa para usar inteligencia artificial en su trabajo diario.">
+<meta property="og:url" content="https://www.clevr.cl/talleres.html">
+<meta property="og:image" content="https://www.clevr.cl/android-chrome-512x512.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://www.clevr.cl/#organization", "name": "Clevr", "url": "https://www.clevr.cl/", "email": "contacto@clevr.cl", "telephone": "+56 9 6898 7762", "logo": "https://www.clevr.cl/android-chrome-512x512.png"}</script>
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/preview/" class="logo">
+    <span class="logo-text">clev<span>r</span></span>
+  </a>
+  <ul>
+    <li><a href="/preview/soluciones/">Soluciones</a></li>
+    <li><a href="/preview/industrias/">Industrias</a></li>
+    <li><a href="/preview/#equipo">Equipo</a></li>
+    <li><a href="/preview/#contacto">Contacto</a></li>
+    <li><a href="/preview/talleres.html" class="nav-active">Capacitaciones IA Empresa</a></li>
+  </ul>
+  <a href="/preview/" class="nav-mobile-btn">Inicio</a>
+</nav>
+
+<!-- HERO -->
+<section class="talleres-hero">
+  <div class="container">
+    <h1>Capacitaciones de IA<br><span class="i">para tu empresa</span></h1>
+    <p>Entrenamos a las personas de tu empresa para que usen inteligencia artificial en su trabajo diario. Personalizado para tu rubro y tus procesos.</p>
+  </div>
+</section>
+
+<!-- GALERÍA DE CAPACITACIONES -->
+<section class="gallery-section">
+  <div class="container">
+    <div class="gallery-head">
+      <p class="slabel">Capacitaciones IA</p>
+      <h2>Ideas que se convierten<br><span class="i">en acción</span></h2>
+      <p class="ssub">Aprendizaje práctico, conversación y nuevas ideas aplicadas al trabajo real.</p>
+    </div>
+    <div class="gallery-shell">
+      <div class="gallery-track" id="trainingGallery" aria-label="Galería de capacitaciones">
+        <figure class="gallery-slide"><img src="/preview/imagenes/optimizadas/Captura-de-pantalla-2026-09-09-a-la-4b5681b.webp" alt="Foto 1 de capacitación de IA" decoding="async" width="1600" height="1198" loading="lazy"></figure>
+        <figure class="gallery-slide"><img src="/preview/imagenes/capacitaciones/WhatsApp%20Image%202026-08-20%20at%2021.07.46.jpeg" alt="Foto 2 de capacitación de IA" loading="lazy" decoding="async" width="1600" height="1066"></figure>
+        <figure class="gallery-slide"><img src="/preview/imagenes/optimizadas/capacitacion-01-2f2f8fc.webp" alt="Foto 3 de capacitación de IA" loading="lazy" decoding="async" width="1600" height="1066"></figure>
+        <figure class="gallery-slide"><img src="/preview/imagenes/optimizadas/capacitacion-02-ce8ed69.webp" alt="Foto 4 de capacitación de IA" loading="lazy" decoding="async" width="1600" height="1066"></figure>
+        <figure class="gallery-slide"><img src="/preview/imagenes/optimizadas/capacitacion-03-504060a.webp" alt="Foto 5 de capacitación de IA" loading="lazy" decoding="async" width="1600" height="1066"></figure>
+        <figure class="gallery-slide"><img src="/preview/imagenes/optimizadas/capacitacion-04-8d9656f.webp" alt="Foto 6 de capacitación de IA" loading="lazy" decoding="async" width="1600" height="1066"></figure>
+        <figure class="gallery-slide"><img src="/preview/imagenes/optimizadas/capacitacion-08-9873a08.webp" alt="Foto 8 de capacitación de IA" loading="lazy" decoding="async" width="1600" height="737"></figure>
+      </div>
+      <div class="gallery-controls">
+        <button class="gallery-control" type="button" data-gallery-direction="prev" aria-label="Fotos anteriores">←</button>
+        <button class="gallery-control" type="button" data-gallery-direction="next" aria-label="Fotos siguientes">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="container">
+    <p class="slabel">Por qué Clevr</p>
+    <h2>Lo que hace diferente<br><span class="i">nuestras capacitaciones</span></h2>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🎯</div>
+        <h3>100% personalizado</h3>
+        <p>Diseñamos el contenido según tu industria, el rubro de tu empresa y los roles de cada persona en tu equipo.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <h3>Resultados desde el día 1</h3>
+        <p>Tu equipo sale de la capacitación aplicando herramientas de IA en sus tareas reales. Sin teoría innecesaria.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🤝</div>
+        <h3>Para todos los niveles</h3>
+        <p>No importa si tu equipo nunca usó IA antes. Las capacitaciones están diseñadas para cualquier nivel técnico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section">
+  <div class="container">
+    <div class="form-layout">
+      <div>
+        <p class="slabel">¿Cómo funciona?</p>
+        <h2 style="font-size:clamp(28px,3.5vw,44px)">Te contactamos con<br><span class="i">una propuesta a medida</span></h2>
+        <p class="ssub" style="margin-top:16px;font-size:16px">Cuéntanos sobre tu empresa y te enviamos una propuesta personalizada en menos de 24 horas.</p>
+        <div style="margin-top:36px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:32px;height:32px;background:var(--orange-l);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--indigo);flex-shrink:0">1</div>
+            <p style="color:var(--ink);font-size:15px">Llenas el formulario con los datos de tu empresa</p>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:32px;height:32px;background:var(--orange-l);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--indigo);flex-shrink:0">2</div>
+            <p style="color:var(--ink);font-size:15px">Te enviamos una propuesta personalizada en 24 horas</p>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:32px;height:32px;background:var(--orange-l);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--indigo);flex-shrink:0">3</div>
+            <p style="color:var(--ink);font-size:15px">Coordinamos la capacitación para tu equipo</p>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <p class="slabel">Solicita tu capacitación</p>
+        <h3 style="margin-bottom:24px">Cuéntanos sobre tu empresa</h3>
+        <div id="cap-form-fields">
+          <form id="cap-form">
+            <div class="frow">
+              <div class="field">
+                <label for="c-empresa">Nombre de la empresa</label>
+                <input type="text" id="c-empresa" name="empresa" placeholder="Ej: Empresa SpA" required>
+              </div>
+              <div class="field">
+                <label for="c-personas">¿Cuántas personas?</label>
+                <input type="number" id="c-personas" name="personas" placeholder="Ej: 12" min="1" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="c-email">Tu email</label>
+              <input type="email" id="c-email" name="email" placeholder="tu@empresa.cl" required>
+            </div>
+            <div class="field">
+              <label for="c-objetivo">Objetivo de la capacitación</label>
+              <textarea id="c-objetivo" name="objetivo" rows="3" placeholder="Ej: Que mi equipo de ventas use IA para responder clientes más rápido..."></textarea>
+            </div>
+            <input type="hidden" name="tipo" value="taller-ia-empresa">
+            <button type="submit" class="fsubmit" id="cap-submit-btn">Quiero una capacitación para mi equipo →</button>
+          </form>
+        </div>
+        <div class="fsuccess" id="cap-success">
+          <p>¡Solicitud recibida!</p>
+          <p style="color:var(--muted);font-size:15px;margin-top:8px">Te contactamos en menos de 24 horas con una propuesta a medida.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><a href="/preview/">← Volver a clevr.cl</a> &nbsp;·&nbsp; contacto@clevr.cl</p>
+<nav aria-label="Soluciones e industrias" style="position:static;display:flex;justify-content:center;flex-wrap:wrap;gap:24px;background:transparent;border:0;padding:20px"><a style="color:inherit" href="/preview/soluciones/">Soluciones</a><a style="color:inherit" href="/preview/industrias/">Industrias</a></nav></footer>
+
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Volver arriba">↑</button>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+  document.getElementById('topBtn').classList.toggle('visible',window.scrollY>300);
+});
+
+const trainingGallery = document.getElementById('trainingGallery');
+document.querySelectorAll('[data-gallery-direction]').forEach(button=>{
+  button.addEventListener('click',()=>{
+    const slides = [...trainingGallery.querySelectorAll('.gallery-slide')]
+      .filter(slide => getComputedStyle(slide).display !== 'none');
+    if (!slides.length) return;
+    const gap = parseFloat(getComputedStyle(trainingGallery).columnGap) || 0;
+    const amount = slides[0].getBoundingClientRect().width + gap;
+    const visibleCount = Math.max(1, Math.round((trainingGallery.clientWidth + gap) / amount));
+    const lastPosition = Math.max(0, slides.length - visibleCount);
+    const currentPosition = Math.min(lastPosition, Math.round(trainingGallery.scrollLeft / amount));
+    const nextPosition = button.dataset.galleryDirection === 'next'
+      ? (currentPosition >= lastPosition ? 0 : currentPosition + 1)
+      : (currentPosition <= 0 ? lastPosition : currentPosition - 1);
+
+    trainingGallery.scrollTo({left: nextPosition * amount, behavior:'smooth'});
+  });
+});
+
+document.getElementById('cap-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('cap-submit-btn');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/8654a3b95add09e616fd278bc33b7b13', {
+      method: 'POST',
+      body: JSON.stringify(Object.fromEntries(new FormData(this))),
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      document.getElementById('cap-form-fields').style.display = 'none';
+      document.getElementById('cap-success').style.display = 'block';
+    } else {
+      btn.textContent = 'Quiero una capacitación para mi equipo →';
+      btn.disabled = false;
+      alert('Hubo un error. Por favor intenta de nuevo.');
+    }
+  } catch(err) {
+    btn.textContent = 'Quiero una capacitación para mi equipo →';
+    btn.disabled = false;
+    alert('Error de conexión. Por favor intenta de nuevo.');
+  }
+});
+</script>
+</body>
+</html>
