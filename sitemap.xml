@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://clevr.cl/</loc>
-    <lastmod>2026-06-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://www.clevr.cl/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.clevr.cl/soluciones/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.clevr.cl/industrias/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.clevr.cl/soluciones/acceso-movil-y-costeo-produccion/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/captura-ordenes-compra/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/cobranza-automatizada/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/conciliacion-bancaria/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/contenido-de-marketing-con-ia/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/copiloto-docente/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/evaluacion-psicometrica/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/gestion-de-fondos-de-inversion/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/portal-b2b-chatbot-ia/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/revision-calidad-informes/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/revision-de-facturas/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/seguimiento-de-socios/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/traspaso-y-cuadre-contable/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/validacion-pagos-proveedores/</loc></url>
+  <url><loc>https://www.clevr.cl/soluciones/visibilidad-de-leads/</loc></url>
+  <url><loc>https://www.clevr.cl/industrias/centros-de-evaluacion/</loc></url>
+  <url><loc>https://www.clevr.cl/industrias/distribucion-b2b/</loc></url>
+  <url><loc>https://www.clevr.cl/industrias/educacion/</loc></url>
+  <url><loc>https://www.clevr.cl/industrias/gimnasios/</loc></url>
+  <url><loc>https://www.clevr.cl/industrias/inmobiliarias-y-gestion-de-activos/</loc></url>
+  <url><loc>https://www.clevr.cl/industrias/laboratorios/</loc></url>
+  <url><loc>https://www.clevr.cl/industrias/manufactura/</loc></url>
 </urlset>
