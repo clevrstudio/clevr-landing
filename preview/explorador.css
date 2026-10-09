@@ -72,6 +72,7 @@
 .explore-catalog-access a:focus-visible{outline:2px solid #b8490c;outline-offset:4px}
 .explore-catalog-access noscript{flex-basis:100%;font-size:12px;line-height:1.7;color:#647080}
 @media(max-width:600px){.explore-catalog-access{display:block;margin:0 0 24px}.explore-catalog-access>div{margin-top:14px}}
+@media(max-width:768px){body.explorer-panel-open #wppBtn,body.explorer-panel-open #topBtn{opacity:0;pointer-events:none;transform:translateY(8px)}}
 
 /* Contraste accesible del sitio en revisión. */
 #nav .nav-mobile-btn{color:#c2410c;border-color:#c2410c}

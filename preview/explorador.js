@@ -11,6 +11,7 @@
       document.getElementById(item.getAttribute('aria-controls')).hidden = !active;
     }
     panels.hidden = !tab;
+    document.body.classList.toggle('explorer-panel-open', Boolean(tab));
     if (focus) tab.focus();
   }
   tabs.forEach((tab, index) => {
