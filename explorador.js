@@ -17,7 +17,7 @@
     tab.addEventListener('click', () => {
       const next = tab.getAttribute('aria-selected') === 'true' ? null : tab;
       select(next);
-      if (next && window.matchMedia('(max-width:600px), (max-height:500px) and (orientation:landscape)').matches) {
+      if (next) {
         requestAnimationFrame(() => panels.scrollIntoView({
           behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
           block: 'start'
