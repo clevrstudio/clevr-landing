@@ -71,7 +71,10 @@
 .explore-catalog-access a:hover{text-decoration:underline}
 .explore-catalog-access a:focus-visible{outline:2px solid #b8490c;outline-offset:4px}
 .explore-catalog-access noscript{flex-basis:100%;font-size:12px;line-height:1.7;color:#647080}
+.explore-heading .explore-catalog-access{flex:0 0 auto;align-self:flex-end;margin:0;padding:0;border:0}
+.explore-heading .explore-catalog-access>div{justify-content:flex-end;gap:12px 20px}
 @media(max-width:600px){.explore-catalog-access{display:block;margin:0 0 24px}.explore-catalog-access>div{margin-top:14px}}
+@media(max-width:600px){.explore-heading .explore-catalog-access{margin-top:18px}.explore-heading .explore-catalog-access>div{justify-content:flex-start;gap:10px 18px}}
 @media(max-width:768px){body.explorer-panel-open #wppBtn,body.explorer-panel-open #topBtn{opacity:0;pointer-events:none;transform:translateY(8px)}}
 
 /* Contraste accesible del sitio en revisión. */
