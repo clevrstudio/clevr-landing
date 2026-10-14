@@ -25,3 +25,5 @@ Publicación final de oficina completada: https://www.clevr.cl/oficina/200 anón
 ## Explorador de oficinas por cliente, 14-10-2026
 
 Actualizado artifact de oficina: nueve oficinas independientes, 22 subagentes, cámara con arrastre, rueda/pinch, minimapa y vista general. Logos y módulos por cliente; interfaz inicial enfocada para legibilidad. Build OFFICE_BASE=/oficina/. Browser local verifica nueve selecciones sin remontar canvas, zoom/minimapa/terminal y móvil390px sin overflow ni errores JS. Publicar con baselinef484b64 y workflow aislado, preservando portada.
+
+Publicación del explorador verificada: workflow 38643372335 SUCCESS, artifact f839661, deployment clevr-landing-p28lvqaxn-alans-projects-ab124748.vercel.app. Nueve oficinas y 22 subagentes públicos en /oficina/. Los 19 assets y el worker coinciden byte a byte; portada, talleres y cotizador preservados. autoAssignCustomDomains=false restaurado. Auditoría visual Gemini 3.8 Flash supervisada por Luna; motor y offline verificados por Sol. El primer preflight 38643238336 detectó rutas relativas antes de desplegar; recompilar con base explícita corrigió el artifact. Siguiente: probar en monitor físico.
