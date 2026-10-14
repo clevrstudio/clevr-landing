@@ -30,4 +30,6 @@ Publicación del explorador verificada: workflow 38643372335 SUCCESS, artifact f
 
 ## Oficina para monitor, 14-10-2026
 
-Escenario a todo el ancho y82svh, controles discretos, prompt ydetallesplegables debajo. Sin letreros enormes declientes: logosoriginales. Agentes caminan y conversan enpares, cámaraautotour cercana10,5s poroficina, pausa alinteractuar yreanuda manualmente. Sol/Luna implementaron, Gemini investigóreferencias yTerra auditóconfix demovimientoreducido. Buildbase/oficina correcto; publicación pendiente.
+Escenario a todo el ancho y 82svh, controles discretos, prompt y detalles plegables debajo. Sin letreros enormes de clientes: logos originales. Agentes caminan y conversan en pares, cámara automática cercana con 10,5s por oficina, pausa al interactuar y reanudación manual. Sol y Luna implementaron, Gemini investigó referencias y Terra auditó con corrección de movimiento reducido. Build con base /oficina/ correcto. Se prepara corrección de Hard Fun como partnership de capacitaciones; publicación final pendiente.
+
+Ajuste final: se retira Hard Fun y se incorpora Capacitaciones Clevr como vertical propia. El artifact conserva nueve oficinas y22agentes, con siete logos originales. Colaboración animada incluye traspaso de documentos; la interfaz no muestra rótulos intrusivos de simulación. Tests36/36 y build con base explícita correctos.
