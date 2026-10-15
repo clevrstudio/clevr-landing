@@ -1,12 +1,42 @@
 {
+  "trailingSlash": true,
   "redirects": [
     {
       "source": "/agenda",
       "destination": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2fdODOaVt3J2TZKp5POzlUZDZ4vtQjewEMFJ-NEpmPHXlDGDWHrrvSo3jI0fj5XaRJ41IkASFx",
       "permanent": false
+    },
+    {
+      "source": "/talleres.html",
+      "destination": "/talleres/",
+      "permanent": true
+    },
+    {
+      "source": "/cotizador.html",
+      "destination": "/cotizador/",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/talleres/",
+      "destination": "/talleres.html"
+    },
+    {
+      "source": "/cotizador/",
+      "destination": "/cotizador.html"
     }
   ],
   "headers": [
+    {
+      "source": "/cotizador:path*",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
     {
       "source": "/preview/:path*",
       "headers": [

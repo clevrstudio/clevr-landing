@@ -39,3 +39,13 @@ Publicación final verificada en https://www.clevr.cl/oficina/: artifact f2e2870
 ## Oficina virtual con identidad Clevr, Maestro AI y Buenaventura, 15-10-2026
 
 Publicación en vivo verificada en https://www.clevr.cl/oficina/: artifact 79674ca, workflow 38680371511 SUCCESS. 21 assets y service worker offline coinciden byte a byte; portada pública (/), talleres.html y cotizador.html preservados al 100%, autoAssignCustomDomains=false restaurado. Incorpora 10 oficinas y verticales (Maestro AI con logo de Tsinghua University, Capacitaciones Clevr, Buenaventura con logo oficial), dotación de 4 a 7 agentes por proceso, transiciones dinámicas de cámara con zoom de alejamiento durante traslados, y la paleta de marca oficial de Clevr en navy (#1e293b), slate y naranja (#ff6424).
+
+## Optimización SEO técnico, Search Console y arquitectura canónica, 15-10-2026
+
+Corrección integral de las causas raíz de páginas no indexadas reportadas en Google Search Console:
+1. Trailing slash canónico: activado `trailingSlash: true` en `vercel.json` para evitar la duplicación de contenido (HTTP 200 dual) en 22 rutas de soluciones e industrias.
+2. Capacitaciones limpias: configuradas reglas en `vercel.json` (`redirect` 301 de `/talleres.html` a `/talleres/`, `rewrite` de `/talleres/` a `talleres.html`). Se actualizó canonical y `og:url` a `https://www.clevr.cl/talleres/`, y todos los enlaces internos de menús y pie de página en soluciones e industrias pasaron a `/talleres/`.
+3. Sitemap XML: incorporada la URL canónica `/talleres/` con prioridad 0.9. Las 24 páginas indexables oficiales quedan sincronizadas y validadas al 100%.
+4. Desindexación segura de cotizador: agregado meta `noindex, nofollow`, regla en `robots.txt` y encabezado `X-Robots-Tag: noindex, nofollow` en `vercel.json`.
+5. Directivas de rastreo en robots.txt: retirado `Disallow: /preview/` para permitir que Googlebot rastree las cabeceras `X-Robots-Tag: noindex, nofollow` de la preview y elimine las alertas de "Indexada aunque bloqueada por robots.txt".
+6. Schema.org Knowledge Panel: integrado grafo semántico completo (`Organization`, `ProfessionalService`, `Person` para Benjamín, Alan y Alberto, `ContactPoint`, `OfferCatalog` y `WebSite`) en `index.html`.
