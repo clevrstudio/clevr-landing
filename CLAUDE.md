@@ -34,4 +34,8 @@ Escenario a todo el ancho y 82svh, controles discretos, prompt y detalles plegab
 
 Ajuste final: se retira Hard Fun y se incorpora Capacitaciones Clevr como vertical propia. El artifact conserva nueve oficinas y22agentes, con siete logos originales. Colaboración animada incluye traspaso de documentos; la interfaz no muestra rótulos intrusivos de simulación. Tests36/36 y build con base explícita correctos.
 
-Publicación final verificada en https://www.clevr.cl/oficina/: artifact f2e2870, workflow 38646187601 SUCCESS, deployment clevr-landing-7egwk4hrn-alans-projects-ab124748.vercel.app. Los 18 assets y el worker coinciden byte a byte; portada, talleres y cotizador preservados, autoAssignCustomDomains=false restaurado. Nueve oficinas, 22 agentes y siete logos; Capacitaciones Clevr reemplaza Hard Fun. Próximo paso: probar en el monitor físico del stand.
+Publicación final verificada en https://www.clevr.cl/oficina/: artifact f2e2870, workflow 38646187601 SUCCESS, deployment clevr-landing-7egwk4hrn-alans-projects-ab124748.vercel.app. Los 18 assets y el worker coinciden byte a byte; portada, talleres y cotizador preservados, autoAssignCustomDomains=false restaurado. Nueve oficinas, 22 agentes y siete logos; Capacitaciones Clevr reemplaza Hard Fun.
+
+## Oficina virtual con identidad Clevr, Maestro AI y Buenaventura, 15-10-2026
+
+Publicación en vivo verificada en https://www.clevr.cl/oficina/: artifact 79674ca, workflow 38680371511 SUCCESS. 21 assets y service worker offline coinciden byte a byte; portada pública (/), talleres.html y cotizador.html preservados al 100%, autoAssignCustomDomains=false restaurado. Incorpora 10 oficinas y verticales (Maestro AI con logo de Tsinghua University, Capacitaciones Clevr, Buenaventura con logo oficial), dotación de 4 a 7 agentes por proceso, transiciones dinámicas de cámara con zoom de alejamiento durante traslados, y la paleta de marca oficial de Clevr en navy (#1e293b), slate y naranja (#ff6424).
