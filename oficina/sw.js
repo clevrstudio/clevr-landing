@@ -1,4 +1,4 @@
-const CACHE = 'clevr-hq-cf207a823a44';
+const CACHE = 'clevr-hq-ab0400d9b7ff';
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const scope = self.registration.scope;
