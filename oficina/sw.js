@@ -1,4 +1,4 @@
-const CACHE = 'clevr-hq-db20a220e4ef';
+const CACHE = 'clevr-hq-d9dbdaa53216';
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const scope = self.registration.scope;
@@ -19,6 +19,12 @@ self.addEventListener('activate', event => event.waitUntil((async () => {
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
   event.respondWith((async () => {
+    // Online navigations must not reuse HTML that references an older release.
+    // Keep the installed offline snapshot intact until the next worker is ready.
+    if (event.request.mode === 'navigate') {
+      try { return await fetch(event.request, { cache: 'no-cache' }); }
+      catch { return (await caches.match(self.registration.scope)) || Response.error(); }
+    }
     const cached = await caches.match(event.request);
     if (cached) return cached;
     try { return await fetch(event.request); }
