@@ -109,7 +109,7 @@
     ctx.setTransform(dpr,0,0,dpr,0,0);
     ctx.clearRect(0,0,S,S);
     // stars
-    stars.forEach(function(s){
+    if (!isMobile()) stars.forEach(function(s){
       var a = reduce ? .45 : .12 + .6*(.5+.5*Math.sin(t*s.sp + s.ph));
       ctx.fillStyle = 'rgba(255,255,255,'+a.toFixed(3)+')';
       ctx.beginPath(); ctx.arc(s.x*S, s.y*S, s.r, 0, 6.283); ctx.fill();
