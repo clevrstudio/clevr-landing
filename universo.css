@@ -61,7 +61,7 @@
 .uni-cta{display:inline-block;margin-top:22px;background:var(--orange);color:#fff;font-weight:700;font-size:15px;text-decoration:none;padding:13px 18px;border-radius:2px}
 .uni-cta:hover{background:#d75c2e}
 #universo-clevr button:focus-visible,#universo-clevr a:focus-visible{outline:2px solid var(--orange-l);outline-offset:3px}
-#universo-clevr{position:relative;isolation:isolate}
+#universo-clevr{position:relative;isolation:isolate;padding:0 40px}
 #universo-clevr,#universo-clevr *{box-sizing:border-box}
 #universo-clevr .uni-top{width:100%}
 #universo-clevr #uni-title{margin:18px 0 0;font-size:clamp(36px,5.4vw,68px);line-height:1.02;font-weight:800;letter-spacing:-1.6px;text-wrap:balance;color:var(--ink);text-align:left}
@@ -73,6 +73,7 @@
 #universo-clevr .uni-row:focus-visible{outline-offset:2px}
 #universo-clevr .uni-cta{border-radius:2px}
 @media(max-width:760px){
+  #universo-clevr{padding:56px 20px}
   #universo-clevr .uni-wrap{padding-top:44px;padding-bottom:52px}
   #universo-clevr .uni-top{gap:24px}
   #universo-clevr .uni-main{gap:20px;margin-top:22px}
