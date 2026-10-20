@@ -27,9 +27,9 @@
     v.satSpeed = 1;
     var p = document.createElement('button');
     p.type = 'button'; p.className = 'uni-node uni-planet';
-    p.setAttribute('aria-label','Área '+v.name+', '+v.mods.length+' módulos');
+    p.setAttribute('aria-label','Área '+v.name);
     p.setAttribute('aria-controls','uni-panel');
-    p.innerHTML = '<span class="n">'+esc(v.short)+'</span><span class="k">'+pad(v.mods.length)+' MÓDULOS</span>';
+    p.innerHTML = '<span class="n">'+esc(v.short)+'</span>';
     p.addEventListener('click', function(){ select(i,null); });
     v.el = p;
     v.modEls = v.mods.map(function(m, j){
@@ -181,12 +181,12 @@
     if (sel === null){
       h = '<div class="uni-card"><div class="uni-kicker">CLEVR · SOLUCIONES</div><h2>Elige un área y explora sus soluciones.</h2>'+
           '<p>Agentes, automatizaciones y herramientas conectadas a los sistemas que ya usa tu equipo.</p><div class="uni-list">'+
-          V.map(function(v, i){ return '<button type="button" class="uni-row" data-v="'+i+'">Soluciones para '+esc(v.name)+'<span class="m">'+pad(v.mods.length)+' MÓDULOS →</span></button>'; }).join('')+
+          V.map(function(v, i){ return '<button type="button" class="uni-row" data-v="'+i+'">Soluciones para '+esc(v.name)+'<span class="m">→</span></button>'; }).join('')+
           '</div></div>';
     } else {
       var v = V[sel];
       h = '<div class="uni-card"><button type="button" class="uni-back" data-core="1">← TODAS LAS SOLUCIONES</button>'+
-          '<div class="uni-kicker" style="margin-top:6px">ÁREA · '+pad(v.mods.length)+' MÓDULOS</div><h2>Soluciones para '+esc(v.name)+'</h2><p>'+esc(v.desc)+'</p><div class="uni-list">'+
+          '<div class="uni-kicker" style="margin-top:6px">ÁREA · '+esc(v.name)+'</div><h2>Soluciones para '+esc(v.name)+'</h2><p>'+esc(v.desc)+'</p><div class="uni-list">'+
           v.mods.map(function(m, j){ return '<button type="button" class="uni-row uni-mrow'+(selM===j?' uni-on':'')+'" aria-pressed="'+(selM===j)+'" data-m="'+j+'"><span class="m">'+pad(j+1)+'</span>'+esc(m[0])+'</button>'; }).join('')+
           '</div>'+(selM !== null ? '<div class="uni-detail"><b>'+esc(v.mods[selM][0])+'</b><span>'+esc(v.mods[selM][1])+'</span></div>' : '')+
           '<a class="uni-cta" href="#agendar">Conversemos →</a></div>';

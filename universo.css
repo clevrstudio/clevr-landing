@@ -27,19 +27,18 @@
 .uni-planet{border-radius:50%;background:var(--navy);border:1px solid rgba(255,170,132,.55);color:#fff;cursor:pointer;padding:0;font-family:var(--sans);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 44px rgba(63,78,101,.95);transition:background .35s,box-shadow .35s,opacity .4s,scale .3s}
 .uni-planet:hover{scale:1.06}
 .uni-planet .n{font-weight:800;line-height:1.1;white-space:pre}
-.uni-planet .k{font-family:var(--mono);letter-spacing:1.5px;color:var(--orange-l);margin-top:6px}
 .uni-planet.uni-on{background:var(--orange);border-color:var(--orange-l);box-shadow:0 0 0 8px rgba(231,106,58,.18),0 0 80px rgba(231,106,58,.75)}
-.uni-planet.uni-on .k{color:#fff}
 .uni-dim{opacity:.25}
 .uni-mod{width:30px;height:30px;border:none;background:transparent;padding:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:opacity .4s}
 .uni-mod i{display:block;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 9px rgba(255,255,255,.9);transition:width .3s,height .3s,background .3s,box-shadow .3s}
 .uni-mod:hover i{width:12px;height:12px}
 .uni-mod.uni-show i{width:9px;height:9px;box-shadow:0 0 14px rgba(255,255,255,.95)}
 .uni-mod.uni-on i{width:15px;height:15px;background:var(--orange);box-shadow:0 0 26px rgba(231,106,58,1)}
-.uni-mod .lbl{position:absolute;top:27px;left:50%;transform:translateX(-50%);width:max-content;max-width:min(220px,50vw);white-space:normal;text-align:center;line-height:1.3;font-family:var(--mono);font-size:10px;letter-spacing:.4px;color:#dfe5ec;background:rgba(18,24,34,.9);padding:3px 7px;pointer-events:none;opacity:0;transition:opacity .18s}
+.uni-mod .lbl{position:absolute;z-index:10;top:27px;left:50%;transform:translateX(-50%);width:max-content;max-width:min(220px,50vw);white-space:normal;text-align:center;line-height:1.3;font-family:var(--mono);font-size:10px;letter-spacing:.4px;color:#dfe5ec;background:rgba(18,24,34,.9);padding:3px 7px;pointer-events:none;opacity:0;transition:opacity .18s}
 .uni-mod .lbl.uni-label-left{left:0;transform:none;text-align:left}
 .uni-mod .lbl.uni-label-right{left:auto;right:0;transform:none;text-align:right}
 .uni-mod:hover .lbl,.uni-mod:focus-visible .lbl{opacity:1}
+.uni-mod:hover,.uni-mod:focus-visible{z-index:8!important}
 .uni-mod.uni-on .lbl{color:var(--orange-l)}
 .uni-hint{text-align:center;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--ink-faint)}
 .uni-panel{flex:0 1 380px;min-width:0;max-width:400px;margin:0 auto}
@@ -84,7 +83,6 @@
   #universo-clevr .uni-panel{scroll-margin-top:84px}
   #universo-clevr .uni-mod .lbl{display:none!important}
   #universo-clevr .uni-core .c{letter-spacing:1px}
-  #universo-clevr .uni-planet .k{letter-spacing:.6px}
   #universo-clevr .uni-card{padding:22px 18px}
   #universo-clevr .uni-card h2{font-size:26px}
   #universo-clevr .uni-hint{font-size:9px;line-height:1.6;letter-spacing:1px;padding-inline:8px}
