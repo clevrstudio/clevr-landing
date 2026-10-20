@@ -38,6 +38,7 @@
 .uni-mod .lbl.uni-label-left{left:0;transform:none;text-align:left}
 .uni-mod .lbl.uni-label-right{left:auto;right:0;transform:none;text-align:right}
 .uni-mod:hover .lbl,.uni-mod:focus-visible .lbl{opacity:1}
+.uni-mod:hover,.uni-mod:focus-visible{z-index:5!important}
 .uni-mod.uni-on .lbl{color:var(--orange-l)}
 .uni-hint{text-align:center;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--ink-faint)}
 .uni-panel{flex:0 1 380px;min-width:0;max-width:400px;margin:0 auto}
