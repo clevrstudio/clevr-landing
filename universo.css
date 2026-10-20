@@ -26,7 +26,7 @@
 .uni-core .c{font-family:var(--mono);letter-spacing:3px;color:#5b697d;margin-top:4px}
 .uni-planet{border-radius:50%;background:var(--navy);border:1px solid rgba(255,170,132,.55);color:#fff;cursor:pointer;padding:0;font-family:var(--sans);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 44px rgba(63,78,101,.95);transition:background .35s,box-shadow .35s,opacity .4s,scale .3s}
 .uni-planet:hover{scale:1.06}
-.uni-planet .n{font-weight:800;line-height:1.1;white-space:pre-line}
+.uni-planet .n{font-weight:800;line-height:1.1;white-space:pre}
 .uni-planet .k{font-family:var(--mono);letter-spacing:1.5px;color:var(--orange-l);margin-top:6px}
 .uni-planet.uni-on{background:var(--orange);border-color:var(--orange-l);box-shadow:0 0 0 8px rgba(231,106,58,.18),0 0 80px rgba(231,106,58,.75)}
 .uni-planet.uni-on .k{color:#fff}
