@@ -80,6 +80,7 @@
   #universo-clevr .uni-stage-col{flex-basis:100%}
   #universo-clevr .uni-panel{flex-basis:100%;max-width:100%}
   #universo-clevr .uni-panel{scroll-margin-top:84px}
+  #universo-clevr .uni-mod{display:none!important}
   #universo-clevr .uni-mod .lbl{display:none!important}
   #universo-clevr .uni-core .c{letter-spacing:1px}
   #universo-clevr .uni-card{padding:22px 18px}
