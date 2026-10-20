@@ -4,6 +4,8 @@
   var esc = function(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); };
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mobileQuery = window.matchMedia && window.matchMedia('(max-width: 760px)');
+  var isMobile = function(){ return !!(mobileQuery && mobileQuery.matches); };
   var stage = document.getElementById('uni-stage');
   var cvs = document.getElementById('uni-sky');
   var ctx = cvs.getContext('2d');
@@ -137,7 +139,7 @@
       ctx.strokeStyle = on ? 'rgba(255,170,132,.45)' : (dim ? 'rgba(223,229,236,.03)' : 'rgba(223,229,236,.09)');
       ctx.beginPath(); ctx.arc(p.x,p.y,R2,0,6.283); ctx.stroke();
       // constellation lines for selected vertical
-      if (on){
+      if (on && !isMobile()){
         ctx.strokeStyle = 'rgba(255,170,132,.16)';
         p.ms.forEach(function(m, j){
           ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(m[0],m[1]); ctx.stroke();
@@ -168,6 +170,7 @@
     });
     hint.textContent = sel === null ? 'CADA ESTRELLA ES UNA SOLUCIÓN · PASA EL CURSOR PARA PAUSAR' : 'TOCA UNA ESTRELLA PARA VER SU SOLUCIÓN · TOCA CLEVR PARA VOLVER';
     renderPanel();
+    if (sel !== null && isMobile()) requestAnimationFrame(function(){ panel.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'}); });
   }
 
   function renderPanel(){
