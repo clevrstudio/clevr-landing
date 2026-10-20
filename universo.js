@@ -94,6 +94,9 @@
       var ms = v.mods.map(function(m, j){
         var b = v.sat + j*Math.PI*2/v.mods.length, mx = px + R2*Math.cos(b), my = py + R2*Math.sin(b);
         v.modEls[j].style.transform = 'translate('+(mx-15)+'px,'+(my-15)+'px)';
+        var label = v.modEls[j].querySelector('.lbl');
+        label.classList.toggle('uni-label-left', mx < S*.28);
+        label.classList.toggle('uni-label-right', mx > S*.72);
         return [mx,my];
       });
       return { x:px, y:py, ms:ms };
