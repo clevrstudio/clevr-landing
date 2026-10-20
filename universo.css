@@ -79,6 +79,8 @@
   #universo-clevr .uni-main{gap:20px;margin-top:22px}
   #universo-clevr .uni-stage-col{flex-basis:100%}
   #universo-clevr .uni-panel{flex-basis:100%;max-width:100%}
+  #universo-clevr .uni-core .c{letter-spacing:1px}
+  #universo-clevr .uni-planet .k{letter-spacing:.6px}
   #universo-clevr .uni-card{padding:22px 18px}
   #universo-clevr .uni-card h2{font-size:26px}
   #universo-clevr .uni-hint{font-size:9px;line-height:1.6;letter-spacing:1px;padding-inline:8px}

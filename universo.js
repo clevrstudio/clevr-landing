@@ -59,12 +59,12 @@
     var coreD = Math.max(76, S*.19);
     core.style.width = coreD+'px'; core.style.height = coreD+'px';
     core.querySelector('.w').style.fontSize = Math.max(18, S*.04)+'px';
-    core.querySelector('.c').style.fontSize = Math.max(8, S*.012)+'px';
+    core.querySelector('.c').style.fontSize = (S < 400 ? Math.max(5.5, S*.02) : Math.max(8, S*.012))+'px';
     var P = Math.max(64, Math.min(132, S*.16));
     V.forEach(function(v){
       v.el.style.width = P+'px'; v.el.style.height = P+'px';
       v.el.querySelector('.n').style.fontSize = Math.max(11, P*.12)+'px';
-      v.el.querySelector('.k').style.fontSize = Math.max(8, P*.075)+'px';
+      v.el.querySelector('.k').style.fontSize = (P < 80 ? Math.max(5.5, P*.09) : Math.max(8, P*.075))+'px';
     });
   }
   if (window.ResizeObserver) new ResizeObserver(resize).observe(stage); else window.addEventListener('resize', resize);
