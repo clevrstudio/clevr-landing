@@ -66,7 +66,6 @@
     V.forEach(function(v){
       v.el.style.width = P+'px'; v.el.style.height = P+'px';
       v.el.querySelector('.n').style.fontSize = Math.max(11, P*.12)+'px';
-      v.el.querySelector('.k').style.fontSize = (P < 80 ? Math.max(5.5, P*.09) : Math.max(8, P*.075))+'px';
     });
   }
   if (window.ResizeObserver) new ResizeObserver(resize).observe(stage); else window.addEventListener('resize', resize);
