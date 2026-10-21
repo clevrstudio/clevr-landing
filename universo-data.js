@@ -31,11 +31,12 @@ window.CLEVR_UNIVERSE_DATA = [
         ['Asistente contable','Lleva la información de la operación al sistema contable sin digitación.']
       ]},
     { id:'b2b', name:'B2B', short:'B2B', dur:44,
-      desc:'Distribuidores, importadores y servicios. Pedidos, portales de clientes, reposición y logística.',
+      desc:'Distribuidores, importadores y operadores de transporte. Pedidos, logística y productividad para coordinar mejor cada movimiento.',
       mods:[
         ['Portal B2B con catálogo','Tus clientes ven catálogo, stock y precios conectados al ERP y hacen pedidos solos.'],
         ['Chatbot para clientes','Responde consultas de clientes con la información real del ERP.'],
-        ['Diagnóstico de IA','Recorremos la operación completa y priorizamos qué automatizar primero.'],
-        ['Taller de IA','Capacitación práctica para que el equipo use IA en su día a día.']
+        ['Agente de logística','Centraliza solicitudes, documentos y estados logísticos para coordinar pedidos y despachos con menos trabajo manual.'],
+        ['Productividad en transporte','Ordena la planificación y el seguimiento de viajes, cargas e incidencias para mejorar tiempos y coordinación del transporte.'],
+        ['Diagnóstico de IA','Recorremos la operación completa y priorizamos qué automatizar primero.']
       ]}
   ];
