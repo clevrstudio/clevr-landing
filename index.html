@@ -919,6 +919,20 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
 }
 #topBtn.visible{opacity:1;transform:translateY(0)}
 #topBtn:hover{background:#EA580C}
+#proyecto-social-clevr{padding:54px 48px;background:var(--bg1)}
+.project-social-inner{width:min(1160px,100%);margin:0 auto}
+.project-social-card{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:44px;align-items:center;padding:38px 42px;border:1px solid var(--border);border-radius:22px;background:#fff;box-shadow:var(--shadow)}
+.project-social-kicker{margin-bottom:13px;color:#a00087;font-size:12px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}
+.project-social-card h2{max-width:700px;margin:0 0 14px;font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,3.5vw,42px);line-height:1.12;letter-spacing:-1.1px;color:var(--ink)}
+.project-social-copy{max-width:720px;color:var(--muted);font-size:16px;line-height:1.8}
+.project-social-award{display:inline-flex;align-items:center;gap:8px;margin:4px 0 12px;padding:8px 12px;border:1px solid #e9c9e7;border-radius:100px;background:#fff7fe;color:#8a0878;font-size:13px;font-weight:800}
+.project-social-next{margin:0 0 18px;color:var(--ink2);font-size:14px;line-height:1.7}
+.project-social-link{display:inline-flex;align-items:center;gap:8px;padding:11px 17px;border-radius:100px;background:var(--orange);color:#fff;font-size:14px;font-weight:800;text-decoration:none;transition:transform .2s,background .2s}
+.project-social-link:hover{transform:translateY(-2px);background:#ea580c}
+.project-social-seal{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.project-social-seal img{display:block;width:min(190px,100%);height:auto}
+.project-social-seal span{max-width:190px;color:var(--muted);font-size:11px;font-weight:700;line-height:1.5}
+@media(max-width:768px){#proyecto-social-clevr{padding:34px 20px}.project-social-card{grid-template-columns:1fr;gap:22px;padding:26px 22px}.project-social-card h2{font-size:30px}.project-social-copy{font-size:14px}.project-social-seal{grid-row:1}.project-social-seal img{width:126px}.project-social-next{font-size:13px}}
 </style>
 <link rel="canonical" href="https://www.clevr.cl/">
 <meta property="og:type" content="website">
@@ -979,6 +993,24 @@ footer p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.9}
   <div id="clevrTouchZone" aria-hidden="true"></div>
 </section>
 
+<section id="proyecto-social-clevr" aria-labelledby="proyecto-social-title">
+  <div class="project-social-inner">
+    <div class="project-social-card">
+      <div>
+        <p class="project-social-kicker">Proyecto social Clevr · Educación</p>
+        <h2 id="proyecto-social-title">Maestro AI acompaña a quienes enseñan</h2>
+        <p class="project-social-copy">Un copiloto docente que ayuda a reunir asistencia, calificaciones y avance de los estudiantes para detectar a tiempo quién podría necesitar apoyo y preparar materiales de nivelación personalizados. La tecnología apoya; el profesor decide.</p>
+        <div class="project-social-award">✦ Premio Plata · Desafío 2026</div>
+        <p class="project-social-next"><strong>Próximo paso:</strong> en enero de 2027, Alan viajará a Tsinghua University en Beijing con la delegación premiada.</p>
+        <a class="project-social-link" href="/soluciones/copiloto-docente/">Conoce el proyecto <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="project-social-seal">
+        <img src="/oficina/assets/tsinghua-5JtiwiiE.png" alt="Sello de Tsinghua University">
+        <span>China–América Latina · Alivio de la Pobreza 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <div class="div"></div>
 
