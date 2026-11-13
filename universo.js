@@ -188,7 +188,7 @@
           '<div class="uni-kicker" style="margin-top:6px">ÁREA · '+esc(v.name)+'</div><h2>Soluciones para '+esc(v.name)+'</h2><p>'+esc(v.desc)+'</p><div class="uni-list">'+
           v.mods.map(function(m, j){ return '<button type="button" class="uni-row uni-mrow'+(selM===j?' uni-on':'')+'" aria-pressed="'+(selM===j)+'" data-m="'+j+'"><span class="m">'+pad(j+1)+'</span>'+esc(m[0])+'</button>'; }).join('')+
           '</div>'+(selM !== null ? '<div class="uni-detail"><b>'+esc(v.mods[selM][0])+'</b><span>'+esc(v.mods[selM][1])+'</span></div>' : '')+
-          '<a class="uni-cta" href="#agendar">Conversemos →</a></div>';
+          '<a class="uni-cta" href="/agenda/">Conversemos →</a></div>';
     }
     panel.innerHTML = h;
   }

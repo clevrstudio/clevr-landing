@@ -2,8 +2,8 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/agenda",
-      "destination": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2fdODOaVt3J2TZKp5POzlUZDZ4vtQjewEMFJ-NEpmPHXlDGDWHrrvSo3jI0fj5XaRJ41IkASFx",
+      "source": "/agenda/:path*",
+      "destination": "https://calendar.app.google/P7WYxWAZBaXdNvYq9",
       "permanent": false
     },
     {
