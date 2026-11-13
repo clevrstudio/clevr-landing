@@ -2,11 +2,6 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/agenda/:path*",
-      "destination": "https://calendar.app.google/P7WYxWAZBaXdNvYq9",
-      "permanent": false
-    },
-    {
       "source": "/talleres.html",
       "destination": "/talleres/",
       "permanent": true
