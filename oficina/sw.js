@@ -1,4 +1,4 @@
-const CACHE = 'clevr-hq-9f59e33a4963';
+const CACHE = 'clevr-hq-f5468abecc29';
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const scope = self.registration.scope;
@@ -17,6 +17,7 @@ self.addEventListener('activate', event => event.waitUntil((async () => {
   await self.clients.claim();
 })()));
 self.addEventListener('fetch', event => {
+  if (new URL(event.request.url).pathname.startsWith('/api/')) return;
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
   event.respondWith((async () => {
     // Online navigations must not reuse HTML that references an older release.
@@ -30,7 +31,7 @@ self.addEventListener('fetch', event => {
     try { return await fetch(event.request); }
     catch (error) {
       if (event.request.mode === 'navigate') return (await caches.match(self.registration.scope)) || Response.error();
-      throw error;
+      return new Response('Recurso no disponible. Revisa la conexión.', { status: 503 });
     }
   })());
 });
