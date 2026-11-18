@@ -181,6 +181,7 @@
       h = '<div class="uni-card"><div class="uni-kicker">CLEVR · SOLUCIONES</div><h2>Elige un área y explora sus soluciones.</h2>'+
           '<p>Agentes, automatizaciones y herramientas conectadas a los sistemas que ya usa tu equipo.</p><div class="uni-list">'+
           V.map(function(v, i){ return '<button type="button" class="uni-row" data-v="'+i+'">Soluciones para '+esc(v.name)+'</button>'; }).join('')+
+          '<a class="uni-row uni-other" href="/soluciones/">Soluciones para otras industrias</a>'+
           '</div></div>';
     } else {
       var v = V[sel];
