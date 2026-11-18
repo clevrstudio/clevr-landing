@@ -15,6 +15,9 @@
 #uni-title span{color:var(--orange)}
 .uni-lede{margin:20px 0 0;font-size:18px;line-height:1.55;color:var(--ink-soft);max-width:560px}
 .uni-main{display:flex;flex-wrap:wrap;gap:32px;align-items:center;margin-top:28px}
+.uni-more{margin-top:36px;padding-top:28px;border-top:1px solid var(--line);text-align:center}
+.uni-more p{margin:0;color:var(--ink-soft);line-height:1.6}
+.uni-more .uni-catalog-link{margin-top:16px}
 .uni-stage-col{flex:1 1 600px;min-width:0}
 .uni-stage{position:relative;width:100%;max-width:700px;aspect-ratio:1/1;margin:0 auto}
 .uni-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
