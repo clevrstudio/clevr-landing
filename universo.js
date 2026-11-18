@@ -1,5 +1,6 @@
 (function(){
-  var V = window.CLEVR_UNIVERSE_DATA || [];
+  var V = (window.CLEVR_UNIVERSE_DATA || []).slice();
+  V.push({id:'otros', name:'Otros', short:'Otros', dur:50, mods:[], catalog:true});
   var pad = function(n){ return (n<10?'0':'')+n; };
   var esc = function(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); };
 
@@ -22,15 +23,15 @@
   stage.appendChild(core);
 
   V.forEach(function(v, i){
-    v.base = -Math.PI/2 + i*Math.PI/2;
+    v.base = -Math.PI/2 + i*Math.PI*2/V.length;
     v.sat = Math.random()*Math.PI*2;
     v.satSpeed = 1;
     var p = document.createElement('button');
     p.type = 'button'; p.className = 'uni-node uni-planet';
-    p.setAttribute('aria-label','Área '+v.name);
+    p.setAttribute('aria-label',v.catalog ? 'Otras industrias, ver todas las soluciones' : 'Área '+v.name);
     p.setAttribute('aria-controls','uni-panel');
     p.innerHTML = '<span class="n">'+esc(v.short)+'</span>';
-    p.addEventListener('click', function(){ select(i,null); });
+    p.addEventListener('click', function(){ if (v.catalog) window.location.href='/soluciones/'; else select(i,null); });
     v.el = p;
     v.modEls = v.mods.map(function(m, j){
       var b = document.createElement('button');
@@ -180,7 +181,7 @@
     if (sel === null){
       h = '<div class="uni-card"><div class="uni-kicker">CLEVR · SOLUCIONES</div><h2>Elige un área y explora sus soluciones.</h2>'+
           '<p>Agentes, automatizaciones y herramientas conectadas a los sistemas que ya usa tu equipo.</p><div class="uni-list">'+
-          V.map(function(v, i){ return '<button type="button" class="uni-row" data-v="'+i+'">Soluciones para '+esc(v.name)+'</button>'; }).join('')+
+          V.map(function(v, i){ return v.catalog ? '' : '<button type="button" class="uni-row" data-v="'+i+'">Soluciones para '+esc(v.name)+'</button>'; }).join('')+
           '<a class="uni-row uni-other" href="/soluciones/">Soluciones para otras industrias</a>'+
           '</div></div>';
     } else {
