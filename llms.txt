@@ -6,31 +6,31 @@ Fundada por Alberto Blanche, Benjamín Apt y Alan Kulka. Contacto: contacto@clev
 
 ## Páginas principales
 
-- [Inicio](https://www.clevr.cl/): En Clevr entendemos tu negocio e integramos IA con los sistemas que ya usas para automatizar procesos manuales. Te acompañamos desde el diagnóstico hasta la mantención.
+- [Inicio](https://www.clevr.cl/): Clevr integra IA con los sistemas que tu empresa ya usa para automatizar procesos manuales. Te acompañamos desde el diagnóstico hasta la mantención.
 - [Soluciones](https://www.clevr.cl/soluciones/): Conoce las soluciones de Clevr: cobranza, conciliación, portales B2B, órdenes de compra, calidad e IA aplicada a tu operación.
 - [Industrias](https://www.clevr.cl/industrias/): IA y automatización para laboratorios, inmobiliarias, fondos de inversión y distribución B2B, además de manufactura, evaluación, educación.
 - [Capacitaciones de IA para empresas](https://www.clevr.cl/talleres/): Capacitaciones de IA personalizadas para tu equipo. Entrenamos a las personas de tu empresa para usar inteligencia artificial en su trabajo diario.
 
 ## Soluciones
 
-- [Cobranza automatizada](https://www.clevr.cl/soluciones/cobranza-automatizada/): Clevr desarrolló una solución de cobranza que organiza seguimientos por factura, registra respuestas y muestra qué pagos siguen pendientes, según los datos disponibles en los sistemas de cada operación.
-- [Revisión de facturas](https://www.clevr.cl/soluciones/revision-de-facturas/): Clevr desarrolló una solución que compara los datos de una factura con la información de referencia disponible y destaca los campos que necesitan revisión.
-- [Validación de pagos a proveedores](https://www.clevr.cl/soluciones/validacion-pagos-proveedores/): Clevr desarrolló una solución que cruza facturas con contratos, órdenes de compra y otros respaldos para señalar duplicados o montos que requieren atención.
-- [Traspaso y cuadre contable](https://www.clevr.cl/soluciones/traspaso-y-cuadre-contable/): Clevr desarrolló una solución que procesa reportes de arriendos, contrasta montos y reajustes con sus respaldos y prepara archivos para que el equipo los revise y cargue.
-- [Conciliación bancaria](https://www.clevr.cl/soluciones/conciliacion-bancaria/): Clevr desarrolló una solución de conciliación que compara movimientos bancarios con registros internos y organiza coincidencias y diferencias para revisión.
-- [Fondos de inversión con IA](https://www.clevr.cl/soluciones/gestion-de-fondos-de-inversion/): Clevr desarrolló una plataforma que estructura fichas y antecedentes de fondos, aportes, capital calls y dividendos para consultarlos desde la información que mantiene cada equipo.
-- [Portal B2B con chatbot de IA](https://www.clevr.cl/soluciones/portal-b2b-chatbot-ia/): Clevr desarrolló un portal B2B que reúne catálogo, disponibilidad, cotizaciones y pedidos, con un chatbot de IA que responde consultas usando la información habilitada por la empresa.
-- [Visibilidad de leads y marketing](https://www.clevr.cl/soluciones/visibilidad-de-leads/): Clevr desarrolló un panel que centraliza registros disponibles de distintos canales y muestra su origen, estado y avance comercial.
-- [Contenido de marketing con IA](https://www.clevr.cl/soluciones/contenido-de-marketing-con-ia/): Clevr desarrolló una solución de IA que transforma insumos y referencias de marca en borradores de piezas o videos para revisión del equipo.
-- [Acceso móvil y costeo de producción](https://www.clevr.cl/soluciones/acceso-movil-y-costeo-produccion/): Clevr desarrolló vistas móviles para consultar información como stock, ventas y cuentas por cobrar, además de cálculos de costo comparables con los registros de gestión.
-- [Captura inteligente de órdenes de compra](https://www.clevr.cl/soluciones/captura-ordenes-compra/): Clevr desarrolló una solución que procesa órdenes recibidas por correo o PDF, organiza sus campos y señala datos que deben validarse antes de incorporarlos al sistema.
-- [Revisión de calidad con IA](https://www.clevr.cl/soluciones/revision-calidad-informes/): Clevr desarrolló un asistente que revisa informes frente a procedimientos, criterios e instructivos definidos por la organización y señala observaciones para el equipo de calidad.
-- [Cálculo y registro de evaluaciones psicométricas](https://www.clevr.cl/soluciones/evaluacion-psicometrica/): Clevr desarrolló una herramienta configurada para un instrumento definido que calcula puntajes e índices y mantiene el registro de cada evaluación.
-- [Maestro AI, copiloto docente](https://www.clevr.cl/soluciones/copiloto-docente/): Maestro AI es un prototipo de copiloto docente creado por Benjamín Apt, Alan Kulka y Matías Kulka (project manager): reúne alertas académicas, comunicación con apoderados y materiales de nivelación con IA.
-- [Seguimiento de socios para gimnasios](https://www.clevr.cl/soluciones/seguimiento-de-socios/): Organiza objetivos e hitos de socios y conecta su seguimiento con la aplicación del gimnasio según los datos disponibles.
-- [Búsqueda bibliográfica y preparación de informes](https://www.clevr.cl/soluciones/busqueda-bibliografica/): Búsqueda por molécula y endpoint, selección de estudios y preparación de informes para revisión del equipo.
-- [Procesamiento y control de cartolas de inversión](https://www.clevr.cl/soluciones/control-cartolas-inversion/): Procesa cartolas en PDF, organiza movimientos y ayuda a controlar documentos pendientes para revisión contable.
-- [Gestión de solicitudes y revisión de informes regulatorios](https://www.clevr.cl/soluciones/solicitudes-informes-regulatorios/): Apoyo a solicitudes de estudios a laboratorios y revisión de informes frente a requisitos definidos.
+- [Cobranza automatizada](https://www.clevr.cl/soluciones/cobranza-automatizada/): Ordena el seguimiento de cada factura por etapa, registra respuestas y reúne pendientes y próximas acciones en un panel de cobranza. Hecho por Clevr.
+- [Revisión de facturas](https://www.clevr.cl/soluciones/revision-de-facturas/): Compara razón social, RUT y montos de tus facturas con registros de referencia y marca las diferencias para revisión. Desarrollado por Clevr.
+- [Validación de pagos a proveedores](https://www.clevr.cl/soluciones/validacion-pagos-proveedores/): Cruza facturas con contratos, órdenes de compra y respaldos para detectar duplicados y montos fuera de lo acordado. Desarrollado por Clevr.
+- [Traspaso y cuadre contable](https://www.clevr.cl/soluciones/traspaso-y-cuadre-contable/): Estructura reportes de arriendos, cruza montos y reajustes con contratos y prepara el archivo de carga contable. Desarrollado por Clevr.
+- [Conciliación bancaria](https://www.clevr.cl/soluciones/conciliacion-bancaria/): Cruza cartolas bancarias con tus registros de cobros y pagos, y separa coincidencias de partidas pendientes para revisión. Módulo desarrollado por Clevr.
+- [Fondos de inversión con IA](https://www.clevr.cl/soluciones/gestion-de-fondos-de-inversion/): Fichas por fondo con aportes, capital calls y dividendos, y consultas en lenguaje natural sobre tu cartera. Módulo desarrollado por Clevr.
+- [Portal B2B con chatbot de IA](https://www.clevr.cl/soluciones/portal-b2b-chatbot-ia/): Portal para que tus clientes B2B consulten catálogo, stock y pedidos, con un chatbot de IA conectado a tu ERP. Módulo desarrollado por Clevr.
+- [Visibilidad de leads y marketing](https://www.clevr.cl/soluciones/visibilidad-de-leads/): Reúne en un panel los prospectos de todos tus canales y muestra su origen, estado y avance comercial para priorizar. Módulo desarrollado por Clevr.
+- [Contenido de marketing con IA](https://www.clevr.cl/soluciones/contenido-de-marketing-con-ia/): Convierte materiales y referencias de tu marca en borradores de piezas y videos con IA, para que tu equipo los revise y apruebe antes de publicar.
+- [Acceso móvil y costeo de producción](https://www.clevr.cl/soluciones/acceso-movil-y-costeo-produccion/): Consulta stock, ventas y cuentas por cobrar desde el celular y compara tus costos de producción con el sistema de gestión. Módulo desarrollado por Clevr.
+- [Captura inteligente de órdenes de compra](https://www.clevr.cl/soluciones/captura-ordenes-compra/): Lee las órdenes de compra que llegan por correo o PDF, extrae sus campos y los valida antes del ingreso a tu ERP. Módulo desarrollado por Clevr.
+- [Revisión de calidad con IA](https://www.clevr.cl/soluciones/revision-calidad-informes/): Contrasta informes técnicos con tus procedimientos y criterios de calidad y deja observaciones trazables para tu equipo. Desarrollado por Clevr.
+- [Cálculo y registro de evaluaciones psicométricas](https://www.clevr.cl/soluciones/evaluacion-psicometrica/): Calcula puntajes e índices de evaluaciones psicométricas según las reglas del instrumento y centraliza el registro. Interpreta el profesional.
+- [Maestro AI, copiloto docente](https://www.clevr.cl/soluciones/copiloto-docente/): Maestro AI, prototipo de copiloto docente: alertas académicas, comunicación con apoderados y materiales de nivelación con IA. Premiado internacionalmente.
+- [Seguimiento de socios para gimnasios](https://www.clevr.cl/soluciones/seguimiento-de-socios/): Seguimiento de objetivos e hitos de socios de gimnasios, conectado a la app que ya usas, para dar continuidad a la atención. Solución de Clevr.
+- [Búsqueda bibliográfica y preparación de informes](https://www.clevr.cl/soluciones/busqueda-bibliografica/): Organiza la búsqueda bibliográfica por molécula y endpoint, apoya la selección de estudios y prepara informes para revisión de tu equipo. Hecho por Clevr.
+- [Procesamiento y control de cartolas de inversión](https://www.clevr.cl/soluciones/control-cartolas-inversion/): Procesa cartolas de inversión en PDF, organiza sus movimientos y controla qué cartolas siguen pendientes para la revisión contable. Hecho por Clevr.
+- [Gestión de solicitudes y revisión de informes regulatorios](https://www.clevr.cl/soluciones/solicitudes-informes-regulatorios/): Organiza solicitudes de estudios a laboratorios y revisa informes frente a requisitos definidos, con observaciones para tu equipo. Solución de Clevr.
 
 ## Industrias
 
