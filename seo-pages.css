@@ -57,3 +57,9 @@ body.module-page{background:#fff;color:#111827;font-family:Manrope,Arial,sans-se
 .module-header-cta{display:inline-flex;align-items:center;min-height:42px;padding:0 18px;border-radius:999px;background:#f97316;color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:background .2s}
 .module-header-cta:hover{background:#ea580c}
 @media(max-width:760px){.module-block{margin-top:40px;padding-top:28px}.module-block>h2,.module-details-title{font-size:22px}.module-back{display:none}}
+.site-header nav a,.text-link,.breadcrumb a,.module-related a,.module-footer a{display:inline-flex;align-items:center;min-height:44px}
+.nav-cta,.module-back,.module-header-cta{min-height:44px}
+.questions summary{padding:12px 16px 12px 0;min-height:44px}
+.module-eyebrow,.module-step-number{color:#C2410C}
+a:focus-visible,summary:focus-visible{outline:3px solid #C2410C;outline-offset:2px}
+@media(max-width:760px){.breadcrumb{font-size:12px}.site-header nav a{font-size:13px}}
